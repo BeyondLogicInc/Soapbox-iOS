@@ -14,6 +14,7 @@
 		161CE8D71E69DBA7009A6C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 161CE8D51E69DBA7009A6C63 /* LaunchScreen.storyboard */; };
 		161CE8E21E69DBA7009A6C63 /* SoapboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161CE8E11E69DBA7009A6C63 /* SoapboxTests.swift */; };
 		161CE8ED1E69DBA7009A6C63 /* SoapboxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161CE8EC1E69DBA7009A6C63 /* SoapboxUITests.swift */; };
+		1637D12A1E6A878200DE4A35 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637D1291E6A878200DE4A35 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		161CE8E81E69DBA7009A6C63 /* SoapboxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoapboxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		161CE8EC1E69DBA7009A6C63 /* SoapboxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoapboxUITests.swift; sourceTree = "<group>"; };
 		161CE8EE1E69DBA7009A6C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1637D1291E6A878200DE4A35 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				161CE8CC1E69DBA6009A6C63 /* AppDelegate.swift */,
 				161CE8CE1E69DBA6009A6C63 /* ViewController.swift */,
+				1637D1291E6A878200DE4A35 /* LoginViewController.swift */,
 				161CE8D01E69DBA7009A6C63 /* Main.storyboard */,
 				161CE8D31E69DBA7009A6C63 /* Assets.xcassets */,
 				161CE8D51E69DBA7009A6C63 /* LaunchScreen.storyboard */,
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1637D12A1E6A878200DE4A35 /* LoginViewController.swift in Sources */,
 				161CE8CF1E69DBA6009A6C63 /* ViewController.swift in Sources */,
 				161CE8CD1E69DBA6009A6C63 /* AppDelegate.swift in Sources */,
 			);
@@ -512,6 +516,7 @@
 				161CE8F31E69DBA7009A6C63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		161CE8F41E69DBA7009A6C63 /* Build configuration list for PBXNativeTarget "SoapboxTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +525,7 @@
 				161CE8F61E69DBA7009A6C63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		161CE8F71E69DBA7009A6C63 /* Build configuration list for PBXNativeTarget "SoapboxUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +534,7 @@
 				161CE8F91E69DBA7009A6C63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -12,7 +12,7 @@
         <!--SOAPBOX-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Soapbox" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="2207.1999999999998" y="-563.56821589205401"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="Thy-Fk-BE4">
             <objects>
-                <viewController id="d7U-Cy-vcv" customClass="ViewController" customModule="Soapbox" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="d7U-Cy-vcv" customClass="LoginViewController" customModule="Soapbox" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nXX-e1-IBd"/>
                         <viewControllerLayoutGuide type="bottom" id="gGK-Yh-3pU"/>
@@ -135,8 +135,7 @@
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="login:" destination="d7U-Cy-vcv" eventType="touchUpInside" id="npp-5g-uii"/>
-                                            <segue destination="Sk5-YM-gFp" kind="showDetail" id="ZNh-Ge-hqm"/>
+                                            <action selector="handleLogin:" destination="d7U-Cy-vcv" eventType="touchUpInside" id="aBX-ah-pnU"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="It is so easy to use that it's hard to explain" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLs-9D-De0">
@@ -185,13 +184,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="Aef-h9-hju"/>
                     <connections>
-                        <outlet property="password" destination="QOg-DC-oe5" id="WFH-gG-xNi"/>
-                        <outlet property="username" destination="oeJ-3M-08y" id="m9D-tH-UlS"/>
+                        <outlet property="password" destination="QOg-DC-oe5" id="wU7-Ut-plL"/>
+                        <outlet property="username" destination="oeJ-3M-08y" id="PHc-m1-hsN"/>
+                        <segue destination="Sk5-YM-gFp" kind="showDetail" identifier="toTabViewSegue" id="qry-DT-vjG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0i7-fT-ua1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2148" y="-563.56821589205401"/>
+            <point key="canvasLocation" x="-2146" y="-563"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="Elj-IX-Cg2">
@@ -237,6 +237,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Sk5-YM-gFp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="APo-l1-j4J">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
