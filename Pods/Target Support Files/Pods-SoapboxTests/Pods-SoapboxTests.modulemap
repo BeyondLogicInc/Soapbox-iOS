@@ -1,0 +1,6 @@
+framework module Pods_SoapboxTests {
+  umbrella header "Pods-SoapboxTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
