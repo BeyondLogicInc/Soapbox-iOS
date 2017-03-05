@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DD5AF70EA6BD237E573323B5229272C55BBA6FD4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DD5AF70EA6BD237E573323B5229272C55BBA6FD4" : 9223372036854775807,
+    "79616A4937DE08B5BE4FAE5B9DBCDDF5A8852894" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D0571433-01F8-4039-961C-99CB70D4D8F4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DD5AF70EA6BD237E573323B5229272C55BBA6FD4" : "Soapbox\/",
+    "79616A4937DE08B5BE4FAE5B9DBCDDF5A8852894" : "SampleTableViewApp\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Soapbox",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Soapbox.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/chaoticbit\/Explore-Movies-Swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "79616A4937DE08B5BE4FAE5B9DBCDDF5A8852894"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/chaoticbit\/Soapbox-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DD5AF70EA6BD237E573323B5229272C55BBA6FD4"
+    }
+  ]
+}

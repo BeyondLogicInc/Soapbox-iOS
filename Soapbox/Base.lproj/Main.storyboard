@@ -23,12 +23,20 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="SOAPBOX" id="qHo-I1-qMg">
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="wnZ-bF-LqO">
+                            <connections>
+                                <action selector="signOut:" destination="BYZ-38-t0r" id="3aD-SK-Ekq"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="539-U9-ur9"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="d7U-Cy-vcv" kind="showDetail" identifier="toLoginViewSegue" id="YYU-gU-oMU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="322" y="-1473"/>
+            <point key="canvasLocation" x="321" y="-1473"/>
         </scene>
         <!--Reading List-->
         <scene sceneID="TXL-zU-k9F">
@@ -46,6 +54,7 @@
                     <navigationItem key="navigationItem" title="Reading List" id="FiX-Mz-H5j">
                         <barButtonItem key="rightBarButtonItem" image="reading_confirmation-25" id="Gu6-4l-akN"/>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5G6-FX-E6a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -218,6 +227,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Notifications" id="A4B-Vg-a5X"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vsB-GU-F27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -245,7 +255,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="hZo-XZ-SBp">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Sk5-YM-gFp" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabView" automaticallyAdjustsScrollViewInsets="NO" id="Sk5-YM-gFp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="APo-l1-j4J">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -315,13 +325,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="uXD-Hr-S44">
-                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="wnZ-bF-LqO">
-                            <connections>
-                                <segue destination="d7U-Cy-vcv" kind="showDetail" id="xJV-hJ-7Ym"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Profile" id="uXD-Hr-S44"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EoC-kc-WN4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -419,6 +424,6 @@
         <image name="reading_confirmation-25" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xJV-hJ-7Ym"/>
+        <segue reference="YYU-gU-oMU"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -12,10 +12,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
-        
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    let keychain = KeychainSwift()        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        checkLoggedIn()
         
         username.setBottomBorder()
         password.setBottomBorder()
@@ -27,6 +31,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func checkLoggedIn() {
+        if let user = keychain.get("soapbox.user.id") {
+            print("exits ", user)
+            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabView") as? UITabBarController else {
+                print("could not instantiate controller")
+                return
+            }
+            self.navigationController?.present(vc, animated: true, completion: nil)
+        }
+        else {
+            print("no value in keychain")
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -49,7 +67,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func login() {
-        self.performSegue(withIdentifier: "toTabViewSegue", sender: self)
+        let userid: String = "10002"
+        if keychain.set(userid, forKey: "soapbox.user.id") {
+            print(keychain.get("soapbox.user.id")!)
+            self.performSegue(withIdentifier: "toTabViewSegue", sender: nil)
+        } else {
+            print("Error setting keychain")
+        }
     }
     
 }

@@ -15,6 +15,7 @@
 		161CE8E21E69DBA7009A6C63 /* SoapboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161CE8E11E69DBA7009A6C63 /* SoapboxTests.swift */; };
 		161CE8ED1E69DBA7009A6C63 /* SoapboxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161CE8EC1E69DBA7009A6C63 /* SoapboxUITests.swift */; };
 		1637D12A1E6A878200DE4A35 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637D1291E6A878200DE4A35 /* LoginViewController.swift */; };
+		16AFD8E21E6BED4800F13E17 /* KeychainSwiftDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		161CE8EC1E69DBA7009A6C63 /* SoapboxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoapboxUITests.swift; sourceTree = "<group>"; };
 		161CE8EE1E69DBA7009A6C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1637D1291E6A878200DE4A35 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSwiftDistrib.swift; sourceTree = "<group>"; };
+		16AFD8E51E6C066300F13E17 /* Soapbox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Soapbox.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +102,11 @@
 		161CE8CB1E69DBA6009A6C63 /* Soapbox */ = {
 			isa = PBXGroup;
 			children = (
+				16AFD8E51E6C066300F13E17 /* Soapbox.entitlements */,
 				161CE8CC1E69DBA6009A6C63 /* AppDelegate.swift */,
 				161CE8CE1E69DBA6009A6C63 /* ViewController.swift */,
 				1637D1291E6A878200DE4A35 /* LoginViewController.swift */,
+				16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */,
 				161CE8D01E69DBA7009A6C63 /* Main.storyboard */,
 				161CE8D31E69DBA7009A6C63 /* Assets.xcassets */,
 				161CE8D51E69DBA7009A6C63 /* LaunchScreen.storyboard */,
@@ -198,6 +203,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = GH7WBR2EBV;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					161CE8DC1E69DBA7009A6C63 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -268,6 +278,7 @@
 				1637D12A1E6A878200DE4A35 /* LoginViewController.swift in Sources */,
 				161CE8CF1E69DBA6009A6C63 /* ViewController.swift in Sources */,
 				161CE8CD1E69DBA6009A6C63 /* AppDelegate.swift in Sources */,
+				16AFD8E21E6BED4800F13E17 /* KeychainSwiftDistrib.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +428,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Soapbox/Soapbox.entitlements;
 				DEVELOPMENT_TEAM = GH7WBR2EBV;
 				INFOPLIST_FILE = Soapbox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -430,6 +442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Soapbox/Soapbox.entitlements;
 				DEVELOPMENT_TEAM = GH7WBR2EBV;
 				INFOPLIST_FILE = Soapbox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
