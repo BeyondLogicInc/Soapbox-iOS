@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DD5AF70EA6BD237E573323B5229272C55BBA6FD4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DD5AF70EA6BD237E573323B5229272C55BBA6FD4" : 9223372036854775807,
+    "33624914C455C6E69B8F65B12B5B0C29738342A3" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "313BBF3B-8E3F-4E94-87B7-2DCB68290227",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DD5AF70EA6BD237E573323B5229272C55BBA6FD4" : "Soapbox\/",
+    "33624914C455C6E69B8F65B12B5B0C29738342A3" : "..\/..\/..\/..\/Applications\/MAMP\/htdocs\/Soapbox"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Soapbox",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Soapbox.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/chaoticbit\/Soapbox.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "33624914C455C6E69B8F65B12B5B0C29738342A3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/chaoticbit\/Soapbox-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DD5AF70EA6BD237E573323B5229272C55BBA6FD4"
+    }
+  ]
+}
