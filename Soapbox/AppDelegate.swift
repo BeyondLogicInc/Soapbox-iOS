@@ -17,8 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
 //        UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-//        UINavigationBar.appearance().tintColor = UIColor.white
-//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+//        UINavigationBar.appearance().tintColor = UIColor.white        
+        UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "OpenSans", size: 11.0)!], for: UIControlState.normal)
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "OpenSans", size: 18.0)!]
 //        UIApplication.shared.statusBarStyle = .lightContent
         
         // Override point for customization after application launch.
