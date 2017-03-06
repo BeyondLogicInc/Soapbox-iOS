@@ -22,6 +22,7 @@ struct cellData {
 
 class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    let keychainSwift = KeychainSwift()
     
     @IBOutlet weak var feedTableView: UITableView!
     var arrayOfCellData = [cellData]()
@@ -33,6 +34,11 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cellData(name: "Atharva Dandekar", category: "TV Shows", time: "50 mins ago", threadImage: #imageLiteral(resourceName: "hoc"), title: "House of cards season 4", summary: "That's a prevailing theme of the series' latest run, released Friday. When we left Kevin Spacey's President Underwood and his first lady Macbeth, Claire, (Robin Wright), he was locked in a tough re-election campaign and she, weary of being used for his political gain, was leaving him.", upvoteCnt: "35 Upvotes", repliesCnt: "8 Replies", viewsCnt: "105 Views"),
             cellData(name: "Mihir Karandikar", category: "Movies", time: "1 hour ago", threadImage: #imageLiteral(resourceName: "wallhaven300894"), title: "Interstellar", summary: "In the future, Earth is slowly becoming uninhabitable. Ex-NASA pilot Cooper, along with a team of researchers, is sent on a planet exploration mission to report which planet can sustain life.", upvoteCnt: "89 Upvotes", repliesCnt: "7 Replies", viewsCnt: "48 Views")
         ]
+    }
+    @IBAction func handleSignOut(_ sender: Any) {
+        keychainSwift.delete("soapbox.user.id")
+        self.performSegue(withIdentifier: "toLoginViewSegue", sender: nil)
+
     }
     
     func updateWithSpacing(label: UILabel, lineSpacing: Float) {
@@ -58,8 +64,10 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.threadTimeLapsed.text = arrayOfCellData[indexPath.row].time
         cell.feedOwnerImage.image = #imageLiteral(resourceName: "bgart2")
         cell.threadImage.image = arrayOfCellData[indexPath.row].threadImage
-        cell.threadTitle.text = arrayOfCellData[indexPath.row].title                
+        cell.threadTitle.text = arrayOfCellData[indexPath.row].title
+//        let attrText = arrayOfCellData[indexPath.row].summary
         cell.threadDescription.text = arrayOfCellData[indexPath.row].summary
+        cell.threadDescription.lineBreakMode = .byTruncatingTail
         updateWithSpacing(label: cell.threadDescription, lineSpacing: 2.5)
         cell.threadUpvotes.text = arrayOfCellData[indexPath.row].upvoteCnt
         cell.threadReplies.text = arrayOfCellData[indexPath.row].repliesCnt
