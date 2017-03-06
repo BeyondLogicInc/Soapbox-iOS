@@ -61,6 +61,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    @IBAction func backToLoginView(segue: UIStoryboardSegue) {
+        
+    }
     
     @IBAction func handleLogin(_ sender: Any) {
         login()
@@ -76,6 +79,58 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+}
+
+class SignUpController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var confirmPassword: UITextField!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        username.setBottomBorder()
+        password.setBottomBorder()
+        confirmPassword.setBottomBorder()
+        
+        username.becomeFirstResponder()
+        self.hideKeyboard()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.username {
+            if self.username.returnKeyType == UIReturnKeyType.next {
+                self.password.becomeFirstResponder()
+            }
+        }
+        else if textField == self.password {
+            if self.password.returnKeyType == UIReturnKeyType.next {
+                self.confirmPassword.becomeFirstResponder()
+            }
+        }
+        else if textField == self.confirmPassword {
+            if self.confirmPassword.returnKeyType == UIReturnKeyType.go {
+                register()
+            }
+        }
+        return true
+    }
+    
+    func register() {
+        
+    }
+    
+    @IBAction func handleRegister(_ sender: Any) {
+        register()
+    }
 }
 
 extension UITextField {

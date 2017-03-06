@@ -179,6 +179,9 @@
                                         <state key="normal" title="JOIN SOAPBOX NOW">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="CMj-Ms-Obu" kind="presentation" id="F6X-YE-7Wy"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You already know how this works" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYA-qe-Gmu">
                                         <rect key="frame" x="13" y="373" width="313" height="21"/>
@@ -312,6 +315,129 @@
             </objects>
             <point key="canvasLocation" x="1260" y="-563.56821589205401"/>
         </scene>
+        <!--Sign Up Controller-->
+        <scene sceneID="7oO-WD-aLd">
+            <objects>
+                <viewController id="CMj-Ms-Obu" customClass="SignUpController" customModule="Soapbox" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z6l-Mg-Oje"/>
+                        <viewControllerLayoutGuide type="bottom" id="jEH-Ac-vKa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qgc-g9-urN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bgart2" translatesAutoresizingMaskIntoConstraints="NO" id="Xmy-PS-O3m">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DAA-aE-lHC">
+                                <rect key="frame" x="17" y="111" width="338" height="306"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="ch7-6z-0fG">
+                                    <rect key="frame" x="0.0" y="0.0" width="338" height="306"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J53-kw-ydv">
+                                            <rect key="frame" x="0.0" y="0.0" width="338" height="306"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="Xbu-Sv-Svp">
+                                                <rect key="frame" x="0.0" y="0.0" width="338" height="306"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="light"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HMK-uV-jB3">
+                                <rect key="frame" x="17" y="111" width="338" height="306"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="USERNAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iOW-j7-SHD">
+                                        <rect key="frame" x="14" y="27" width="312" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="CMj-Ms-Obu" id="G8p-Oc-Rc3"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PASSWORD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CFU-Fm-lLx">
+                                        <rect key="frame" x="14" y="77" width="312" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="CMj-Ms-Obu" id="avW-8p-1x1"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CONFIRM PASSWORD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fGB-KW-FbQ">
+                                        <rect key="frame" x="14" y="127" width="312" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="CMj-Ms-Obu" id="Ds6-Ig-SsM"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5o7-n9-362">
+                                        <rect key="frame" x="13" y="193" width="312" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="0.88404467279999999" colorSpace="calibratedWhite"/>
+                                        <size key="titleShadowOffset" width="4" height="3"/>
+                                        <state key="normal" title="REGISTER">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="handleLogin:" destination="d7U-Cy-vcv" eventType="touchUpInside" id="3Oa-0F-tP1"/>
+                                            <action selector="handleRegister:" destination="CMj-Ms-Obu" eventType="touchUpInside" id="Keb-w2-1Ae"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGQ-LD-ZBS">
+                                        <rect key="frame" x="127" y="248" width="85" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <size key="titleShadowOffset" width="4" height="3"/>
+                                        <state key="normal" title="GO BACK"/>
+                                        <connections>
+                                            <action selector="goBack:" destination="CMj-Ms-Obu" eventType="touchUpInside" id="eQk-Y0-HoP"/>
+                                            <action selector="handleLogin:" destination="d7U-Cy-vcv" eventType="touchUpInside" id="fo0-rQ-C26"/>
+                                            <segue destination="cCz-dg-SLN" kind="unwind" unwindAction="backToLoginViewWithSegue:" id="YSZ-UZ-776"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.65811136739999998" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SOAPBOX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jJ-rx-06s">
+                                <rect key="frame" x="116" y="40" width="143" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="confirmPassword" destination="fGB-KW-FbQ" id="Mrt-44-KN7"/>
+                        <outlet property="password" destination="CFU-Fm-lLx" id="HKg-fH-2iu"/>
+                        <outlet property="username" destination="iOW-j7-SHD" id="l98-Iw-3vF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZYy-vF-BTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="cCz-dg-SLN" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-2146.4000000000001" y="-1430.7346326836582"/>
+        </scene>
         <!--Profile-->
         <scene sceneID="BEL-hh-3N1">
             <objects>
@@ -410,6 +536,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bgart2" width="640" height="360"/>
         <image name="blur" width="2560" height="1440"/>
         <image name="bookmark-25" width="25" height="25"/>
         <image name="bookmark_filled-25" width="25" height="25"/>
