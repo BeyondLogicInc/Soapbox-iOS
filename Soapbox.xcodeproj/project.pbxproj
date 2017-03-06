@@ -16,6 +16,7 @@
 		161CE8ED1E69DBA7009A6C63 /* SoapboxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161CE8EC1E69DBA7009A6C63 /* SoapboxUITests.swift */; };
 		1637D12A1E6A878200DE4A35 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637D1291E6A878200DE4A35 /* LoginViewController.swift */; };
 		16AFD8E21E6BED4800F13E17 /* KeychainSwiftDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */; };
+		16AFD8E71E6D200300F13E17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFD8E61E6D200300F13E17 /* Extensions.swift */; };
 		53B2B0114B6EC3C7BAC0B2EA /* Pods_SoapboxTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB93858CA415EB7BCCF2EEDE /* Pods_SoapboxTests.framework */; };
 		8AC649BB468FF515040D3455 /* Pods_SoapboxUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E97E951483E69A0B1056625E /* Pods_SoapboxUITests.framework */; };
 		9B83B60A711139CF8AD5E9F9 /* Pods_Soapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E353FF5D22EA42E136334B94 /* Pods_Soapbox.framework */; };
@@ -56,6 +57,7 @@
 		1637D1291E6A878200DE4A35 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSwiftDistrib.swift; sourceTree = "<group>"; };
 		16AFD8E51E6C066300F13E17 /* Soapbox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Soapbox.entitlements; sourceTree = "<group>"; };
+		16AFD8E61E6D200300F13E17 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		30307CC9EF7AC6AC678AC703 /* Pods-Soapbox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Soapbox.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Soapbox/Pods-Soapbox.debug.xcconfig"; sourceTree = "<group>"; };
 		89EF0DB7004562C5943354D1 /* Pods-SoapboxTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoapboxTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoapboxTests/Pods-SoapboxTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB93858CA415EB7BCCF2EEDE /* Pods_SoapboxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoapboxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +127,7 @@
 				1637D1291E6A878200DE4A35 /* LoginViewController.swift */,
 				16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */,
 				161CE8D01E69DBA7009A6C63 /* Main.storyboard */,
+				16AFD8E61E6D200300F13E17 /* Extensions.swift */,
 				161CE8D31E69DBA7009A6C63 /* Assets.xcassets */,
 				161CE8D51E69DBA7009A6C63 /* LaunchScreen.storyboard */,
 				161CE8D81E69DBA7009A6C63 /* Info.plist */,
@@ -462,6 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16AFD8E71E6D200300F13E17 /* Extensions.swift in Sources */,
 				1637D12A1E6A878200DE4A35 /* LoginViewController.swift in Sources */,
 				161CE8CF1E69DBA6009A6C63 /* ViewController.swift in Sources */,
 				161CE8CD1E69DBA6009A6C63 /* AppDelegate.swift in Sources */,
