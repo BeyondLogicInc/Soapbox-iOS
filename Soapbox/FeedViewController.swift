@@ -20,8 +20,8 @@ struct cellData {
     let viewsCnt: String!
 }
 
-class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FeedCellDelegate {
+    
     let keychainSwift = KeychainSwift()
     
     @IBOutlet weak var feedTableView: UITableView!
@@ -59,6 +59,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! FeedTableViewCell
         
+        cell.cellDelegate = self
+        cell.tag = indexPath.row
+        
         cell.threadOwnerName.text = arrayOfCellData[indexPath.row].name
         cell.threadCategory.text = arrayOfCellData[indexPath.row].category
         cell.threadTimeLapsed.text = arrayOfCellData[indexPath.row].time
@@ -71,8 +74,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         updateWithSpacing(label: cell.threadDescription, lineSpacing: 2.5)
         cell.threadUpvotes.text = arrayOfCellData[indexPath.row].upvoteCnt
         cell.threadReplies.text = arrayOfCellData[indexPath.row].repliesCnt
-        cell.threadViews.text = arrayOfCellData[indexPath.row].viewsCnt
-        
+        cell.threadViews.text = arrayOfCellData[indexPath.row].viewsCnt                
+        cell.threadOptionsBtn.isHidden = false
         cell.contentView.backgroundColor = UIColor.init(colorLiteralRed: 234/255, green: 233/255, blue: 237/255, alpha: 1.0)
         
         return cell
@@ -84,6 +87,45 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    
+    func didPressButton(_ tag: Int) {
+        print("I have pressed a button with a tag: \(tag)")
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let trackThreadButton = UIAlertAction(title: "Track this thread", style: .default, handler: {
+            (action) -> Void in
+            print("Track button tapped")
+        })
+        
+        let readingListButton = UIAlertAction(title: "Add to reading list", style: .default, handler: {
+            (action) -> Void in
+            print("reading list button tapped")
+        })
+        
+        let hideThreadButton = UIAlertAction(title: "Hide this thread", style: .default, handler: {
+            (action) -> Void in
+            print("hide thread button tapped")
+        })
+        
+        let deleteThreadButton = UIAlertAction(title: "Delete this thread", style: .destructive, handler: {
+            (action) -> Void in
+            print("Track button tapped")
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel,
+            handler: {
+            (action) -> Void in
+            print("cancel")
+        })
+        
+        alertController.addAction(trackThreadButton)
+        alertController.addAction(readingListButton)
+        alertController.addAction(hideThreadButton)
+        alertController.addAction(deleteThreadButton)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
 }

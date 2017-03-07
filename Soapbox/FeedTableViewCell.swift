@@ -10,6 +10,8 @@ import UIKit
 
 class FeedTableViewCell: UITableViewCell {
 
+    weak var cellDelegate: FeedCellDelegate?
+    
     @IBOutlet weak var threadOwnerName: UILabel!
     @IBOutlet weak var threadCategory: UILabel!
     @IBOutlet weak var threadTimeLapsed: UILabel!
@@ -23,7 +25,16 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var threadReplies: UILabel!
     @IBOutlet weak var threadViews: UILabel!
     
+    @IBOutlet weak var threadOptionsBtn: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-    }    
+    }        
+    @IBAction func toggleThreadOptions(_ sender: Any) {
+        cellDelegate?.didPressButton(self.tag)
+    }
+}
+
+protocol FeedCellDelegate: class {
+    func didPressButton(_ tag: Int)
 }
