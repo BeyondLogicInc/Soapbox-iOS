@@ -29,6 +29,11 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         feedTableView.separatorColor = UIColor.clear
+        
+        let api = Api()
+        let userinfoArr = api.getUserInfoFromKeychain()
+        print(userinfoArr[0] + " " + userinfoArr[1] + " " + userinfoArr[2] + " " + userinfoArr[3] + " " + userinfoArr[4])        
+        
         arrayOfCellData = [
             cellData(name: "Atharva Dandekar", category: "TV Shows", time: "50 mins ago", threadImage: #imageLiteral(resourceName: "hoc"), title: "House of cards season 4", summary: "That's a prevailing theme of the series' latest run, released Friday. When we left Kevin Spacey's President Underwood and his first lady Macbeth, Claire, (Robin Wright), he was locked in a tough re-election campaign and she, weary of being used for his political gain, was leaving him.", upvoteCnt: "35 Upvotes", repliesCnt: "8 Replies", viewsCnt: "105 Views"),
             cellData(name: "Mihir Karandikar", category: "Movies", time: "1 hour ago", threadImage: #imageLiteral(resourceName: "wallhaven300894"), title: "Interstellar", summary: "In the future, Earth is slowly becoming uninhabitable. Ex-NASA pilot Cooper, along with a team of researchers, is sent on a planet exploration mission to report which planet can sustain life.", upvoteCnt: "89 Upvotes", repliesCnt: "7 Replies", viewsCnt: "48 Views")

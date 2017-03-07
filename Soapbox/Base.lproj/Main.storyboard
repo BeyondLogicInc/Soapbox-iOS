@@ -417,6 +417,10 @@
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                         <state key="normal" title="Forgot Password?"/>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HsS-zA-uc2">
+                                        <rect key="frame" x="159" y="173" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.65811136744966447" colorSpace="calibratedWhite"/>
                             </view>
@@ -425,6 +429,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Aef-h9-hju"/>
                     <connections>
+                        <outlet property="loginActivityIndicator" destination="HsS-zA-uc2" id="xw0-7Q-HBU"/>
+                        <outlet property="loginButton" destination="t89-sT-lTO" id="VRP-xa-rQn"/>
                         <outlet property="password" destination="QOg-DC-oe5" id="wU7-Ut-plL"/>
                         <outlet property="scrollView" destination="hLN-Vk-pr7" id="BQq-5X-THR"/>
                         <outlet property="username" destination="oeJ-3M-08y" id="PHc-m1-hsN"/>

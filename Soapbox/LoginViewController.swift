@@ -14,6 +14,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loginActivityIndicator: UIActivityIndicatorView!
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,15 +70,46 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func login() {
-        if KeyClip.save("soapbox.userdata", dictionary: ["userid":"10002","username":"sipps7","fname":"Atharva","lname":"Dandekar","avatarpath":"steve.jpg"]
-            ) {
-            let dict = KeyClip.load("soapbox.userdata") as NSDictionary!
-            var json = JSON(dict!)
-            print(json["username"].stringValue)
-            self.performSegue(withIdentifier: "toTabViewSegue", sender: nil)
+        
+        if self.username.text == "" || self.password.text == "" {
+            let alertContoller = UIAlertController(title: "Error", message: "Please enter email and password", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertContoller.addAction(defaultAction)
+            self.present(alertContoller, animated: true, completion: nil)
         }
         else {
-            print("Error setting keychain")
+            self.loginButton.isHidden = true
+            self.loginActivityIndicator.isHidden = false
+            self.loginActivityIndicator.startAnimating()
+            
+            let api = Api()
+            let request = api.validateLogin(username: self.username.text!, password: self.password.text!)
+            request.validate()
+            request.responseJSON { response in
+                if (response.error != nil) {
+                    let error: String = (response.error?.localizedDescription)!
+                    print(error)
+                    self.loginActivityIndicator.stopAnimating()
+                    self.loginButton.isHidden = false
+                }
+                else {
+                    if let jsonValue = response.result.value {
+                        let results = JSON(jsonValue)
+                        
+                        let userdata: String = "\(results["userid"])|\(results["fname"])|\(results["lname"])|\(results["username"])|\(results["avatarpath"])"
+                        
+                        if KeyClip.save("soapbox.userdata", string: userdata) {
+                            let userinfo = KeyClip.load("soapbox.userdata") as String?
+                            print(userinfo!)
+                            self.loginActivityIndicator.stopAnimating()
+                            self.performSegue(withIdentifier: "toTabViewSegue", sender: nil)
+                        }
+                        else {
+                            print("Error setting keychain")
+                        }
+                    }
+                }
+            }
         }
     }
     

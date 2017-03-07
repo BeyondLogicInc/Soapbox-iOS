@@ -16,6 +16,7 @@
 		161CE8ED1E69DBA7009A6C63 /* SoapboxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161CE8EC1E69DBA7009A6C63 /* SoapboxUITests.swift */; };
 		1637D12A1E6A878200DE4A35 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637D1291E6A878200DE4A35 /* LoginViewController.swift */; };
 		167789AF1E6E934E00D22A52 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167789AE1E6E934E00D22A52 /* SwiftyJSON.swift */; };
+		167789B11E6EFDA600D22A52 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167789B01E6EFDA600D22A52 /* Api.swift */; };
 		16AFD8E21E6BED4800F13E17 /* KeychainSwiftDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */; };
 		16AFD8E71E6D200300F13E17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFD8E61E6D200300F13E17 /* Extensions.swift */; };
 		16AFD9101E6D5FD800F13E17 /* Merriweather-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16AFD8FE1E6D5FD800F13E17 /* Merriweather-Black.ttf */; };
@@ -77,6 +78,7 @@
 		161CE8EE1E69DBA7009A6C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1637D1291E6A878200DE4A35 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		167789AE1E6E934E00D22A52 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		167789B01E6EFDA600D22A52 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSwiftDistrib.swift; sourceTree = "<group>"; };
 		16AFD8E51E6C066300F13E17 /* Soapbox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Soapbox.entitlements; sourceTree = "<group>"; };
 		16AFD8E61E6D200300F13E17 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				161CE8CC1E69DBA6009A6C63 /* AppDelegate.swift */,
 				161CE8CE1E69DBA6009A6C63 /* ViewController.swift */,
 				1637D1291E6A878200DE4A35 /* LoginViewController.swift */,
+				167789B01E6EFDA600D22A52 /* Api.swift */,
 				16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */,
 				161CE8D01E69DBA7009A6C63 /* Main.storyboard */,
 				16AFD9241E6D69ED00F13E17 /* FeedTableViewCell.swift */,
@@ -554,6 +557,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				167789B11E6EFDA600D22A52 /* Api.swift in Sources */,
 				16AFD8E71E6D200300F13E17 /* Extensions.swift in Sources */,
 				1637D12A1E6A878200DE4A35 /* LoginViewController.swift in Sources */,
 				16AFD9251E6D69ED00F13E17 /* FeedTableViewCell.swift in Sources */,
