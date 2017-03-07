@@ -12,11 +12,11 @@ import KeyClip
 
 class Api {
     
-    var BASE_URL: String = "http://192.168.0.104/Soapboxv2/Login/process"
+    var BASE_URL: String = "http://192.168.0.104/Soapboxv2/"
     
     public func validateLogin(username: String, password: String) -> DataRequest {
         let params: Parameters = ["uname":username, "pword":password]
-        let request = Alamofire.request(BASE_URL, method: .post, parameters: params)
+        let request = Alamofire.request(BASE_URL + "Login/process", method: .post, parameters: params)
         return request
     }
     
@@ -24,5 +24,10 @@ class Api {
         let userinfo = KeyClip.load("soapbox.userdata") as String?
         let userinfoArr = userinfo?.components(separatedBy: "|")
         return userinfoArr!
+    }
+    
+    public func logout() -> DataRequest {
+        let request = Alamofire.request(BASE_URL + "Logout")
+        return request
     }
 }

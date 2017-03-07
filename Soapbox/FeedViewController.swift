@@ -25,12 +25,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     @IBOutlet weak var feedTableView: UITableView!
     var arrayOfCellData = [cellData]()
+    let api = Api()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         feedTableView.separatorColor = UIColor.clear
         
-        let api = Api()
         let userinfoArr = api.getUserInfoFromKeychain()
         print(userinfoArr[0] + " " + userinfoArr[1] + " " + userinfoArr[2] + " " + userinfoArr[3] + " " + userinfoArr[4])        
         
@@ -40,8 +40,23 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ]
     }
     @IBAction func handleSignOut(_ sender: Any) {
-        KeyClip.delete("soapbox.userdata")
-        self.performSegue(withIdentifier: "toLoginViewSegue", sender: nil)
+        let request = api.logout()
+        request.validate()
+        request.responseJSON {response in
+            if (response.error != nil) {
+                let error: String = (response.error?.localizedDescription)!
+                print(error)
+            }
+            else {
+                if let jsonValue = response.result.value {
+                    let results = JSON(jsonValue)
+                    if results["response"].boolValue {
+                        KeyClip.delete("soapbox.userdata")
+                        self.performSegue(withIdentifier: "toLoginViewSegue", sender: nil)
+                    }
+                }
+            }
+        }
     }
     
     func updateWithSpacing(label: UILabel, lineSpacing: Float) {
