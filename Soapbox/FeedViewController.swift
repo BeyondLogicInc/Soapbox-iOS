@@ -93,25 +93,40 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         print("I have pressed a button with a tag: \(tag)")
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let trackThreadButton = UIAlertAction(title: "Track this thread", style: .default, handler: {
+        let subview = alertController.view.subviews.first! as UIView
+        let alertContentView = subview.subviews.first! as UIView
+        alertContentView.backgroundColor = UIColor.white
+        alertContentView.layer.cornerRadius = 15;
+        
+        let trackThreadActionImage = #imageLiteral(resourceName: "Binoculars")
+        let readingListActionImage = #imageLiteral(resourceName: "Reading")
+        let hideActionImage = #imageLiteral(resourceName: "Hide")
+        let deleteActionImage = #imageLiteral(resourceName: "Delete")
+        
+        let trackThreadAction = UIAlertAction(title: "Track this thread", style: .default, handler: {
             (action) -> Void in
             print("Track button tapped")
         })
         
-        let readingListButton = UIAlertAction(title: "Add to reading list", style: .default, handler: {
+        trackThreadAction.setValue(trackThreadActionImage, forKey: "image")
+        
+        let readingListAction = UIAlertAction(title: "Add to reading list", style: .default, handler: {
             (action) -> Void in
             print("reading list button tapped")
         })
+        readingListAction.setValue(readingListActionImage, forKey: "image")
         
-        let hideThreadButton = UIAlertAction(title: "Hide this thread", style: .default, handler: {
+        let hideThreadAction = UIAlertAction(title: "Hide this thread", style: .default, handler: {
             (action) -> Void in
             print("hide thread button tapped")
         })
+        hideThreadAction.setValue(hideActionImage, forKey: "image")
         
-        let deleteThreadButton = UIAlertAction(title: "Delete this thread", style: .destructive, handler: {
+        let deleteThreadAction = UIAlertAction(title: "Delete this thread", style: .destructive, handler: {
             (action) -> Void in
             print("Track button tapped")
         })
+        deleteThreadAction.setValue(deleteActionImage, forKey: "image")
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel,
             handler: {
@@ -119,10 +134,10 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             print("cancel")
         })
         
-        alertController.addAction(trackThreadButton)
-        alertController.addAction(readingListButton)
-        alertController.addAction(hideThreadButton)
-        alertController.addAction(deleteThreadButton)
+        alertController.addAction(trackThreadAction)
+        alertController.addAction(readingListAction)
+        alertController.addAction(hideThreadAction)
+        alertController.addAction(deleteThreadAction)
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
