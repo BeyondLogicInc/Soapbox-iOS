@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BCF328564D92AD5E91BDE73F272A6C7F"
+               BlueprintIdentifier = "2C18451C3EC8483EFE50D13C60554FBE"
                BuildableName = "Pods_Soapbox.framework"
                BlueprintName = "Pods-Soapbox"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BCF328564D92AD5E91BDE73F272A6C7F"
+            BlueprintIdentifier = "2C18451C3EC8483EFE50D13C60554FBE"
             BuildableName = "Pods_Soapbox.framework"
             BlueprintName = "Pods-Soapbox"
             ReferencedContainer = "container:Pods.xcodeproj">

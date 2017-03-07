@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>KeyClip.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Soapbox.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,7 +37,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>140C649C07F3B2F602B1D3F8398F80B5</key>
+		<key>0F25CA0E7A0BABDAAE656452A5487145</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>15C1A29681729A3087AF14A2F25844E3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2C18451C3EC8483EFE50D13C60554FBE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -43,11 +58,6 @@
 			<true/>
 		</dict>
 		<key>BBCAC6BAD0568D8B13CCC6E2DB4BF148</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BCF328564D92AD5E91BDE73F272A6C7F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

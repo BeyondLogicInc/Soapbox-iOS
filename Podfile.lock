@@ -1,17 +1,20 @@
 PODS:
   - Alamofire (4.3.0)
+  - KeyClip (1.4.0)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.3)
+  - KeyClip
   - SDWebImage (~> 3.8)
 
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  KeyClip: 2768bf4e68dac11f96efaa666c63a8eb14d4b866
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 9a4cd2b201b74ad0254bc1516cc541f5a100e4a2
+PODFILE CHECKSUM: b42dafbd0c34961086309b60d6c332bb59f3bc7e
 
 COCOAPODS: 1.2.0

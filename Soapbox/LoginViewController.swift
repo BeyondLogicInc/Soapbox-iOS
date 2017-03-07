@@ -7,15 +7,14 @@
 //
 
 import UIKit
+import KeyClip
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
-    
-    let keychain = KeychainSwift()        
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,8 +33,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func checkLoggedIn() {
-        if let user = keychain.get("soapbox.user.id") {
-            print("exits ", user)
+        if KeyClip.exists("soapbox.userdata") {
             guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabView") as? UITabBarController else {
                 print("could not instantiate controller")
                 return
@@ -70,11 +68,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func login() {
-        let userid: String = "10002"
-        if keychain.set(userid, forKey: "soapbox.user.id") {
-            print(keychain.get("soapbox.user.id")!)
+        if KeyClip.save("soapbox.userdata", dictionary: ["userid":"10002","username":"sipps7","fname":"Atharva","lname":"Dandekar","avatarpath":"steve.jpg"]
+            ) {
+            let dict = KeyClip.load("soapbox.userdata") as NSDictionary!
+            var json = JSON(dict!)
+            print(json["username"].stringValue)
             self.performSegue(withIdentifier: "toTabViewSegue", sender: nil)
-        } else {
+        }
+        else {
             print("Error setting keychain")
         }
     }

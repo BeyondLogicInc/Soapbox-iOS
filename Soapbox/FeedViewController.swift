@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeyClip
 
 struct cellData {
     let name: String!
@@ -21,9 +22,7 @@ struct cellData {
 }
 
 class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FeedCellDelegate {
-    
-    let keychainSwift = KeychainSwift()
-    
+        
     @IBOutlet weak var feedTableView: UITableView!
     var arrayOfCellData = [cellData]()
     
@@ -36,9 +35,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ]
     }
     @IBAction func handleSignOut(_ sender: Any) {
-        keychainSwift.delete("soapbox.user.id")
+        KeyClip.delete("soapbox.userdata")
         self.performSegue(withIdentifier: "toLoginViewSegue", sender: nil)
-
     }
     
     func updateWithSpacing(label: UILabel, lineSpacing: Float) {

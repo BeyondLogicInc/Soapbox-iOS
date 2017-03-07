@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '15C1A29681729A3087AF14A2F25844E3'
-               BlueprintName = 'SDWebImage'
+               BlueprintIdentifier = '0F25CA0E7A0BABDAAE656452A5487145'
+               BlueprintName = 'KeyClip'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SDWebImage.framework'>
+               BuildableName = 'KeyClip.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
