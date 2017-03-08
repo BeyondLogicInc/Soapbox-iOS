@@ -39,6 +39,7 @@
 		16AFD9211E6D5FD900F13E17 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16AFD90F1E6D5FD800F13E17 /* OpenSans-SemiboldItalic.ttf */; };
 		16AFD9231E6D633300F13E17 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFD9221E6D633300F13E17 /* FeedViewController.swift */; };
 		16AFD9251E6D69ED00F13E17 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFD9241E6D69ED00F13E17 /* FeedTableViewCell.swift */; };
+		16FEF1BD1E6FDB4300816BA9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEF1BC1E6FDB4300816BA9 /* SignUpViewController.swift */; };
 		53B2B0114B6EC3C7BAC0B2EA /* Pods_SoapboxTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB93858CA415EB7BCCF2EEDE /* Pods_SoapboxTests.framework */; };
 		8AC649BB468FF515040D3455 /* Pods_SoapboxUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E97E951483E69A0B1056625E /* Pods_SoapboxUITests.framework */; };
 		9B83B60A711139CF8AD5E9F9 /* Pods_Soapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E353FF5D22EA42E136334B94 /* Pods_Soapbox.framework */; };
@@ -102,6 +103,7 @@
 		16AFD90F1E6D5FD800F13E17 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		16AFD9221E6D633300F13E17 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		16AFD9241E6D69ED00F13E17 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		16FEF1BC1E6FDB4300816BA9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		30307CC9EF7AC6AC678AC703 /* Pods-Soapbox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Soapbox.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Soapbox/Pods-Soapbox.debug.xcconfig"; sourceTree = "<group>"; };
 		89EF0DB7004562C5943354D1 /* Pods-SoapboxTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoapboxTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoapboxTests/Pods-SoapboxTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB93858CA415EB7BCCF2EEDE /* Pods_SoapboxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoapboxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +173,7 @@
 				161CE8CC1E69DBA6009A6C63 /* AppDelegate.swift */,
 				161CE8CE1E69DBA6009A6C63 /* ViewController.swift */,
 				1637D1291E6A878200DE4A35 /* LoginViewController.swift */,
+				16FEF1BC1E6FDB4300816BA9 /* SignUpViewController.swift */,
 				167789B01E6EFDA600D22A52 /* Api.swift */,
 				16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */,
 				161CE8D01E69DBA7009A6C63 /* Main.storyboard */,
@@ -561,6 +564,7 @@
 				16AFD8E71E6D200300F13E17 /* Extensions.swift in Sources */,
 				1637D12A1E6A878200DE4A35 /* LoginViewController.swift in Sources */,
 				16AFD9251E6D69ED00F13E17 /* FeedTableViewCell.swift in Sources */,
+				16FEF1BD1E6FDB4300816BA9 /* SignUpViewController.swift in Sources */,
 				167789AF1E6E934E00D22A52 /* SwiftyJSON.swift in Sources */,
 				161CE8CF1E69DBA6009A6C63 /* ViewController.swift in Sources */,
 				161CE8CD1E69DBA6009A6C63 /* AppDelegate.swift in Sources */,
