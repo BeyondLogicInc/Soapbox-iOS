@@ -8,37 +8,93 @@
 
 import UIKit
 import KeyClip
+import SDWebImage
 
 struct cellData {
     let name: String!
     let category: String!
     let time: String!
-    let threadImage: UIImage!
+    let threadImage: String!
     let title: String!
     let summary: String!
     let upvoteCnt: String!
     let repliesCnt: String!
     let viewsCnt: String!
+    let avatarpath: String!
+    let userid: Int!
+    let threadno: String!
+    let tracked: Bool!
+    let isRead: Bool!
 }
 
 class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FeedCellDelegate {
         
     @IBOutlet weak var feedTableView: UITableView!
+    
+    let loader = UIActivityIndicatorView()
+    
     var arrayOfCellData = [cellData]()
+    var userinfoArr = [String]()
     let api = Api()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         feedTableView.separatorColor = UIColor.clear
         
-        let userinfoArr = api.getUserInfoFromKeychain()
-        print(userinfoArr[0] + " " + userinfoArr[1] + " " + userinfoArr[2] + " " + userinfoArr[3] + " " + userinfoArr[4])        
+        //Initialize loader
+        loader.frame = CGRect(x: 0, y: -65.0, width: self.view.frame.width, height: self.view.frame.height)
+        loader.isHidden = false
+        loader.hidesWhenStopped = true
+        loader.backgroundColor = UIColor.white
+        loader.color = UIColor.gray
+        self.view.addSubview(loader)
+        self.view.bringSubview(toFront: loader)
+        self.loader.startAnimating()
         
-        arrayOfCellData = [
-            cellData(name: "Atharva Dandekar", category: "TV Shows", time: "50 mins ago", threadImage: #imageLiteral(resourceName: "hoc"), title: "House of cards season 4", summary: "That's a prevailing theme of the series' latest run, released Friday. When we left Kevin Spacey's President Underwood and his first lady Macbeth, Claire, (Robin Wright), he was locked in a tough re-election campaign and she, weary of being used for his political gain, was leaving him.", upvoteCnt: "35 Upvotes", repliesCnt: "8 Replies", viewsCnt: "105 Views"),
-            cellData(name: "Mihir Karandikar", category: "Movies", time: "1 hour ago", threadImage: #imageLiteral(resourceName: "wallhaven300894"), title: "Interstellar", summary: "In the future, Earth is slowly becoming uninhabitable. Ex-NASA pilot Cooper, along with a team of researchers, is sent on a planet exploration mission to report which planet can sustain life.", upvoteCnt: "89 Upvotes", repliesCnt: "7 Replies", viewsCnt: "48 Views")
-        ]
-    }        
+        userinfoArr = api.getUserInfoFromKeychain()
+        
+        populateFeed()
+    }
+    
+    func populateFeed() {
+        let request = api.populateThreads()
+        request.validate()
+        request.responseJSON { response in
+            if response.error != nil {
+                
+            }
+            else {
+                if let jsonValue = response.result.value {
+                    let results = JSON(jsonValue)["results"]
+                    if results.count > 0 {
+                        for item in results.arrayValue {
+                            self.arrayOfCellData.append(
+                                cellData(
+                                    name: item["fname"].stringValue + " " + item["lname"].stringValue,
+                                    category: item["cname"].stringValue,
+                                    time: item["timestamp"].stringValue,
+                                    threadImage: item["imagepath"].stringValue,
+                                    title: item["title"].stringValue,
+                                    summary: item["description"].stringValue,
+                                    upvoteCnt: item["upvotes"].stringValue,
+                                    repliesCnt: item["replies"].stringValue,
+                                    viewsCnt: item["views"].stringValue,
+                                    avatarpath: item["avatarpath"].stringValue,
+                                    userid: item["uid"].intValue,
+                                    threadno: item["srno"].stringValue,
+                                    tracked: item["track"].boolValue,
+                                    isRead: item["reading"].boolValue
+                                )
+                            )
+                        }
+                        self.loader.stopAnimating()
+                        self.feedTableView.reloadData()
+                        return
+                    }
+                }
+            }
+        }
+    }
     
     @IBAction func handleSignOut(_ sender: Any) {
         let request = api.logout()
@@ -85,16 +141,27 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.threadOwnerName.text = arrayOfCellData[indexPath.row].name
         cell.threadCategory.text = arrayOfCellData[indexPath.row].category
         cell.threadTimeLapsed.text = arrayOfCellData[indexPath.row].time
-        cell.feedOwnerImage.image = self.api.getImage()
-        cell.threadImage.image = arrayOfCellData[indexPath.row].threadImage
+        
+        cell.feedOwnerImage.sd_setImage(with: URL(string: api.BASE_URL + "userdata/\(arrayOfCellData[indexPath.row].userid as Int)/\(arrayOfCellData[indexPath.row].avatarpath as String)"), placeholderImage: #imageLiteral(resourceName: "avatar_male"))
+        
+        cell.threadImage.setShowActivityIndicator(true)
+        cell.threadImage.setIndicatorStyle(.white)
+        
+//        if arrayOfCellData[indexPath.row].threadImage as String == "" {
+//            cell.threadImage.isHidden = true
+//            cell.threadTitle.frame = CGRect(x: 0, y: 68, width: self.view.frame.width, height: self.view.frame.height)
+//        }
+//        else {
+        cell.threadImage.sd_setImage(with: URL(string: api.BASE_URL + arrayOfCellData[indexPath.row].threadImage), placeholderImage: #imageLiteral(resourceName: "default-cover"))
+//        }
+        
         cell.threadTitle.text = arrayOfCellData[indexPath.row].title
-//        let attrText = arrayOfCellData[indexPath.row].summary
-        cell.threadDescription.text = arrayOfCellData[indexPath.row].summary
+        cell.threadDescription.text = (arrayOfCellData[indexPath.row].summary).html2String
         cell.threadDescription.lineBreakMode = .byTruncatingTail
         updateWithSpacing(label: cell.threadDescription, lineSpacing: 2.5)
-        cell.threadUpvotes.text = arrayOfCellData[indexPath.row].upvoteCnt
-        cell.threadReplies.text = arrayOfCellData[indexPath.row].repliesCnt
-        cell.threadViews.text = arrayOfCellData[indexPath.row].viewsCnt                
+        cell.threadUpvotes.text = arrayOfCellData[indexPath.row].upvoteCnt + " Upvotes"
+        cell.threadReplies.text = arrayOfCellData[indexPath.row].repliesCnt + " Replies"
+        cell.threadViews.text = arrayOfCellData[indexPath.row].viewsCnt + " Views"
         cell.threadOptionsBtn.isHidden = false
         cell.contentView.backgroundColor = UIColor.init(colorLiteralRed: 234/255, green: 233/255, blue: 237/255, alpha: 1.0)
         
@@ -123,14 +190,25 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let hideActionImage = #imageLiteral(resourceName: "Hide")
         let deleteActionImage = #imageLiteral(resourceName: "Delete")
         
-        let trackThreadAction = UIAlertAction(title: "Track this thread", style: .default, handler: {
+        var trackMsg = "Track this thread"
+        
+        if arrayOfCellData[tag].tracked as Bool {
+            trackMsg = "Tracking"
+        }
+        
+        let trackThreadAction = UIAlertAction(title: trackMsg, style: .default, handler: {
             (action) -> Void in
             print("Track button tapped")
         })
-        
         trackThreadAction.setValue(trackThreadActionImage, forKey: "image")
         
-        let readingListAction = UIAlertAction(title: "Add to reading list", style: .default, handler: {
+        var readMsg = "Add to reading list"
+        
+        if arrayOfCellData[tag].tracked as Bool {
+            readMsg = "Added to reading list"
+        }
+        
+        let readingListAction = UIAlertAction(title: readMsg, style: .default, handler: {
             (action) -> Void in
             print("reading list button tapped")
         })
@@ -157,7 +235,11 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         alertController.addAction(trackThreadAction)
         alertController.addAction(readingListAction)
         alertController.addAction(hideThreadAction)
-        alertController.addAction(deleteThreadAction)
+        
+        if arrayOfCellData[tag].userid as Int == Int(userinfoArr[0]) {
+            alertController.addAction(deleteThreadAction)
+        }
+        
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)

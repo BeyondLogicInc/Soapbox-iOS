@@ -74,7 +74,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     func usernameTextFieldDidChange(_ textField: UITextField) {
         if textField.text != "" {
-            print(textField.text!)
             if (textField.text?.lengthOfBytes(using: String.Encoding.utf8))! >= 5 {
                 textField.rightView?.isHidden = false
                 let request = api.checkUsername(username: textField.text!)
@@ -100,7 +99,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             }
             else {
                 textField.rightView?.isHidden = true
-//                self.setRightModeImage(textField: textField, image: self.incorrectImage)
             }
         }
     }
@@ -116,7 +114,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
         else {
             var errorMsg: String = ""
-                        
+            
             if username.rightView! != imageV {
                 errorMsg = "Username already exists."
             }

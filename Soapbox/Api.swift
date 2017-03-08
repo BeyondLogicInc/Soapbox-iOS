@@ -32,6 +32,11 @@ class Api {
         return request
     }
     
+    public func populateThreads() -> DataRequest {
+        let request = Alamofire.request(BASE_URL + "Thread/getThreads")
+        return request
+    }
+    
     public func getUserInfoFromKeychain() -> [String] {
         let userinfo = KeyClip.load("soapbox.userdata") as String?
         let userinfoArr = userinfo?.components(separatedBy: "|")
