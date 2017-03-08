@@ -16,7 +16,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginActivityIndicator: UIActivityIndicatorView!
-        
+    
+    let api = Api()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,7 +84,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.loginActivityIndicator.isHidden = false
             self.loginActivityIndicator.startAnimating()
             
-            let api = Api()
             let request = api.validateLogin(username: self.username.text!, password: self.password.text!)
             request.validate()
             request.responseJSON { response in
@@ -101,6 +102,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         if KeyClip.save("soapbox.userdata", string: userdata) {
                             let userinfo = KeyClip.load("soapbox.userdata") as String?
                             print(userinfo!)
+                            
+                            let url = URL(string: self.api.BASE_URL + "userdata/\(results["userid"])/\(results["avatarpath"])")
+                            let data = try? Data(contentsOf: url!)
+                            let avatarImage = UIImage(data: data!)
+                            
+                            self.api.saveImageDocumentDirectory(image: avatarImage!)
+                            
                             self.loginActivityIndicator.stopAnimating()
                             self.performSegue(withIdentifier: "toTabViewSegue", sender: nil)
                         }

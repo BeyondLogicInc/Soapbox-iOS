@@ -13,6 +13,7 @@ import KeyClip
 class Api {
     
     var BASE_URL: String = "http://192.168.0.104/Soapboxv2/"
+    let AVATAR_NAME: String = "avatarpath.jpg"
     
     public func validateLogin(username: String, password: String) -> DataRequest {
         let params: Parameters = ["uname":username, "pword":password]
@@ -29,5 +30,40 @@ class Api {
     public func logout() -> DataRequest {
         let request = Alamofire.request(BASE_URL + "Logout")
         return request
+    }
+    
+    public func saveImageDocumentDirectory(image: UIImage) {
+        let fileManager = FileManager.default
+        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(AVATAR_NAME)
+        let image = image
+        print(paths)
+        let imageData = UIImageJPEGRepresentation(image, 0.5)
+        fileManager.createFile(atPath: paths as String, contents: imageData, attributes: nil)
+    }
+    
+    public func getDirectoryPath() -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
+    public func getImage() -> UIImage {
+        let fileManager = FileManager.default
+        let imagePath = (getDirectoryPath() as NSString).appendingPathComponent(AVATAR_NAME)
+        if fileManager.fileExists(atPath: imagePath){
+            return UIImage(contentsOfFile: imagePath)!
+        } else {
+            return UIImage(named: "blur")!
+        }
+    }
+    
+    public func deleteImage() {
+        let fileManager = FileManager.default
+        let imagePath = (getDirectoryPath() as NSString).appendingPathComponent(AVATAR_NAME)
+        if fileManager.fileExists(atPath: imagePath) {
+            try! fileManager.removeItem(atPath: imagePath)
+        } else {
+            print("Something went wrong")
+        }
     }
 }
