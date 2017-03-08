@@ -21,15 +21,21 @@ class Api {
         return request
     }
     
+    public func logout() -> DataRequest {
+        let request = Alamofire.request(BASE_URL + "Logout")
+        return request
+    }
+    
+    public func checkUsername(username: String) -> DataRequest {
+        let params: Parameters = ["uname": username]
+        let request = Alamofire.request(BASE_URL + "Ajax_Controller/checkUsername", method: .post, parameters: params)
+        return request
+    }
+    
     public func getUserInfoFromKeychain() -> [String] {
         let userinfo = KeyClip.load("soapbox.userdata") as String?
         let userinfoArr = userinfo?.components(separatedBy: "|")
         return userinfoArr!
-    }
-    
-    public func logout() -> DataRequest {
-        let request = Alamofire.request(BASE_URL + "Logout")
-        return request
     }
     
     public func saveImageDocumentDirectory(image: UIImage) {
