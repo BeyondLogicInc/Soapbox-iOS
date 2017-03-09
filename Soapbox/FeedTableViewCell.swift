@@ -29,6 +29,7 @@ class FeedTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        feedOwnerImage.layer.cornerRadius = 10.0
     }        
     @IBAction func toggleThreadOptions(_ sender: Any) {
         cellDelegate?.didPressButton(self.tag)

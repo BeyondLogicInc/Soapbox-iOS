@@ -33,6 +33,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     let loader = UIActivityIndicatorView()
     
+    var arrayOfThreadImages: [UIImage] = []
     var arrayOfCellData = [cellData]()
     var userinfoArr = [String]()
     let api = Api()
@@ -86,6 +87,14 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                     isRead: item["reading"].boolValue
                                 )
                             )
+                            if item["imagepath"].stringValue != ""{
+                                let url = URL(string: self.api.BASE_URL + item["imagepath"].stringValue)
+                                let data = try? Data(contentsOf: url!)
+                                self.arrayOfThreadImages.append(self.resizeImage(image: UIImage(data: data!)!))
+                            }
+                            else {
+                                self.arrayOfThreadImages.append(self.resizeImage(image: #imageLiteral(resourceName: "default-cover")))
+                            }
                         }
                         self.loader.stopAnimating()
                         self.feedTableView.reloadData()
@@ -117,6 +126,49 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    func resizeImage(image:UIImage) -> UIImage
+    {
+        var actualHeight:Float = Float(image.size.height)
+        var actualWidth:Float = Float(image.size.width)
+        
+        let maxHeight:Float = 147.0 //your choose height
+        let maxWidth:Float = Float(self.view.frame.width)  //your choose width
+        
+        var imgRatio:Float = actualWidth/actualHeight
+        let maxRatio:Float = maxWidth/maxHeight
+        
+        if (actualHeight > maxHeight) || (actualWidth > maxWidth)
+        {
+            if(imgRatio < maxRatio)
+            {
+                imgRatio = maxHeight / actualHeight;
+                actualWidth = imgRatio * actualWidth;
+                actualHeight = maxHeight;
+            }
+            else if(imgRatio > maxRatio)
+            {
+                imgRatio = maxWidth / actualWidth;
+                actualHeight = imgRatio * actualHeight;
+                actualWidth = maxWidth;
+            }
+            else
+            {
+                actualHeight = maxHeight;
+                actualWidth = maxWidth;
+            }
+        }
+        
+        let rect:CGRect = CGRect(x: 0.0, y: 0.0, width: CGFloat(actualWidth) , height: CGFloat(actualHeight) )
+        UIGraphicsBeginImageContext(rect.size)
+        image.draw(in: rect)
+        
+        let img:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        let imageData:NSData = UIImageJPEGRepresentation(img, 1.0)! as NSData
+        UIGraphicsEndImageContext()
+        
+        return UIImage(data: imageData as Data)!
+    }
+    
     func updateWithSpacing(label: UILabel, lineSpacing: Float) {
         let attributedString = NSMutableAttributedString(string: label.text!)
         let mutableParagraphStyle = NSMutableParagraphStyle()
@@ -142,23 +194,18 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.threadCategory.text = arrayOfCellData[indexPath.row].category
         cell.threadTimeLapsed.text = arrayOfCellData[indexPath.row].time
         
-        cell.feedOwnerImage.sd_setImage(with: URL(string: api.BASE_URL + "userdata/\(arrayOfCellData[indexPath.row].userid as Int)/\(arrayOfCellData[indexPath.row].avatarpath as String)"), placeholderImage: #imageLiteral(resourceName: "avatar_male"))
-        
-        cell.threadImage.setShowActivityIndicator(true)
-        cell.threadImage.setIndicatorStyle(.white)
-        
-//        if arrayOfCellData[indexPath.row].threadImage as String == "" {
-//            cell.threadImage.isHidden = true
-//            cell.threadTitle.frame = CGRect(x: 0, y: 68, width: self.view.frame.width, height: self.view.frame.height)
-//        }
-//        else {
-        cell.threadImage.sd_setImage(with: URL(string: api.BASE_URL + arrayOfCellData[indexPath.row].threadImage), placeholderImage: #imageLiteral(resourceName: "default-cover"))
-//        }
-        
+        cell.feedOwnerImage.sd_setImage(with: URL(string: api.BASE_URL + arrayOfCellData[indexPath.row].avatarpath), placeholderImage: #imageLiteral(resourceName: "avatar_male"))        
+//        img.sd_setImage(with: URL(string: api.BASE_URL + arrayOfCellData[indexPath.row].threadImage), completed: { (image, data, error, finished) in
+//            if image != nil && (finished != nil) {
+//                cell.threadImage.image = self.resizeImage(image: img.image!)
+//            } else {
+//                cell.threadImage.image = #imageLiteral(resourceName: "default-cover")
+//            }
+//        })
+        cell.threadImage.image = arrayOfThreadImages[indexPath.row]
         cell.threadTitle.text = arrayOfCellData[indexPath.row].title
         cell.threadDescription.text = (arrayOfCellData[indexPath.row].summary).html2String
         cell.threadDescription.lineBreakMode = .byTruncatingTail
-        updateWithSpacing(label: cell.threadDescription, lineSpacing: 2.5)
         cell.threadUpvotes.text = arrayOfCellData[indexPath.row].upvoteCnt + " Upvotes"
         cell.threadReplies.text = arrayOfCellData[indexPath.row].repliesCnt + " Replies"
         cell.threadViews.text = arrayOfCellData[indexPath.row].viewsCnt + " Views"
