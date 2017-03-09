@@ -6,6 +6,7 @@ target 'Soapbox' do
   pod 'Alamofire', '~> 4.3'
   pod 'SDWebImage', '~>3.8'
   pod 'KeyClip'
+  pod 'RichEditorView', :git => 'https://github.com/cjwirth/RichEditorView', :branch => 'swift-3'
   use_frameworks!
   # Pods for Soapbox
 

@@ -126,6 +126,10 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    @IBAction func fromCreateNewThreadView(segue: UIStoryboardSegue) {
+        
+    }
+    
     func resizeImage(image:UIImage) -> UIImage
     {
         var actualHeight:Float = Float(image.size.height)

@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RichEditorView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,12 +47,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>15C1A29681729A3087AF14A2F25844E3</key>
+		<key>229E5E02669082DFD4E2DAC876E2EC38</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2C18451C3EC8483EFE50D13C60554FBE</key>
+		<key>249B1A556C52C290922D38F87F3C1C71</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -58,6 +63,11 @@
 			<true/>
 		</dict>
 		<key>BBCAC6BAD0568D8B13CCC6E2DB4BF148</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C0D4E1F8E8AC9E8BC16E83A8636DCD52</key>
 		<dict>
 			<key>primary</key>
 			<true/>

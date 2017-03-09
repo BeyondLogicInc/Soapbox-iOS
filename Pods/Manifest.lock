@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.3.0)
   - KeyClip (1.4.0)
+  - RichEditorView (3.2.0)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -8,13 +9,25 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.3)
   - KeyClip
+  - RichEditorView (from `https://github.com/cjwirth/RichEditorView`, branch `swift-3`)
   - SDWebImage (~> 3.8)
+
+EXTERNAL SOURCES:
+  RichEditorView:
+    :branch: swift-3
+    :git: https://github.com/cjwirth/RichEditorView
+
+CHECKOUT OPTIONS:
+  RichEditorView:
+    :commit: 2cc2633d2e711b3af45912b2718b4df1c360b8f5
+    :git: https://github.com/cjwirth/RichEditorView
 
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   KeyClip: 2768bf4e68dac11f96efaa666c63a8eb14d4b866
+  RichEditorView: b4ee60a4f5301cbe8f3fcb1f065cdd7de74ddd10
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: b42dafbd0c34961086309b60d6c332bb59f3bc7e
+PODFILE CHECKSUM: 16bd4eb17863491d6c7559728ad1f36facd10708
 
 COCOAPODS: 1.2.0
