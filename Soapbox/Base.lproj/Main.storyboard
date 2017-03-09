@@ -461,11 +461,13 @@
             </objects>
             <point key="canvasLocation" x="1260" y="223.53823088455775"/>
         </scene>
-        <!--Home-->
+        <!--Navigation Controller-->
         <scene sceneID="hOr-rx-vzx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BVY-qk-atT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home-25" selectedImage="home_filled-25" id="6Kl-Ow-O0m"/>
+                    <tabBarItem key="tabBarItem" title="" image="home-25" selectedImage="home_filled-25" id="6Kl-Ow-O0m">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -497,7 +499,7 @@
                     <connections>
                         <segue destination="BVY-qk-atT" kind="relationship" relationship="viewControllers" id="gcy-KP-xJX"/>
                         <segue destination="syD-ZY-GTl" kind="relationship" relationship="viewControllers" id="5cp-46-hab"/>
-                        <segue destination="9W7-x1-kGU" kind="relationship" relationship="viewControllers" id="8F2-Na-pUe"/>
+                        <segue destination="9W7-x1-kGU" kind="relationship" relationship="viewControllers" id="rBy-9N-idg"/>
                         <segue destination="uTH-9f-G0d" kind="relationship" relationship="viewControllers" id="QZx-z8-QC4"/>
                         <segue destination="PD6-OA-pdz" kind="relationship" relationship="viewControllers" id="iow-VE-wo5"/>
                     </connections>
@@ -515,7 +517,7 @@
                         <viewControllerLayoutGuide type="bottom" id="0xE-Ng-gMe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="RJU-57-04X">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vmD-PX-w3X" customClass="RichEditorView" customModule="RichEditorView">
@@ -560,11 +562,13 @@
             </objects>
             <point key="canvasLocation" x="2850.4000000000001" y="-1473.0134932533733"/>
         </scene>
-        <!--Reading List-->
+        <!--Navigation Controller-->
         <scene sceneID="CjB-Ku-f4y">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="syD-ZY-GTl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Reading List" image="bookmark-25" selectedImage="bookmark_filled-25" id="GIf-em-Ivi"/>
+                    <tabBarItem key="tabBarItem" title="" image="bookmark-25" selectedImage="bookmark_filled-25" id="GIf-em-Ivi">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
@@ -727,11 +731,13 @@
             </objects>
             <point key="canvasLocation" x="-654" y="224"/>
         </scene>
-        <!--Notifications-->
+        <!--Navigation Controller-->
         <scene sceneID="Vk1-7O-iuq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uTH-9f-G0d" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notifications" image="notifications-25" selectedImage="notifications_filled-25" id="8iK-yu-5N7"/>
+                    <tabBarItem key="tabBarItem" title="" image="notifications-25" selectedImage="notifications_filled-25" id="8iK-yu-5N7">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
@@ -748,11 +754,13 @@
             </objects>
             <point key="canvasLocation" x="204" y="224.4377811094453"/>
         </scene>
-        <!--Profile-->
+        <!--Navigation Controller-->
         <scene sceneID="e3j-0d-TUu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PD6-OA-pdz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile-25" selectedImage="profile_filled-25" id="7By-2d-8TJ"/>
+                    <tabBarItem key="tabBarItem" title="" image="profile-25" selectedImage="profile_filled-25" id="7By-2d-8TJ">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
@@ -769,13 +777,16 @@
             </objects>
             <point key="canvasLocation" x="-1586" y="224"/>
         </scene>
-        <!--New post-->
+        <!--Navigation Controller-->
         <scene sceneID="44F-ve-OCt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9W7-x1-kGU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="New post" image="create_new-25" selectedImage="create_new_filled-25" id="0B0-1k-jRp"/>
+                    <tabBarItem key="tabBarItem" title="" image="create_new-25" selectedImage="create_new_filled-25" id="0B0-1k-jRp">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="0cS-QB-IeC">
@@ -783,6 +794,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="N5y-Jg-D5Z">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="dLJ-wN-8aO" kind="relationship" relationship="rootViewController" id="N2V-df-tkN"/>
                     </connections>
