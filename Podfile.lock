@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.3.0)
   - KeyClip (1.4.0)
+  - RevealingSplashView (0.1.0)
   - RichEditorView (3.2.0)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
@@ -14,6 +15,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.3)
   - KeyClip
+  - RevealingSplashView
   - RichEditorView (from `https://github.com/cjwirth/RichEditorView`, branch `swift-3`)
   - SDWebImage (~> 3.8)
   - XLActionController
@@ -32,10 +34,11 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   KeyClip: 2768bf4e68dac11f96efaa666c63a8eb14d4b866
+  RevealingSplashView: 501dd03d975ba2c4165dd463ea1c7c407fb9d13e
   RichEditorView: b4ee60a4f5301cbe8f3fcb1f065cdd7de74ddd10
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   XLActionController: 57fe0ce1642e2eed971b188b490762345fdbf963
 
-PODFILE CHECKSUM: 08f777a59d409b8086b003e752c6c0d1e554729e
+PODFILE CHECKSUM: 95f3ecea8c6ae22fc93b369f36e3b816ad0dd694
 
 COCOAPODS: 1.2.0

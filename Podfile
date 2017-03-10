@@ -9,6 +9,7 @@ target 'Soapbox' do
   pod 'RichEditorView', :git => 'https://github.com/cjwirth/RichEditorView', :branch => 'swift-3'
   pod 'XLActionController'
   pod 'XLActionController/Youtube'
+  pod 'RevealingSplashView'
   use_frameworks!
   # Pods for Soapbox
 

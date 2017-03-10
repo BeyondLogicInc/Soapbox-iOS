@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RevealingSplashView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>RichEditorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,12 +52,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>05B97E81D7EEA167D0D2A86D9517A360</key>
+		<key>0F25CA0E7A0BABDAAE656452A5487145</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0F25CA0E7A0BABDAAE656452A5487145</key>
+		<key>133FF5D3250C4061F2614B57C386EDF7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3EB25AB7AECCDB92D9832450803A24C7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>551F200E701F5945D6C5C9C8C94D8381</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,17 +77,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AA45363887DE1FA2AF64DFE519BC934B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>BBCAC6BAD0568D8B13CCC6E2DB4BF148</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C63396E0B5BB6F5BF5A84159B84EAEA1</key>
+		<key>D8297B590542E1B66DE461FB82F0B368</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,7 +92,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E30AACC1AD890053644ED65562FBD68D</key>
+		<key>F1483CA9AEDB7CE53CEED678A29AE118</key>
 		<dict>
 			<key>primary</key>
 			<true/>
