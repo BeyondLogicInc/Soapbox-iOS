@@ -601,6 +601,7 @@
                     </view>
                     <connections>
                         <segue destination="MNw-rW-jKF" kind="showDetail" identifier="toHeadNavigation" id="y8X-lf-40j"/>
+                        <segue destination="Sk5-YM-gFp" kind="showDetail" identifier="toTabViewController" id="3AP-Uw-aVV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyy-kg-JV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -868,6 +869,7 @@
         <image name="reading_confirmation-25" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="3AP-Uw-aVV"/>
         <segue reference="lKK-Pg-NGU"/>
     </inferredMetricsTieBreakers>
 </document>

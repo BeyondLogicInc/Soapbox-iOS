@@ -8,6 +8,7 @@
 
 import UIKit
 import RevealingSplashView
+import KeyClip
 
 class SplashScreenViewController: UIViewController {
     
@@ -19,6 +20,15 @@ class SplashScreenViewController: UIViewController {
         self.view.addSubview(revealingSplashView)
         revealingSplashView.startAnimation(){
             print("Completed")
+            self.checkLoggedIn()
+        }
+    }
+    
+    func checkLoggedIn() {
+        if KeyClip.exists("soapbox.userdata") {
+            self.performSegue(withIdentifier: "toTabViewController", sender: nil)
+        }
+        else {
             self.performSegue(withIdentifier: "toHeadNavigation", sender: nil)
         }
     }
