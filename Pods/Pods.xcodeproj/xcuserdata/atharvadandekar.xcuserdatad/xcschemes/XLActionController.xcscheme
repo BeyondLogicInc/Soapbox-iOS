@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'C63396E0B5BB6F5BF5A84159B84EAEA1'
-               BlueprintName = 'SDWebImage'
+               BlueprintIdentifier = 'E30AACC1AD890053644ED65562FBD68D'
+               BlueprintName = 'XLActionController'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SDWebImage.framework'>
+               BuildableName = 'XLActionController.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

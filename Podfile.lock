@@ -5,12 +5,19 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - XLActionController (3.0.1):
+    - XLActionController/Core (= 3.0.1)
+  - XLActionController/Core (3.0.1)
+  - XLActionController/Youtube (3.0.1):
+    - XLActionController/Core
 
 DEPENDENCIES:
   - Alamofire (~> 4.3)
   - KeyClip
   - RichEditorView (from `https://github.com/cjwirth/RichEditorView`, branch `swift-3`)
   - SDWebImage (~> 3.8)
+  - XLActionController
+  - XLActionController/Youtube
 
 EXTERNAL SOURCES:
   RichEditorView:
@@ -27,7 +34,8 @@ SPEC CHECKSUMS:
   KeyClip: 2768bf4e68dac11f96efaa666c63a8eb14d4b866
   RichEditorView: b4ee60a4f5301cbe8f3fcb1f065cdd7de74ddd10
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  XLActionController: 57fe0ce1642e2eed971b188b490762345fdbf963
 
-PODFILE CHECKSUM: 16bd4eb17863491d6c7559728ad1f36facd10708
+PODFILE CHECKSUM: 08f777a59d409b8086b003e752c6c0d1e554729e
 
 COCOAPODS: 1.2.0

@@ -7,6 +7,8 @@ target 'Soapbox' do
   pod 'SDWebImage', '~>3.8'
   pod 'KeyClip'
   pod 'RichEditorView', :git => 'https://github.com/cjwirth/RichEditorView', :branch => 'swift-3'
+  pod 'XLActionController'
+  pod 'XLActionController/Youtube'
   use_frameworks!
   # Pods for Soapbox
 

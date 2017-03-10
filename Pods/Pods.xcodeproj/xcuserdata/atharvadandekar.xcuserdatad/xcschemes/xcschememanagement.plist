@@ -39,20 +39,20 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>XLActionController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>05B97E81D7EEA167D0D2A86D9517A360</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0F25CA0E7A0BABDAAE656452A5487145</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>229E5E02669082DFD4E2DAC876E2EC38</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>249B1A556C52C290922D38F87F3C1C71</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,17 +62,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>AA45363887DE1FA2AF64DFE519BC934B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BBCAC6BAD0568D8B13CCC6E2DB4BF148</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C0D4E1F8E8AC9E8BC16E83A8636DCD52</key>
+		<key>C63396E0B5BB6F5BF5A84159B84EAEA1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>DE3AF853B3EADE9EA19E6223EA79E1B6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E30AACC1AD890053644ED65562FBD68D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

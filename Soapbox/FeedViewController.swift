@@ -9,6 +9,7 @@
 import UIKit
 import KeyClip
 import SDWebImage
+import XLActionController
 
 struct cellData {
     let name: String!
@@ -229,71 +230,37 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func didPressButton(_ tag: Int) {
         print("I have pressed a button with a tag: \(tag)")
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let subview = alertController.view.subviews.first! as UIView
-        let alertContentView = subview.subviews.first! as UIView
-        alertContentView.backgroundColor = UIColor.white
-        alertContentView.layer.cornerRadius = 15;
-        
-        let trackThreadActionImage = #imageLiteral(resourceName: "Binoculars")
-        let readingListActionImage = #imageLiteral(resourceName: "Reading")
-        let hideActionImage = #imageLiteral(resourceName: "Hide")
-        let deleteActionImage = #imageLiteral(resourceName: "Delete")
+        let actionController = YoutubeActionController()
         
         var trackMsg = "Track this thread"
-        
         if arrayOfCellData[tag].tracked as Bool {
             trackMsg = "Tracking"
         }
         
-        let trackThreadAction = UIAlertAction(title: trackMsg, style: .default, handler: {
-            (action) -> Void in
-            print("Track button tapped")
-        })
-        trackThreadAction.setValue(trackThreadActionImage, forKey: "image")
+        actionController.addAction(Action(ActionData(title: trackMsg, image: UIImage(named: "Binoculars")!), style: .default, handler: { action in
+        }))
         
-        var readMsg = "Add to reading list"
-        
+        var readMsg: String = "Add to reading list"
         if arrayOfCellData[tag].tracked as Bool {
             readMsg = "Added to reading list"
         }
         
-        let readingListAction = UIAlertAction(title: readMsg, style: .default, handler: {
-            (action) -> Void in
-            print("reading list button tapped")
-        })
-        readingListAction.setValue(readingListActionImage, forKey: "image")
+        actionController.addAction(Action(ActionData(title: readMsg, image: UIImage(named: "Reading")!), style: .default, handler: { action in
+        }))
         
-        let hideThreadAction = UIAlertAction(title: "Hide this thread", style: .default, handler: {
-            (action) -> Void in
-            print("hide thread button tapped")
-        })
-        hideThreadAction.setValue(hideActionImage, forKey: "image")
-        
-        let deleteThreadAction = UIAlertAction(title: "Delete this thread", style: .destructive, handler: {
-            (action) -> Void in
-            print("Track button tapped")
-        })
-        deleteThreadAction.setValue(deleteActionImage, forKey: "image")
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel,
-            handler: {
-            (action) -> Void in
-            print("cancel")
-        })
-        
-        alertController.addAction(trackThreadAction)
-        alertController.addAction(readingListAction)
-        alertController.addAction(hideThreadAction)
+        actionController.addAction(Action(ActionData(title: "Hide this thread", image: UIImage(named: "Hide")!), style: .default, handler: { action in
+        }))
         
         if arrayOfCellData[tag].userid as Int == Int(userinfoArr[0]) {
-            alertController.addAction(deleteThreadAction)
+            actionController.addAction(Action(ActionData(title: "Delete this thread", image: UIImage(named: "Delete")!), style: .destructive, handler: { action in
+            }))
         }
         
-        alertController.addAction(cancelAction)
+        actionController.addAction(Action(ActionData(title: "Cancel", image: UIImage(named: "Cancel")!), style: .cancel, handler: { action in
+            
+        }))
         
-        self.present(alertController, animated: true, completion: nil)
+        self.present(actionController, animated: true, completion: nil)
     }
     
 }
