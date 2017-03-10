@@ -16,6 +16,8 @@
 		161CE8ED1E69DBA7009A6C63 /* SoapboxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161CE8EC1E69DBA7009A6C63 /* SoapboxUITests.swift */; };
 		1637D12A1E6A878200DE4A35 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637D1291E6A878200DE4A35 /* LoginViewController.swift */; };
 		165F1C6A1E729F0A0038A7FF /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F1C691E729F0A0038A7FF /* SplashScreenViewController.swift */; };
+		165F1C6C1E72D9320038A7FF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F1C6B1E72D9320038A7FF /* ProfileViewController.swift */; };
+		165F1C6E1E72D9900038A7FF /* ViewProfileCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F1C6D1E72D9900038A7FF /* ViewProfileCustomCell.swift */; };
 		167789AF1E6E934E00D22A52 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167789AE1E6E934E00D22A52 /* SwiftyJSON.swift */; };
 		167789B11E6EFDA600D22A52 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167789B01E6EFDA600D22A52 /* Api.swift */; };
 		16AFD8E21E6BED4800F13E17 /* KeychainSwiftDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */; };
@@ -82,6 +84,8 @@
 		161CE8EE1E69DBA7009A6C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1637D1291E6A878200DE4A35 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		165F1C691E729F0A0038A7FF /* SplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		165F1C6B1E72D9320038A7FF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		165F1C6D1E72D9900038A7FF /* ViewProfileCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProfileCustomCell.swift; sourceTree = "<group>"; };
 		167789AE1E6E934E00D22A52 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		167789B01E6EFDA600D22A52 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSwiftDistrib.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 				167789B01E6EFDA600D22A52 /* Api.swift */,
 				16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */,
 				161CE8D01E69DBA7009A6C63 /* Main.storyboard */,
+				165F1C6D1E72D9900038A7FF /* ViewProfileCustomCell.swift */,
+				165F1C6B1E72D9320038A7FF /* ProfileViewController.swift */,
 				165F1C691E729F0A0038A7FF /* SplashScreenViewController.swift */,
 				16AFD9241E6D69ED00F13E17 /* FeedTableViewCell.swift */,
 				16AFD9221E6D633300F13E17 /* FeedViewController.swift */,
@@ -569,10 +575,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				165F1C6E1E72D9900038A7FF /* ViewProfileCustomCell.swift in Sources */,
 				16F561591E715FF700902B64 /* CreateNewThreadViewController.swift in Sources */,
 				167789B11E6EFDA600D22A52 /* Api.swift in Sources */,
 				16AFD8E71E6D200300F13E17 /* Extensions.swift in Sources */,
 				165F1C6A1E729F0A0038A7FF /* SplashScreenViewController.swift in Sources */,
+				165F1C6C1E72D9320038A7FF /* ProfileViewController.swift in Sources */,
 				1637D12A1E6A878200DE4A35 /* LoginViewController.swift in Sources */,
 				16AFD9251E6D69ED00F13E17 /* FeedTableViewCell.swift in Sources */,
 				16FEF1BD1E6FDB4300816BA9 /* SignUpViewController.swift in Sources */,
