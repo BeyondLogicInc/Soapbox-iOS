@@ -235,29 +235,40 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var trackMsg = "Track this thread"
         if arrayOfCellData[tag].tracked as Bool {
             trackMsg = "Tracking"
+            actionController.addAction(Action(ActionData(title: trackMsg, image: UIImage(named: "Binoculars_Filled")!), style: .default, handler: { action in
+                print("Pressed already tracked")
+            }))
+        } else {
+            actionController.addAction(Action(ActionData(title: trackMsg, image: UIImage(named: "Binoculars")!), style: .default, handler: { action in
+                print("Pressed tracking")
+            }))
         }
         
-        actionController.addAction(Action(ActionData(title: trackMsg, image: UIImage(named: "Binoculars")!), style: .default, handler: { action in
-        }))
         
         var readMsg: String = "Add to reading list"
         if arrayOfCellData[tag].tracked as Bool {
             readMsg = "Added to reading list"
+            actionController.addAction(Action(ActionData(title: readMsg, image: UIImage(named: "Reading_Filled")!), style: .default, handler: { action in
+                print("Added to reading list")
+            }))
+        } else {
+            actionController.addAction(Action(ActionData(title: readMsg, image: UIImage(named: "Reading")!), style: .default, handler: { action in
+                print("add to reading list")
+            }))
         }
         
-        actionController.addAction(Action(ActionData(title: readMsg, image: UIImage(named: "Reading")!), style: .default, handler: { action in
-        }))
-        
         actionController.addAction(Action(ActionData(title: "Hide this thread", image: UIImage(named: "Hide")!), style: .default, handler: { action in
+            print("Pressed hide this thred")
         }))
         
         if arrayOfCellData[tag].userid as Int == Int(userinfoArr[0]) {
-            actionController.addAction(Action(ActionData(title: "Delete this thread", image: UIImage(named: "Delete")!), style: .destructive, handler: { action in
+            actionController.addAction(Action(ActionData(title: "Delete this thread", image: UIImage(named: "Delete_Colored")!), style: .destructive, handler: { action in
+                print("Pressed delete this thread")
             }))
         }
         
         actionController.addAction(Action(ActionData(title: "Cancel", image: UIImage(named: "Cancel")!), style: .cancel, handler: { action in
-            
+            print("Pressed cancel")
         }))
         
         self.present(actionController, animated: true, completion: nil)
