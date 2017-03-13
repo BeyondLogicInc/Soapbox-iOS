@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "create_new_filled-25.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "TabBarIcon_Home_Filled.png",
       "scale" : "2x"
     },
     {

@@ -465,7 +465,7 @@
         <scene sceneID="hOr-rx-vzx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BVY-qk-atT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="home-25" selectedImage="home_filled-25" id="6Kl-Ow-O0m">
+                    <tabBarItem key="tabBarItem" title="" image="TabBarIcon_Home" selectedImage="TabBarIcon_Home_Filled" id="6Kl-Ow-O0m">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -566,7 +566,7 @@
         <scene sceneID="CjB-Ku-f4y">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="syD-ZY-GTl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="bookmark-25" selectedImage="bookmark_filled-25" id="GIf-em-Ivi">
+                    <tabBarItem key="tabBarItem" title="" image="Reading" selectedImage="Reading Filled" id="GIf-em-Ivi">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -826,7 +826,7 @@
         <scene sceneID="Vk1-7O-iuq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uTH-9f-G0d" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="notifications-25" selectedImage="notifications_filled-25" id="8iK-yu-5N7">
+                    <tabBarItem key="tabBarItem" title="" image="TabBarIcon_Notifications" selectedImage="TabBarIcon_Notifications_Filled" id="8iK-yu-5N7">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -851,7 +851,7 @@
         <scene sceneID="e3j-0d-TUu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PD6-OA-pdz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="profile-25" selectedImage="profile_filled-25" id="7By-2d-8TJ">
+                    <tabBarItem key="tabBarItem" title="" image="TabBarIcon_Profile" selectedImage="TabBarIcon_Profile_Filled" id="7By-2d-8TJ">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -876,7 +876,7 @@
         <scene sceneID="44F-ve-OCt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9W7-x1-kGU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="create_new-25" selectedImage="create_new_filled-25" id="0B0-1k-jRp">
+                    <tabBarItem key="tabBarItem" title="" image="TabBarIcon_Create_New" selectedImage="TabBarIcon_Create_New_Filled" id="0B0-1k-jRp">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -922,23 +922,24 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Reading" width="25" height="25"/>
+        <image name="Reading Filled" width="25" height="25"/>
+        <image name="TabBarIcon_Create_New" width="25" height="25"/>
+        <image name="TabBarIcon_Create_New_Filled" width="25" height="25"/>
+        <image name="TabBarIcon_Home" width="25" height="25"/>
+        <image name="TabBarIcon_Home_Filled" width="25" height="25"/>
+        <image name="TabBarIcon_Notifications" width="25" height="25"/>
+        <image name="TabBarIcon_Notifications_Filled" width="25" height="25"/>
+        <image name="TabBarIcon_Profile" width="25" height="25"/>
+        <image name="TabBarIcon_Profile_Filled" width="25" height="25"/>
         <image name="avatar_atharva" width="300" height="300"/>
         <image name="bgart2" width="640" height="360"/>
         <image name="blur" width="2560" height="1440"/>
-        <image name="bookmark-25" width="25" height="25"/>
-        <image name="bookmark_filled-25" width="25" height="25"/>
-        <image name="create_new-25" width="25" height="25"/>
-        <image name="create_new_filled-25" width="25" height="25"/>
-        <image name="home-25" width="25" height="25"/>
-        <image name="home_filled-25" width="25" height="25"/>
-        <image name="notifications-25" width="25" height="25"/>
-        <image name="notifications_filled-25" width="25" height="25"/>
-        <image name="profile-25" width="25" height="25"/>
-        <image name="profile_filled-25" width="25" height="25"/>
         <image name="reading_confirmation-25" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="3AP-Uw-aVV"/>
-        <segue reference="lKK-Pg-NGU"/>
+        <segue reference="YYU-gU-oMU"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
 </document>

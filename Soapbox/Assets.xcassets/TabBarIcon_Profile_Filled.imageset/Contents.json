@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "bookmark_filled-25.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "TabBarIcon_Profile_Filled.png",
       "scale" : "2x"
     },
     {
