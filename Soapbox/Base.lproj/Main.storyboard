@@ -78,7 +78,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Lapsed" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2u-rs-VUI">
-                                                                    <rect key="frame" x="116" y="36.5" width="71" height="16.5"/>
+                                                                    <rect key="frame" x="116" y="36" width="71" height="17"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -117,9 +117,9 @@
                                                             </constraints>
                                                         </view>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UUe-8h-ZYn">
-                                                            <rect key="frame" x="0.0" y="68" width="375" height="147"/>
+                                                            <rect key="frame" x="0.0" y="68" width="375" height="160"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="147" id="lW7-lP-zDx"/>
+                                                                <constraint firstAttribute="height" constant="160" id="lW7-lP-zDx"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wua-cN-Bf2">
@@ -191,7 +191,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="n2x-qr-CXK" secondAttribute="trailing" id="ZXg-UC-XbI"/>
                                                         <constraint firstItem="n2x-qr-CXK" firstAttribute="leading" secondItem="PhH-WA-FoA" secondAttribute="leading" id="Zeo-Jy-fcm"/>
                                                         <constraint firstItem="UUe-8h-ZYn" firstAttribute="top" secondItem="n2x-qr-CXK" secondAttribute="bottom" id="bP1-f0-gdU"/>
-                                                        <constraint firstItem="Wua-cN-Bf2" firstAttribute="top" secondItem="UUe-8h-ZYn" secondAttribute="bottom" constant="8" id="e1p-5f-iHC"/>
+                                                        <constraint firstItem="Wua-cN-Bf2" firstAttribute="top" secondItem="UUe-8h-ZYn" secondAttribute="bottom" constant="-5" id="e1p-5f-iHC"/>
                                                         <constraint firstItem="Wua-cN-Bf2" firstAttribute="leading" secondItem="9uV-SB-mfp" secondAttribute="leading" id="f4g-8e-6Vi"/>
                                                         <constraint firstItem="PhH-WA-FoA" firstAttribute="top" secondItem="9uV-SB-mfp" secondAttribute="bottom" id="gQp-ci-D3Y"/>
                                                         <constraint firstAttribute="bottom" secondItem="PhH-WA-FoA" secondAttribute="bottom" constant="2" id="hBL-zG-j5n"/>
@@ -237,7 +237,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="SOAPBOX" id="qHo-I1-qMg">
-                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="wnZ-bF-LqO">
+                        <barButtonItem key="leftBarButtonItem" image="Trending" id="wnZ-bF-LqO">
                             <connections>
                                 <action selector="handleSignOut:" destination="BYZ-38-t0r" id="dV2-Vb-Sbz"/>
                             </connections>
@@ -932,6 +932,7 @@
         <image name="TabBarIcon_Notify_Filled" width="25" height="25"/>
         <image name="TabBarIcon_Profile" width="25" height="25"/>
         <image name="TabBarIcon_Profile_Filled" width="25" height="25"/>
+        <image name="Trending" width="25" height="25"/>
         <image name="avatar_atharva" width="300" height="300"/>
         <image name="bgart2" width="640" height="360"/>
         <image name="blur" width="2560" height="1440"/>
