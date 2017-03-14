@@ -21,9 +21,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        checkLoggedIn()                
-        
+                
         username.setBottomBorder()
         password.setBottomBorder()
         
@@ -34,19 +32,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func checkLoggedIn() {
-        if KeyClip.exists("soapbox.userdata") {
-            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabView") as? UITabBarController else {
-                print("could not instantiate controller")
-                return
-            }
-            self.navigationController?.present(vc, animated: true, completion: nil)
-        }
-        else {
-            print("no value in keychain")
-        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
