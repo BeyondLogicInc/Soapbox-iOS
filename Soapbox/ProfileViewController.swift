@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import KeyClip
 
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var profileTableView: UITableView!
     let profileCellTextArray: [String] = ["Drafts", "Stats", "Follow your interests", "Settings", "Help", "Sign Out"]
+    let api = Api()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,27 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func handleSignOut() {
+        let request = api.logout()
+        request.validate()
+        request.responseJSON { response in
+            if (response.error != nil) {
+                let error: String = (response.error?.localizedDescription)!
+                print(error)
+            }
+                else {
+                if let jsonValue = response.result.value {
+                    let results = JSON(jsonValue)
+                    if results["response"].boolValue {
+                        KeyClip.delete("soapbox.userdata")
+                        self.api.deleteImage()
+                        self.performSegue(withIdentifier: "toLoginViewSegue", sender: nil)
+                    }
+                }
+            }
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -65,5 +88,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 1 {
+            if indexPath.row == 5 {
+                handleSignOut()
+            }
+        }
     }
 }
