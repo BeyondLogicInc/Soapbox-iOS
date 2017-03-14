@@ -21,6 +21,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     let incorrectImage = #imageLiteral(resourceName: "Cancel-25")
     let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
     
+    var userExistsFlag: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -89,9 +91,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                             let results = JSON(jsonValue)
                             if results["response"].boolValue {
                                 self.setRightModeImage(textField: textField, image: self.incorrectImage)
+                                self.userExistsFlag = true
                             }
                             else {
                                 self.setRightModeImage(textField: textField, image: self.correctImage)
+                                self.userExistsFlag = false
                             }
                         }
                     }
@@ -105,36 +109,31 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     func register() {
         print("Make Register API call")
+        self.performSegue(withIdentifier: "toSignUpStepsVC", sender: nil)
+    }
+    
+    func showErrorAlert(errorMsg: String) {
+        let alertContoller = UIAlertController(title: "Error", message: errorMsg, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertContoller.addAction(defaultAction)
+        self.present(alertContoller, animated: true, completion: nil)
     }
     
     @IBAction func handleRegister(_ sender: Any) {
-        let imageV = UIImageView(image: UIImage(named: "check-25"))
-        if username.rightView! == imageV && (username.text?.lengthOfBytes(using: .utf8))! >= 5 && (password.text?.lengthOfBytes(using: .utf8))! >= 8 && (confirmPassword.text?.lengthOfBytes(using: .utf8))! >= 8 && password.text == confirmPassword.text {
+        self.register()
+        /*
+        var errorMsg: String = ""
+        
+        if username.text == "" || password.text == "" || confirmPassword.text == "" {
+            errorMsg = "Please enter correct credentials"
+            showErrorAlert(errorMsg: errorMsg)
+        }
+        else if password.text != confirmPassword.text {
+            errorMsg = "Passwords do not match."
+            showErrorAlert(errorMsg: errorMsg)
+        }
+        else if !self.userExistsFlag && (username.text?.lengthOfBytes(using: .utf8))! >= 5 && (password.text?.lengthOfBytes(using: .utf8))! >= 8 && (confirmPassword.text?.lengthOfBytes(using: .utf8))! >= 8 && password.text == confirmPassword.text {
             self.register()
-        }
-        else {
-            var errorMsg: String = ""
-            
-            if username.rightView! != imageV {
-                errorMsg = "Username already exists."
-            }
-            
-            if password.text != confirmPassword.text {
-                errorMsg = "Passwords do not match."
-            }
-            
-            if (password.text?.lengthOfBytes(using: .utf8))! < 8 || (confirmPassword.text?.lengthOfBytes(using: .utf8))! < 8 {
-                errorMsg = "Password must be min 8 characters long."
-            }
-            
-            if (username.text?.lengthOfBytes(using: .utf8))! < 5 {
-                errorMsg = "Username must be min 5 characters long."
-            }
-            
-            let alertContoller = UIAlertController(title: "Error", message: errorMsg, preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertContoller.addAction(defaultAction)
-            self.present(alertContoller, animated: true, completion: nil)
-        }
+        }*/
     }
 }

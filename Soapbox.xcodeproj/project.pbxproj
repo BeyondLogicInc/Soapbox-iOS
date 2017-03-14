@@ -15,6 +15,7 @@
 		161CE8E21E69DBA7009A6C63 /* SoapboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161CE8E11E69DBA7009A6C63 /* SoapboxTests.swift */; };
 		161CE8ED1E69DBA7009A6C63 /* SoapboxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161CE8EC1E69DBA7009A6C63 /* SoapboxUITests.swift */; };
 		1637D12A1E6A878200DE4A35 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637D1291E6A878200DE4A35 /* LoginViewController.swift */; };
+		165928061E78065800411949 /* SignUpStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165928051E78065800411949 /* SignUpStepsViewController.swift */; };
 		165F1C6A1E729F0A0038A7FF /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F1C691E729F0A0038A7FF /* SplashScreenViewController.swift */; };
 		165F1C6C1E72D9320038A7FF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F1C6B1E72D9320038A7FF /* ProfileViewController.swift */; };
 		165F1C6E1E72D9900038A7FF /* ViewProfileCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F1C6D1E72D9900038A7FF /* ViewProfileCustomCell.swift */; };
@@ -83,6 +84,7 @@
 		161CE8EC1E69DBA7009A6C63 /* SoapboxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoapboxUITests.swift; sourceTree = "<group>"; };
 		161CE8EE1E69DBA7009A6C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1637D1291E6A878200DE4A35 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		165928051E78065800411949 /* SignUpStepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpStepsViewController.swift; sourceTree = "<group>"; };
 		165F1C691E729F0A0038A7FF /* SplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		165F1C6B1E72D9320038A7FF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		165F1C6D1E72D9900038A7FF /* ViewProfileCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProfileCustomCell.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				167789B01E6EFDA600D22A52 /* Api.swift */,
 				16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */,
 				161CE8D01E69DBA7009A6C63 /* Main.storyboard */,
+				165928051E78065800411949 /* SignUpStepsViewController.swift */,
 				165F1C6D1E72D9900038A7FF /* ViewProfileCustomCell.swift */,
 				165F1C6B1E72D9320038A7FF /* ProfileViewController.swift */,
 				165F1C691E729F0A0038A7FF /* SplashScreenViewController.swift */,
@@ -589,6 +592,7 @@
 				16F5615B1E7162E700902B64 /* KeyboardManager.swift in Sources */,
 				161CE8CD1E69DBA6009A6C63 /* AppDelegate.swift in Sources */,
 				16AFD9231E6D633300F13E17 /* FeedViewController.swift in Sources */,
+				165928061E78065800411949 /* SignUpStepsViewController.swift in Sources */,
 				16AFD8E21E6BED4800F13E17 /* KeychainSwiftDistrib.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
