@@ -200,14 +200,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.threadTimeLapsed.text = arrayOfCellData[indexPath.row].time
         
         cell.feedOwnerImage.sd_setImage(with: URL(string: api.BASE_URL + arrayOfCellData[indexPath.row].avatarpath), placeholderImage: #imageLiteral(resourceName: "avatar_male"))        
-//        img.sd_setImage(with: URL(string: api.BASE_URL + arrayOfCellData[indexPath.row].threadImage), completed: { (image, data, error, finished) in
-//            if image != nil && (finished != nil) {
-//                cell.threadImage.image = self.resizeImage(image: img.image!)
-//            } else {
-//                cell.threadImage.image = #imageLiteral(resourceName: "default-cover")
-//            }
-//        })
-        cell.threadImage.image = arrayOfThreadImages[indexPath.row]
+        DispatchQueue.main.async {
+            cell.threadImage.image = self.arrayOfThreadImages[indexPath.row]
+        }
         cell.threadTitle.text = arrayOfCellData[indexPath.row].title
         cell.threadDescription.text = (arrayOfCellData[indexPath.row].summary).html2String
         cell.threadDescription.lineBreakMode = .byTruncatingTail
