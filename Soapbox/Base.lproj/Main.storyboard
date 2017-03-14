@@ -78,7 +78,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Lapsed" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2u-rs-VUI">
-                                                                    <rect key="frame" x="116" y="36" width="71" height="17"/>
+                                                                    <rect key="frame" x="116" y="36.5" width="71" height="16.5"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -472,7 +472,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="NPg-29-Ztl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="NPg-29-Ztl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -573,7 +573,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="byu-Ze-CNS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="byu-Ze-CNS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -826,15 +826,15 @@
         <scene sceneID="Vk1-7O-iuq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uTH-9f-G0d" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="TabBarIcon_Notifications" selectedImage="TabBarIcon_Notifications_Filled" id="8iK-yu-5N7">
-                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    <tabBarItem key="tabBarItem" title="" image="TabBarIcon_Notify" selectedImage="TabBarIcon_Notify_Filled" id="8iK-yu-5N7">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="nqM-nc-GWd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="nqM-nc-GWd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -884,7 +884,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="0cS-QB-IeC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="0cS-QB-IeC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -907,7 +907,7 @@
                 <navigationController storyboardIdentifier="initialNavVC" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="MNw-rW-jKF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hVT-kH-mBO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hVT-kH-mBO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -928,8 +928,8 @@
         <image name="TabBarIcon_Create_New_Filled" width="25" height="25"/>
         <image name="TabBarIcon_Home" width="25" height="25"/>
         <image name="TabBarIcon_Home_Filled" width="25" height="25"/>
-        <image name="TabBarIcon_Notifications" width="25" height="25"/>
-        <image name="TabBarIcon_Notifications_Filled" width="25" height="25"/>
+        <image name="TabBarIcon_Notify" width="25" height="25"/>
+        <image name="TabBarIcon_Notify_Filled" width="25" height="25"/>
         <image name="TabBarIcon_Profile" width="25" height="25"/>
         <image name="TabBarIcon_Profile_Filled" width="25" height="25"/>
         <image name="avatar_atharva" width="300" height="300"/>
