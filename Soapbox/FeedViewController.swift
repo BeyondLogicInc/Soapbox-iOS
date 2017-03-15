@@ -105,28 +105,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
     }
-    
-//    @IBAction func handleSignOut(_ sender: Any) {
-//        let request = api.logout()
-//        request.validate()
-//        request.responseJSON {response in
-//            if (response.error != nil) {
-//                let error: String = (response.error?.localizedDescription)!
-//                print(error)
-//            }
-//            else {
-//                if let jsonValue = response.result.value {
-//                    let results = JSON(jsonValue)
-//                    if results["response"].boolValue {
-//                        KeyClip.delete("soapbox.userdata")
-//                        self.api.deleteImage()
-//                        self.performSegue(withIdentifier: "toLoginViewSegue", sender: nil)
-//                    }
-//                }
-//            }
-//        }
-//    }
-    
+        
     @IBAction func fromCreateNewThreadView(segue: UIStoryboardSegue) {
         
     }
