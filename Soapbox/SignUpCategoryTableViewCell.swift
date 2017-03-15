@@ -14,18 +14,25 @@ class SignUpCategoryTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryName: UILabel!
     @IBOutlet weak var categoryThreadCount: UILabel!
     
+    var delegate: categoryCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layoutIfNeeded()
         self.categoryImageView.layer.cornerRadius = 5.0
         self.categoryImageView.layer.masksToBounds = true
-        // Initialization code
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SignUpCategoryTableViewCell.tapEdit(sender:)))
+        addGestureRecognizer(tapGesture)
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func tapEdit(sender: UITapGestureRecognizer) {
+        delegate?.categoryCellDelegate(self.tag, self)
     }
+    
+}
 
+protocol categoryCellDelegate {
+    func categoryCellDelegate(_ tag: Int, _ cell: SignUpCategoryTableViewCell)
 }

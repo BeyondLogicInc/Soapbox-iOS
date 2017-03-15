@@ -15,15 +15,14 @@ struct categoryInfo {
     let count: Int!
 }
 
-class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
+class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, categoryCellDelegate {
 
     /*
-        STEP 1 Outlets
+        STEP 1, STEP 2 Outlets
     */
     @IBOutlet var signUpViewStep1: UIView!
     @IBOutlet var signUpViewStep2: UIView!
     @IBOutlet weak var categoryInfoTableView: UITableView!
-    
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -31,10 +30,10 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
     @IBOutlet weak var aboutYouTextField: UITextField!
-    @IBOutlet weak var step1ScrollView: UIScrollView!
     
     let api = Api()
     var arrayOfCategories = [categoryInfo]()
+    var selectedCategories: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +44,7 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.avatarImageTapped(_:)))
         avatarImageView.addGestureRecognizer(tapGesture)
+        
         
         firstNameTextField.setBottomBorder()
         lastNameTextField.setBottomBorder()
@@ -60,6 +60,8 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         
         /* STEP 2 init */
         categoryInfoTableView.backgroundColor = UIColor.clear
+        categoryInfoTableView.delegate = self
+        categoryInfoTableView.dataSource = self
         DispatchQueue.main.async {
             self.getCategories()
         }
@@ -126,7 +128,7 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         */
         if textField == self.emailTextField || textField == self.aboutYouTextField {
             UIView.animate(withDuration: 0.4) {
-                self.step1ScrollView.frame = CGRect(x: 20, y: -176, width: self.step1ScrollView.frame.width, height: self.step1ScrollView.frame.height)
+                self.signUpViewStep1.frame = CGRect(x: self.signUpViewStep1.frame.origin.x, y: -176, width: self.signUpViewStep1.frame.width, height: self.signUpViewStep1.frame.height)
             }
         }
     }
@@ -136,7 +138,7 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
             STEP 1 TextFields
          */
         UIView.animate(withDuration: 0.4) {
-            self.step1ScrollView.frame = CGRect(x: 20, y: 20, width: self.step1ScrollView.frame.width, height: self.step1ScrollView.frame.height)
+            self.signUpViewStep1.center = self.view.center
         }
     }
     
@@ -168,6 +170,7 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     
     @IBAction func step1NextBtnPressed(_ sender: Any) {
         animateSteps(view1: signUpViewStep1, view2: signUpViewStep2)
+        categoryInfoTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -177,13 +180,22 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "signUpCategoryCell", for: indexPath) as! SignUpCategoryTableViewCell
         
-        cell.preservesSuperviewLayoutMargins = false
-        cell.separatorInset = UIEdgeInsets.zero
-        cell.layoutMargins = UIEdgeInsets.zero
+        cell.delegate = self
+        cell.tag = indexPath.row
+        cell.categoryImageView.clipsToBounds = true
         
         cell.categoryImageView.image = arrayOfCategories[indexPath.row].image
         cell.categoryName.text = arrayOfCategories[indexPath.row].name
-        cell.categoryThreadCount.text = JSON(arrayOfCategories[indexPath.row].count).stringValue + " Threads"
+        
+        var threadCountTxt = ""
+        
+        if arrayOfCategories[indexPath.row].count == 1 {
+            threadCountTxt = JSON(arrayOfCategories[indexPath.row].count).stringValue + " Thread"
+        }
+        else {
+            threadCountTxt = JSON(arrayOfCategories[indexPath.row].count).stringValue + " Threads"
+        }
+        cell.categoryThreadCount.text = threadCountTxt
         
         return cell
     }
@@ -191,27 +203,44 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.clear
     }
- 
+    
+    func categoryCellDelegate(_ tag: Int, _ cell: SignUpCategoryTableViewCell) {
+        
+        if selectedCategories.contains(arrayOfCategories[tag].srno) {
+            cell.backgroundColor = UIColor.clear
+            selectedCategories = selectedCategories.filter({ $0 != arrayOfCategories[tag].srno})
+        }
+        else {
+            cell.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+            selectedCategories.append(arrayOfCategories[tag].srno)
+        }
+        
+        print(selectedCategories)
+    }
+    
     @IBAction func step2BackBtnPressed(_ sender: Any) {
         animateSteps(view1: signUpViewStep2, view2: signUpViewStep1)
     }
     
     func animateSteps(view1: UIView, view2: UIView) {
-        UIView.animate(withDuration: 0.4, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            view1.transform = CGAffineTransform.init(scaleX: 0.01, y: 0.01)
-        }) { (success: Bool) in
-            view1.removeFromSuperview()
-            self.view.addSubview(view2)
-            view2.center = self.view.center
-            view2.alpha = 0
-            
-            UIView.animate(withDuration: 0.4, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
-                view2.alpha = 1
-                view2.transform = CGAffineTransform.identity
-            }) { (success: Bool ) in
-                
-            }
-        }
+        view1.removeFromSuperview()
+        self.view.addSubview(view2)
+        view2.center = self.view.center
+//        UIView.animate(withDuration: 0.4, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+//            view1.transform = CGAffineTransform.init(scaleX: 0.01, y: 0.01)
+//        }) { (success: Bool) in
+//            view1.removeFromSuperview()
+//            self.view.addSubview(view2)
+//            view2.center = self.view.center
+//            view2.alpha = 0
+//            
+//            UIView.animate(withDuration: 0.4, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+//                view2.alpha = 1
+//                view2.transform = CGAffineTransform.identity
+//            }) { (success: Bool ) in
+//                
+//            }
+//        }
     }
     
 }
