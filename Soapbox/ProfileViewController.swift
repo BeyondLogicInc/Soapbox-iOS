@@ -13,11 +13,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 
     @IBOutlet weak var profileTableView: UITableView!
     let profileCellTextArray: [String] = ["Drafts", "Stats", "Follow your interests", "Settings", "Help", "Sign Out"]
+    var avatar: UIImage!
+    var userinfoArr = [String]()
     let api = Api()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         profileTableView.tableFooterView = UIView()
+        avatar = api.getImage()
+        userinfoArr = api.getUserInfoFromKeychain()
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,8 +64,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell1", for: indexPath) as! ViewProfileCustomCell
-            cell.avatarImage.image = #imageLiteral(resourceName: "avatar_atharva")
-            cell.userFullName.text = "Atharva Dandekar"
+            cell.avatarImage.image = avatar
+            cell.userFullName.text = userinfoArr[1] + " " + userinfoArr[2]
             return cell
         }
         else if indexPath.section == 1 {
