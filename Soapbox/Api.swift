@@ -38,6 +38,11 @@ class Api {
         return request
     }
     
+    public func getCategories() -> DataRequest {
+        let request = Alamofire.request(BASE_URL + "Signup/getCategories")
+        return request
+    }
+    
     public func getUserInfoFromKeychain() -> [String] {
         let userinfo = KeyClip.load("soapbox.userdata") as String?
         let userinfoArr = userinfo?.components(separatedBy: "|")
