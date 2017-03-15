@@ -8,6 +8,13 @@
 
 import UIKit
 
+struct categoryInfo {
+    let srno: Int!
+    let name: String!
+    let image: UIImage!
+    let count: Int!
+}
+
 class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     /*
@@ -23,6 +30,9 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
     @IBOutlet weak var aboutYouTextField: UITextField!
     @IBOutlet weak var step1ScrollView: UIScrollView!
+    
+    let api = Api()
+    var arrayOfCategories = [categoryInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,11 +56,37 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
             genderSegmentedControl.tintColor = #colorLiteral(red: 1, green: 0.4117647059, blue: 0.7058823529, alpha: 1)
         }
         
+        DispatchQueue.main.async {
+            self.getCategories()
+        }
+        
         self.hideKeyboard()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func getCategories() {
+        let request = api.getCategories()
+        request.validate()
+        request.responseJSON { response in
+            if response.error != nil {
+                
+            }
+            else {
+                if let jsonValue = response.result.value {
+                    let results = JSON(jsonValue)["results"]
+                    if results.count > 0 {
+                        for item in results.arrayValue {
+                            let url = URL(string: self.api.BASE_URL + item["imagepath"].stringValue)
+                            let data = try? Data(contentsOf: url!)
+                            self.arrayOfCategories.append(categoryInfo(srno: item["srno"].intValue, name: item["name"].stringValue, image: UIImage(data: data!), count: item["count"].intValue))
+                        }
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func genderChanged(_ sender: Any) {
