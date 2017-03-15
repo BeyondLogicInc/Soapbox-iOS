@@ -15,13 +15,15 @@ struct categoryInfo {
     let count: Int!
 }
 
-class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
 
     /*
         STEP 1 Outlets
     */
     @IBOutlet var signUpViewStep1: UIView!
     @IBOutlet var signUpViewStep2: UIView!
+    @IBOutlet weak var categoryInfoTableView: UITableView!
+    
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -56,6 +58,8 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
             genderSegmentedControl.tintColor = #colorLiteral(red: 1, green: 0.4117647059, blue: 0.7058823529, alpha: 1)
         }
         
+        /* STEP 2 init */
+        categoryInfoTableView.backgroundColor = UIColor.clear
         DispatchQueue.main.async {
             self.getCategories()
         }
@@ -160,6 +164,54 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         }
         
         return true
+    }
+    
+    @IBAction func step1NextBtnPressed(_ sender: Any) {
+        animateSteps(view1: signUpViewStep1, view2: signUpViewStep2)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayOfCategories.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "signUpCategoryCell", for: indexPath) as! SignUpCategoryTableViewCell
+        
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
+        
+        cell.categoryImageView.image = arrayOfCategories[indexPath.row].image
+        cell.categoryName.text = arrayOfCategories[indexPath.row].name
+        cell.categoryThreadCount.text = JSON(arrayOfCategories[indexPath.row].count).stringValue + " Threads"
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.clear
+    }
+ 
+    @IBAction func step2BackBtnPressed(_ sender: Any) {
+        animateSteps(view1: signUpViewStep2, view2: signUpViewStep1)
+    }
+    
+    func animateSteps(view1: UIView, view2: UIView) {
+        UIView.animate(withDuration: 0.4, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            view1.transform = CGAffineTransform.init(scaleX: 0.01, y: 0.01)
+        }) { (success: Bool) in
+            view1.removeFromSuperview()
+            self.view.addSubview(view2)
+            view2.center = self.view.center
+            view2.alpha = 0
+            
+            UIView.animate(withDuration: 0.4, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+                view2.alpha = 1
+                view2.transform = CGAffineTransform.identity
+            }) { (success: Bool ) in
+                
+            }
+        }
     }
     
 }
