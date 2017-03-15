@@ -14,6 +14,8 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         STEP 1 Outlets
     */
     @IBOutlet var signUpViewStep1: UIView!
+    @IBOutlet var signUpViewStep2: UIView!
+    
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
