@@ -12,7 +12,8 @@ struct categoryInfo {
     let srno: Int!
     let name: String!
     let image: UIImage!
-    let count: Int!
+    let threadcount: Int!
+    let usercount: Int!
 }
 
 class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, categoryCellDelegate {
@@ -87,7 +88,7 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
                         for item in results.arrayValue {
                             let url = URL(string: self.api.BASE_URL + item["imagepath"].stringValue)
                             let data = try? Data(contentsOf: url!)
-                            self.arrayOfCategories.append(categoryInfo(srno: item["srno"].intValue, name: item["name"].stringValue, image: UIImage(data: data!), count: item["count"].intValue))
+                            self.arrayOfCategories.append(categoryInfo(srno: item["srno"].intValue, name: item["name"].stringValue, image: UIImage(data: data!), threadcount: item["thread_count"].intValue, usercount: item["user_count"].intValue))
                         }
                     }
                 }
@@ -187,16 +188,21 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         cell.categoryImageView.image = arrayOfCategories[indexPath.row].image
         cell.categoryName.text = arrayOfCategories[indexPath.row].name
         
-        var threadCountTxt = ""
-        
-        if arrayOfCategories[indexPath.row].count == 1 {
-            threadCountTxt = JSON(arrayOfCategories[indexPath.row].count).stringValue + " Thread"
-        }
-        else {
-            threadCountTxt = JSON(arrayOfCategories[indexPath.row].count).stringValue + " Threads"
+        var threadCountTxt = JSON(arrayOfCategories[indexPath.row].threadcount).stringValue
+        if arrayOfCategories[indexPath.row].threadcount == 1 {
+            threadCountTxt = threadCountTxt + " Thread"
+        } else {
+            threadCountTxt = threadCountTxt + " Threads"
         }
         cell.categoryThreadCount.text = threadCountTxt
         
+        var userCountTxt = JSON(arrayOfCategories[indexPath.row].usercount).stringValue
+        if arrayOfCategories[indexPath.row].usercount == 1 {
+            userCountTxt = userCountTxt + " User"
+        } else {
+            userCountTxt = userCountTxt + " Users"
+        }
+        cell.categoryUserCount.text = userCountTxt
         return cell
     }
     
