@@ -12,6 +12,9 @@ import KeyClip
 
 class SplashScreenViewController: UIViewController {
     
+    var userinfoArr = [String]()
+    let api = Api()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +29,12 @@ class SplashScreenViewController: UIViewController {
     
     func checkLoggedIn() {
         if KeyClip.exists("soapbox.userdata") {
-            self.performSegue(withIdentifier: "toTabViewController", sender: nil)
+            userinfoArr = api.getUserInfoFromKeychain()
+            if userinfoArr[1] == "" || userinfoArr[2] == "" {
+                self.performSegue(withIdentifier: "toSignUpStepsVC", sender: nil)
+            } else {
+                self.performSegue(withIdentifier: "toTabViewController", sender: nil)
+            }
         }
         else {
             self.performSegue(withIdentifier: "toHeadNavigation", sender: nil)
