@@ -500,6 +500,8 @@
                         <outlet property="lastNameTextField" destination="nTq-gX-k2D" id="ike-fx-nRz"/>
                         <outlet property="signUpViewStep1" destination="Gq2-Zv-jvp" id="vol-h5-s8l"/>
                         <outlet property="signUpViewStep2" destination="YFs-kq-cMt" id="iIJ-of-ccD"/>
+                        <outlet property="step1BannerLabel" destination="7CH-rk-h2r" id="xES-iT-cIP"/>
+                        <outlet property="step2BannerLabel" destination="z2d-XI-Cle" id="cMs-lY-t1U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vzi-8v-Elt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1031,6 +1033,10 @@
                                             <segue destination="cCz-dg-SLN" kind="unwind" unwindAction="backToLoginViewWithSegue:" id="OOG-Nc-jx1"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="slx-Tp-iEi">
+                                        <rect key="frame" x="159" y="201" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.65811136739999998" colorSpace="calibratedRGB"/>
                             </view>
@@ -1050,6 +1056,7 @@
                     <connections>
                         <outlet property="confirmPassword" destination="fGB-KW-FbQ" id="K6j-lu-Exf"/>
                         <outlet property="password" destination="CFU-Fm-lLx" id="YNP-qC-Oiz"/>
+                        <outlet property="registerActivityIndicator" destination="slx-Tp-iEi" id="d9Q-HV-bpu"/>
                         <outlet property="registerButton" destination="5o7-n9-362" id="5O8-iE-UQE"/>
                         <outlet property="username" destination="iOW-j7-SHD" id="eyI-dy-1Ag"/>
                         <segue destination="vSz-J6-9IA" kind="showDetail" identifier="toSignUpStepsVC" id="ofM-sB-xEZ"/>

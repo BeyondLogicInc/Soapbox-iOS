@@ -25,6 +25,9 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     @IBOutlet var signUpViewStep2: UIView!
     @IBOutlet weak var categoryInfoTableView: UITableView!
     
+    @IBOutlet weak var step1BannerLabel: UILabel!
+    @IBOutlet weak var step2BannerLabel: UILabel!
+    
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -33,6 +36,8 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     @IBOutlet weak var aboutYouTextField: UITextField!
     
     let api = Api()
+    
+    var userinfoArr = [String]()
     
     let correctImage = #imageLiteral(resourceName: "check-25")
     let incorrectImage = #imageLiteral(resourceName: "Cancel-25")
@@ -44,6 +49,11 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userinfoArr = api.getUserInfoFromKeychain()
+        
+        step1BannerLabel.text = "Hi there, \(userinfoArr[3])"
+        step2BannerLabel.text = "Hi there, \(userinfoArr[3])"
         
         /* STEP 1 init */
         self.view.addSubview(signUpViewStep1)

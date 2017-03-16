@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeyClip
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
     
@@ -14,6 +15,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var registerActivityIndicator: UIActivityIndicatorView!
     
     let api = Api()
     
@@ -108,8 +110,35 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     func register() {
-        print("Make Register API call")
-        self.performSegue(withIdentifier: "toSignUpStepsVC", sender: nil)
+        self.registerButton.isHidden = true
+        self.registerActivityIndicator.isHidden = false
+        self.registerActivityIndicator.startAnimating()
+
+        let request = api.signup(username: username.text!, password: password.text!, confirmPassword: confirmPassword.text!)
+        request.validate()
+        request.responseJSON { response in
+            if response.error != nil {
+                let error: String = (response.error?.localizedDescription)!
+                self.present(Alert.showErrorAlert(errorMsg: error), animated: true, completion: nil)
+                self.registerActivityIndicator.stopAnimating()
+                self.registerButton.isHidden = false
+            } else {
+                if let jsonValue = response.result.value {
+                    let results = JSON(jsonValue)
+                    
+                    let userdata: String = "\(results["userid"])|\(results["fname"])|\(results["lname"])|\(results["username"])|\(results["avatarpath"])"
+                    
+                    if KeyClip.save("soapbox.userdata", string: userdata) {
+                        let userinfo = KeyClip.load("soapbox.userdata") as String?
+                        print(userinfo!)
+                        self.registerActivityIndicator.stopAnimating()
+                        self.performSegue(withIdentifier: "toSignUpStepsVC", sender: nil)
+                    } else {
+                        self.present(Alert.showErrorAlert(errorMsg: "Error saving in keychain"), animated: true, completion: nil)
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func handleRegister(_ sender: Any) {
