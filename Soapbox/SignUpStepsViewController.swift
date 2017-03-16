@@ -170,8 +170,15 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     }
     
     @IBAction func step1NextBtnPressed(_ sender: Any) {
-        animateSteps(view1: signUpViewStep1, view2: signUpViewStep2)
-        categoryInfoTableView.reloadData()
+        var errorMsg: String = ""
+        
+        if firstNameTextField.text == "" || lastNameTextField.text == "" || emailTextField.text == "" {
+            errorMsg = "Please enter correct credentials"
+            self.present(Alert.showErrorAlert(errorMsg: errorMsg), animated: true, completion: nil)
+        } else {
+            animateSteps(view1: signUpViewStep1, view2: signUpViewStep2)
+            categoryInfoTableView.reloadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -240,21 +247,6 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         view1.removeFromSuperview()
         self.view.addSubview(view2)
         view2.center = self.view.center
-//        UIView.animate(withDuration: 0.4, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-//            view1.transform = CGAffineTransform.init(scaleX: 0.01, y: 0.01)
-//        }) { (success: Bool) in
-//            view1.removeFromSuperview()
-//            self.view.addSubview(view2)
-//            view2.center = self.view.center
-//            view2.alpha = 0
-//            
-//            UIView.animate(withDuration: 0.4, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
-//                view2.alpha = 1
-//                view2.transform = CGAffineTransform.identity
-//            }) { (success: Bool ) in
-//                
-//            }
-//        }
     }
     
 }

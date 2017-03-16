@@ -9,6 +9,15 @@
 import Foundation
 import UIKit
 
+class Alert {
+    static func showErrorAlert(errorMsg: String) -> UIAlertController {
+        let alertContoller = UIAlertController(title: "Error", message: errorMsg, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertContoller.addAction(defaultAction)
+        return alertContoller
+    }
+}
+
 extension UIViewController {
     func hideKeyboard() {
         let tap: UIGestureRecognizer = UITapGestureRecognizer(

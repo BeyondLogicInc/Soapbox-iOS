@@ -112,28 +112,23 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.performSegue(withIdentifier: "toSignUpStepsVC", sender: nil)
     }
     
-    func showErrorAlert(errorMsg: String) {
-        let alertContoller = UIAlertController(title: "Error", message: errorMsg, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertContoller.addAction(defaultAction)
-        self.present(alertContoller, animated: true, completion: nil)
-    }
-    
     @IBAction func handleRegister(_ sender: Any) {
-        self.register()
-        /*
         var errorMsg: String = ""
         
         if username.text == "" || password.text == "" || confirmPassword.text == "" {
             errorMsg = "Please enter correct credentials"
-            showErrorAlert(errorMsg: errorMsg)
+            self.present(Alert.showErrorAlert(errorMsg: errorMsg), animated: true, completion: nil)
         }
         else if password.text != confirmPassword.text {
             errorMsg = "Passwords do not match."
-            showErrorAlert(errorMsg: errorMsg)
+            self.present(Alert.showErrorAlert(errorMsg: errorMsg), animated: true, completion: nil)
+        }
+        else if userExistsFlag {
+            errorMsg = "Username already exists"
+            self.present(Alert.showErrorAlert(errorMsg: errorMsg), animated: true, completion: nil)
         }
         else if !self.userExistsFlag && (username.text?.lengthOfBytes(using: .utf8))! >= 5 && (password.text?.lengthOfBytes(using: .utf8))! >= 8 && (confirmPassword.text?.lengthOfBytes(using: .utf8))! >= 8 && password.text == confirmPassword.text {
             self.register()
-        }*/
+        }
     }
 }
