@@ -33,8 +33,14 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     @IBOutlet weak var aboutYouTextField: UITextField!
     
     let api = Api()
+    
+    let correctImage = #imageLiteral(resourceName: "check-25")
+    let incorrectImage = #imageLiteral(resourceName: "Cancel-25")
+    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+    
     var arrayOfCategories = [categoryInfo]()
     var selectedCategories: [Int] = []
+    var emailExistsFlag: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +52,7 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.avatarImageTapped(_:)))
         avatarImageView.addGestureRecognizer(tapGesture)
         
+        emailTextField.rightViewMode = UITextFieldViewMode.always
         emailTextField.addTarget(self, action: #selector(emailTextFieldDidChange(_:)), for: .editingChanged)
         
         firstNameTextField.setBottomBorder()
@@ -73,6 +80,18 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    /* HELPERS */
+    func setRightModeImage(textField: UITextField, image: UIImage) {
+        imageView.image = image
+        textField.rightView = imageView
+    }
+    
+    func isValidEmail(email: String) -> Bool {
+        let emailRegEx = "^(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?(?:(?:(?:[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+(?:\\.[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+)*)|(?:\"(?:(?:(?:(?: )*(?:(?:[!#-Z^-~]|\\[|\\])|(?:\\\\(?:\\t|[ -~]))))+(?: )*)|(?: )+)\"))(?:@)(?:(?:(?:[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)(?:\\.[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)*)|(?:\\[(?:(?:(?:(?:(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))\\.){3}(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))))|(?:(?:(?: )*[!-Z^-~])*(?: )*)|(?:[Vv][0-9A-Fa-f]+\\.[-A-Za-z0-9._~!$&'()*+,;=:]+))\\])))(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?$"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: email)
     }
     
     func getCategories() {
@@ -171,8 +190,33 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     }
     
     func emailTextFieldDidChange(_ textField: UITextField) {
-        if (textField.text?.lengthOfBytes(using: .utf8))! >= 1 {
-            
+        if textField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "" {
+            textField.rightView?.isHidden = false
+            if isValidEmail(email: textField.text!) {
+                let request = api.emailExists(email: textField.text!)
+                request.validate()
+                request.responseJSON { response in
+                    if response.error != nil {
+                        let error: String = (response.error?.localizedDescription)!
+                        self.present(Alert.showErrorAlert(errorMsg: error), animated: true, completion: nil)
+                    } else {
+                        if let jsonValue = response.result.value {
+                            let results = JSON(jsonValue)
+                            if results["response"].boolValue {
+                                self.setRightModeImage(textField: textField, image: self.incorrectImage)
+                                self.emailExistsFlag = true
+                            } else {
+                                self.setRightModeImage(textField: textField, image: self.correctImage)
+                                self.emailExistsFlag = false
+                            }
+                        }
+                    }
+                }
+            } else {
+                self.setRightModeImage(textField: textField, image: self.incorrectImage)
+            }
+        } else {
+            textField.rightView?.isHidden = true
         }
     }
     
@@ -181,6 +225,12 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         
         if firstNameTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" || lastNameTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
             errorMsg = "Please enter correct credentials"
+            self.present(Alert.showErrorAlert(errorMsg: errorMsg), animated: true, completion: nil)
+        } else if !isValidEmail(email: emailTextField.text!) {
+            errorMsg = "Invalid email"
+            self.present(Alert.showErrorAlert(errorMsg: errorMsg), animated: true, completion: nil)
+        } else if emailExistsFlag {
+            errorMsg = "Email alreadt exists"
             self.present(Alert.showErrorAlert(errorMsg: errorMsg), animated: true, completion: nil)
         } else {
             animateSteps(view1: signUpViewStep1, view2: signUpViewStep2)

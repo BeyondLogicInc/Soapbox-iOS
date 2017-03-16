@@ -43,6 +43,12 @@ class Api {
         return request
     }
     
+    public func emailExists(email: String) -> DataRequest {
+        let params: Parameters = ["email": email]
+        let request = Alamofire.request(BASE_URL + "Ajax_Controller/email_exists", method: .post, parameters: params)
+        return request
+    }
+    
     public func getUserInfoFromKeychain() -> [String] {
         let userinfo = KeyClip.load("soapbox.userdata") as String?
         let userinfoArr = userinfo?.components(separatedBy: "|")

@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Soapbox/Api.swift"
-            timestampString = "511252775.612722"
+            timestampString = "511338153.624134"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "saveImageDocumentDirectory(image:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Soapbox/SignUpStepsViewController.swift"
-            timestampString = "511336280.646253"
+            timestampString = "511339414.587277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "step1NextBtnPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Soapbox/SignUpStepsViewController.swift"
-            timestampString = "511336223.282226"
+            timestampString = "511339414.587277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "step1NextBtnPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
