@@ -16,7 +16,7 @@ struct categoryInfo {
     let usercount: Int!
 }
 
-class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, categoryCellDelegate {
+class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, categoryCellDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     /*
         STEP 1, STEP 2 Outlets
@@ -34,14 +34,20 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
     @IBOutlet weak var aboutYouTextField: UITextField!
+    @IBOutlet weak var securityQuestionToggleBtn: UIButton!
+    @IBOutlet weak var answerTextField: UITextField!
+    @IBOutlet weak var questionPickerView: UIPickerView!
     
     let api = Api()
     
     var userinfoArr = [String]()
+    var questions: [String] = [String]()
     
     let correctImage = #imageLiteral(resourceName: "check-25")
     let incorrectImage = #imageLiteral(resourceName: "Cancel-25")
     let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+    
+    var avatarImageName: String = ""
     
     var arrayOfCategories = [categoryInfo]()
     var selectedCategories: [Int] = []
@@ -51,7 +57,7 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         super.viewDidLoad()
         
         userinfoArr = api.getUserInfoFromKeychain()
-        
+        questions = ["What was your childhood nickname?","What is your birthplace?","What is the name of your best friend?", "What is your first school's name?", "Who is your childhood hero?", "In what town was your first job?", "What is your pet's name?", "What is your father's middle name?", "What is your favorite food?", "Who was your favorite teacher?"]
         step1BannerLabel.text = "Hi there, \(userinfoArr[3])"
         step2BannerLabel.text = "Hi there, \(userinfoArr[3])"
         
@@ -69,6 +75,7 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         lastNameTextField.setBottomBorder()
         emailTextField.setBottomBorder()
         aboutYouTextField.setBottomBorder()
+        answerTextField.setBottomBorder()
         
         if genderSegmentedControl.selectedSegmentIndex == 0 {
             genderSegmentedControl.tintColor = #colorLiteral(red: 0.1058823529, green: 0.631372549, blue: 0.8862745098, alpha: 1)
@@ -76,6 +83,8 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         else if genderSegmentedControl.selectedSegmentIndex == 1 {
             genderSegmentedControl.tintColor = #colorLiteral(red: 1, green: 0.4117647059, blue: 0.7058823529, alpha: 1)
         }
+        
+        questionPickerView.isHidden = true
         
         /* STEP 2 init */
         categoryInfoTableView.backgroundColor = UIColor.clear
@@ -102,6 +111,28 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         let emailRegEx = "^(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?(?:(?:(?:[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+(?:\\.[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+)*)|(?:\"(?:(?:(?:(?: )*(?:(?:[!#-Z^-~]|\\[|\\])|(?:\\\\(?:\\t|[ -~]))))+(?: )*)|(?: )+)\"))(?:@)(?:(?:(?:[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)(?:\\.[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)*)|(?:\\[(?:(?:(?:(?:(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))\\.){3}(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))))|(?:(?:(?: )*[!-Z^-~])*(?: )*)|(?:[Vv][0-9A-Fa-f]+\\.[-A-Za-z0-9._~!$&'()*+,;=:]+))\\])))(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?$"
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: email)
+    }
+    
+    @IBAction func showQuestionsPickerView(_ sender: Any) {
+        self.questionPickerView.isHidden = false
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return questions.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return questions[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print(questions[row])
+        securityQuestionToggleBtn.titleLabel?.text = questions[row]
+        self.questionPickerView.isHidden = true
     }
     
     func getCategories() {
@@ -149,6 +180,10 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             avatarImageView.contentMode = .scaleAspectFill
             avatarImageView.image = pickedImage
+            
+            let imageURL = info[UIImagePickerControllerReferenceURL] as! NSURL
+            avatarImageName = imageURL.lastPathComponent!
+            print(avatarImageName)
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -157,7 +192,7 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         /*
             STEP 1 TextFields
         */
-        if textField == self.emailTextField || textField == self.aboutYouTextField {
+        if textField == self.emailTextField || textField == self.aboutYouTextField || textField == self.answerTextField {
             UIView.animate(withDuration: 0.4) {
                 self.signUpViewStep1.frame = CGRect(x: self.signUpViewStep1.frame.origin.x, y: -176, width: self.signUpViewStep1.frame.width, height: self.signUpViewStep1.frame.height)
             }
@@ -232,8 +267,9 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     
     @IBAction func step1NextBtnPressed(_ sender: Any) {
         var errorMsg: String = ""
-        
-        if firstNameTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" || lastNameTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
+//        animateSteps(view1: signUpViewStep1, view2: signUpViewStep2)
+//        categoryInfoTableView.reloadData()
+        if firstNameTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" || lastNameTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" || answerTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
             errorMsg = "Please enter correct credentials"
             self.present(Alert.showErrorAlert(errorMsg: errorMsg), animated: true, completion: nil)
         } else if !isValidEmail(email: emailTextField.text!) {
@@ -314,7 +350,17 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         if selectedCategories.count == 0 {
             self.present(Alert.showErrorAlert(errorMsg: "Select one category atleast"), animated: true, completion: nil)
         } else {
-            //MAKE API CALL
+            let csv: String = selectedCategories.description
+            print(csv)
+            
+            var gender = ""
+            if genderSegmentedControl.selectedSegmentIndex == 0 {
+                gender = "m"
+            } else {
+                gender = "f"
+            }
+            
+//            api.saveExtendedInfo(fname: firstNameTextField.text, lname: lastNameTextField.text, email: emailTextField.text, gender: gender, about: <#T##String#>, categories: <#T##String#>, avatarImage: <#T##UIImage#>, avatarImageName: <#T##String#>)
         }
     }
     
