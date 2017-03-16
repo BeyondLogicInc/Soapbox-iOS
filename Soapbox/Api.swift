@@ -22,6 +22,12 @@ class Api {
         return request
     }
     
+    public func signup(username: String, password: String, confirmPassword: String) -> DataRequest {
+        let params: Parameters = ["nusername": username, "npassword": password, "cpassword": confirmPassword]
+        let request = Alamofire.request(BASE_URL + "Login/signup", method: .post, parameters: params)
+        return request
+    }
+    
     public func logout() -> DataRequest {
         let request = Alamofire.request(BASE_URL + "Logout")
         return request
