@@ -46,6 +46,7 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.avatarImageTapped(_:)))
         avatarImageView.addGestureRecognizer(tapGesture)
         
+        emailTextField.addTarget(self, action: #selector(emailTextFieldDidChange(_:)), for: .editingChanged)
         
         firstNameTextField.setBottomBorder()
         lastNameTextField.setBottomBorder()
@@ -169,10 +170,16 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         return true
     }
     
+    func emailTextFieldDidChange(_ textField: UITextField) {
+        if (textField.text?.lengthOfBytes(using: .utf8))! >= 1 {
+            
+        }
+    }
+    
     @IBAction func step1NextBtnPressed(_ sender: Any) {
         var errorMsg: String = ""
         
-        if firstNameTextField.text == "" || lastNameTextField.text == "" || emailTextField.text == "" {
+        if firstNameTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" || lastNameTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
             errorMsg = "Please enter correct credentials"
             self.present(Alert.showErrorAlert(errorMsg: errorMsg), animated: true, completion: nil)
         } else {

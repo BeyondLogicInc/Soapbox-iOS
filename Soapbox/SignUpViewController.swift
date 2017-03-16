@@ -113,9 +113,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func handleRegister(_ sender: Any) {
-        var errorMsg: String = ""
+        self.register()
+        /*var errorMsg: String = ""
         
-        if username.text == "" || password.text == "" || confirmPassword.text == "" {
+        if username.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" || password.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" || confirmPassword.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
             errorMsg = "Please enter correct credentials"
             self.present(Alert.showErrorAlert(errorMsg: errorMsg), animated: true, completion: nil)
         }
@@ -129,6 +130,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
         else if !self.userExistsFlag && (username.text?.lengthOfBytes(using: .utf8))! >= 5 && (password.text?.lengthOfBytes(using: .utf8))! >= 8 && (confirmPassword.text?.lengthOfBytes(using: .utf8))! >= 8 && password.text == confirmPassword.text {
             self.register()
-        }
+        }*/
     }
 }
