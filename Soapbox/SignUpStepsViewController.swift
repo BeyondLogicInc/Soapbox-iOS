@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import KeyClip
 
 struct categoryInfo {
     let srno: Int!
@@ -37,6 +39,8 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     @IBOutlet weak var securityQuestionToggleBtn: UIButton!
     @IBOutlet weak var answerTextField: UITextField!
     @IBOutlet weak var questionPickerView: UIPickerView!
+    @IBOutlet weak var step2DoneBtn: SoapboxButton!
+    @IBOutlet weak var saveInfoIndicator: UIActivityIndicatorView!
     
     let api = Api()
     
@@ -51,6 +55,7 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     
     var arrayOfCategories = [categoryInfo]()
     var selectedCategories: [Int] = []
+    var selectedQuestion: Int = 0
     var emailExistsFlag: Bool = false
     
     override func viewDidLoad() {
@@ -131,6 +136,7 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print(questions[row])
+        selectedQuestion = row
         securityQuestionToggleBtn.titleLabel?.text = questions[row]
         self.questionPickerView.isHidden = true
     }
@@ -360,7 +366,63 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
                 gender = "f"
             }
             
-//            api.saveExtendedInfo(fname: firstNameTextField.text, lname: lastNameTextField.text, email: emailTextField.text, gender: gender, about: <#T##String#>, categories: <#T##String#>, avatarImage: <#T##UIImage#>, avatarImageName: <#T##String#>)
+            saveExtendedInfo(fname: firstNameTextField.text!, lname: lastNameTextField.text!, email: emailTextField.text!, gender: gender, about: aboutYouTextField.text!, categories: csv, avatarImage: avatarImageView.image!, avatarImageName: avatarImageName, question: String(selectedQuestion), answer: answerTextField.text!)
+        }
+    }
+    
+    public func saveExtendedInfo(fname: String, lname: String, email: String, gender: String, about: String, categories: String, avatarImage: UIImage, avatarImageName: String, question: String, answer: String) {
+        
+//        let params: [String: Any] = ["fname": fname, "lname": lname, "email": email, "gender": gender, "about": about, "categories": categories, "question": question, "answer": answer]
+        
+        step2DoneBtn.isHidden = true
+        saveInfoIndicator.isHidden = false
+        saveInfoIndicator.startAnimating()
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(UIImageJPEGRepresentation(avatarImage, 1)!, withName: "file", fileName: avatarImageName, mimeType: "image/jpeg")
+            multipartFormData.append(fname.data(using: .utf8)!, withName: "fname")
+            multipartFormData.append(lname.data(using: .utf8)!, withName: "lname")
+            multipartFormData.append(email.data(using: .utf8)!, withName: "email")
+            multipartFormData.append(gender.data(using: .utf8)!, withName: "gender")
+            multipartFormData.append(about.data(using: .utf8)!, withName: "about")
+            multipartFormData.append(categories.data(using: .utf8)!, withName: "categories")
+            multipartFormData.append(question.data(using: .utf8)!, withName: "question")
+            multipartFormData.append(answer.data(using: .utf8)!, withName: "answer")
+
+        }, to: api.BASE_URL + "Signup/saveExtendedInfo")
+        { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                print("inside success")
+                
+                upload.responseJSON { response in
+                    if let jsonValue = response.result.value {
+                        let results = JSON(jsonValue)
+                        
+                        let userdata: String = "\(results["userid"])|\(results["fname"])|\(results["lname"])|\(results["username"])|\(results["avatarpath"])"
+                        
+                        if KeyClip.save("soapbox.userdata", string: userdata) {
+                            let userinfo = KeyClip.load("soapbox.userdata") as String?
+                            print(userinfo!)
+                            
+                            let url = URL(string: self.api.BASE_URL + "userdata/\(results["userid"])/\(results["avatarpath"])")
+                            let data = try? Data(contentsOf: url!)
+                            let avatarImage = UIImage(data: data!)
+                            
+                            self.api.saveImageDocumentDirectory(image: avatarImage!)
+                            
+                            self.saveInfoIndicator.stopAnimating()
+                            self.performSegue(withIdentifier: "toTabViewFromSignUp", sender: nil)
+                        }
+                        else {
+                            self.present(Alert.showErrorAlert(errorMsg: "Error saving in keychain"), animated: true, completion: nil)
+                        }
+                    }
+                }
+                break
+            default: print("default")
+                break
+            }
         }
     }
     

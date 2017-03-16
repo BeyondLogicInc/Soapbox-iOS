@@ -500,11 +500,14 @@
                         <outlet property="genderSegmentedControl" destination="yF3-0T-xlB" id="1Gr-9k-gQP"/>
                         <outlet property="lastNameTextField" destination="nTq-gX-k2D" id="ike-fx-nRz"/>
                         <outlet property="questionPickerView" destination="anr-nT-kJy" id="cYh-i1-pMW"/>
+                        <outlet property="saveInfoIndicator" destination="TI0-eh-4Gg" id="gpY-tH-HJH"/>
                         <outlet property="securityQuestionToggleBtn" destination="mxq-dR-hIm" id="X0w-4v-2zE"/>
                         <outlet property="signUpViewStep1" destination="Gq2-Zv-jvp" id="vol-h5-s8l"/>
                         <outlet property="signUpViewStep2" destination="YFs-kq-cMt" id="iIJ-of-ccD"/>
                         <outlet property="step1BannerLabel" destination="7CH-rk-h2r" id="xES-iT-cIP"/>
                         <outlet property="step2BannerLabel" destination="z2d-XI-Cle" id="cMs-lY-t1U"/>
+                        <outlet property="step2DoneBtn" destination="5o7-25-nrK" id="2F6-Qd-Qdz"/>
+                        <segue destination="Sk5-YM-gFp" kind="showDetail" identifier="toTabViewFromSignUp" id="rTm-gW-Op8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vzi-8v-Elt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -806,6 +809,10 @@
                                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                 </button>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TI0-eh-4Gg">
+                                    <rect key="frame" x="293" y="437" width="20" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
                             </subviews>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.68438024320000002" colorSpace="calibratedRGB"/>
                         </view>
@@ -825,7 +832,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="NPg-29-Ztl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="NPg-29-Ztl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -926,7 +933,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="byu-Ze-CNS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="byu-Ze-CNS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1200,7 +1207,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="nqM-nc-GWd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="nqM-nc-GWd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1225,7 +1232,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="b2y-bZ-mev">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="b2y-bZ-mev">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1250,7 +1257,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="0cS-QB-IeC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="0cS-QB-IeC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1273,7 +1280,7 @@
                 <navigationController storyboardIdentifier="initialNavVC" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="MNw-rW-jKF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hVT-kH-mBO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hVT-kH-mBO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1307,7 +1314,7 @@
         <image name="signup_bg1" width="960" height="540"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3AP-Uw-aVV"/>
+        <segue reference="rTm-gW-Op8"/>
         <segue reference="jVU-08-1Xz"/>
         <segue reference="sQ3-hp-M9g"/>
     </inferredMetricsTieBreakers>

@@ -27,13 +27,7 @@ class Api {
         let request = Alamofire.request(BASE_URL + "Login/signup", method: .post, parameters: params)
         return request
     }
-    
-    public func saveExtendedInfo(fname: String, lname: String, email: String, gender: String, about: String, categories: String, avatarImage: UIImage, avatarImageName: String) -> DataRequest {
-        let params: Parameters = ["fname": fname, "lname": lname, "email": email, "gender": gender, "about": about, "categories": categories]
-        let request = Alamofire.request(BASE_URL + "Signup/saveExtendedInfo", method: .post, parameters: params)
-        return request
-    }
-    
+        
     public func logout() -> DataRequest {
         let request = Alamofire.request(BASE_URL + "Logout")
         return request

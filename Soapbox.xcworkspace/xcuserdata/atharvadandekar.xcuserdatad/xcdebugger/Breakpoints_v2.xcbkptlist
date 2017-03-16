@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Soapbox/Api.swift"
-            timestampString = "511356498.868734"
+            timestampString = "511364248.944068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "saveImageDocumentDirectory(image:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Soapbox/SignUpStepsViewController.swift"
-            timestampString = "511362074.185692"
+            timestampString = "511364248.944068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "step1NextBtnPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Soapbox/SignUpStepsViewController.swift"
-            timestampString = "511362074.185692"
+            timestampString = "511364248.944068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
             landmarkName = "step1NextBtnPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,6 +110,22 @@
             startingLineNumber = "33"
             endingLineNumber = "33"
             landmarkName = "checkLoggedIn()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Soapbox/SignUpStepsViewController.swift"
+            timestampString = "511370985.787219"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "393"
+            endingLineNumber = "393"
+            landmarkName = "saveExtendedInfo(fname:lname:email:gender:about:categories:avatarImage:avatarImageName:question:answer:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
