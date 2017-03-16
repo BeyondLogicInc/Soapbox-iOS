@@ -184,6 +184,13 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         cell.delegate = self
         cell.tag = indexPath.row
         cell.categoryImageView.clipsToBounds = true
+        cell.selectionStyle = .none
+        
+        if selectedCategories.contains(arrayOfCategories[indexPath.row].srno) {
+            cell.selectedCategoryImage.image = #imageLiteral(resourceName: "Ok-50")
+        } else {
+            cell.selectedCategoryImage.image = nil
+        }
         
         cell.categoryImageView.image = arrayOfCategories[indexPath.row].image
         cell.categoryName.text = arrayOfCategories[indexPath.row].name
@@ -207,20 +214,21 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = UIColor.clear        
     }
     
     func categoryCellDelegate(_ tag: Int, _ cell: SignUpCategoryTableViewCell) {
         
-        if selectedCategories.contains(arrayOfCategories[tag].srno) {
-            cell.backgroundColor = UIColor.clear
-            selectedCategories = selectedCategories.filter({ $0 != arrayOfCategories[tag].srno})
+        let indexPath = self.categoryInfoTableView.indexPathForRow(at: cell.center)!
+        let selectedItem = arrayOfCategories[indexPath.row].srno
+                
+        if selectedCategories.contains(selectedItem!) {
+            selectedCategories = selectedCategories.filter({ $0 != selectedItem })
         }
         else {
-            cell.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
-            selectedCategories.append(arrayOfCategories[tag].srno)
+            selectedCategories.append(selectedItem!)
         }
-        
+        self.categoryInfoTableView.reloadData()
         print(selectedCategories)
     }
     

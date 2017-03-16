@@ -13,8 +13,8 @@ class SignUpCategoryTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var categoryName: UILabel!
     @IBOutlet weak var categoryThreadCount: UILabel!
-    @IBOutlet weak var categoryUserCount: UILabel!
-    
+    @IBOutlet weak var categoryUserCount: UILabel!    
+    @IBOutlet weak var selectedCategoryImage: UIImageView!
     var delegate: categoryCellDelegate?
     
     override func awakeFromNib() {
