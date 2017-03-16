@@ -300,6 +300,15 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         animateSteps(view1: signUpViewStep2, view2: signUpViewStep1)
     }
     
+    @IBAction func step2DoneBtnPressed(_ sender: Any) {
+        if selectedCategories.count == 0 {
+            self.present(Alert.showErrorAlert(errorMsg: "Select one category atleast"), animated: true, completion: nil)
+        } else {
+            //MAKE API CALL
+        }
+    }
+    
+    
     func animateSteps(view1: UIView, view2: UIView) {
         view1.removeFromSuperview()
         self.view.addSubview(view2)
