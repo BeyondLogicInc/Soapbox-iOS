@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Soapbox/FeedViewController.swift"
-            timestampString = "510811689.562512"
+            timestampString = "511451668.050476"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "FeedViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -126,6 +126,22 @@
             startingLineNumber = "393"
             endingLineNumber = "393"
             landmarkName = "saveExtendedInfo(fname:lname:email:gender:about:categories:avatarImage:avatarImageName:question:answer:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Soapbox/FeedViewController.swift"
+            timestampString = "511451533.338909"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "didPressButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

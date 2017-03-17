@@ -10,6 +10,7 @@ target 'Soapbox' do
   pod 'XLActionController'
   pod 'XLActionController/Youtube'
   pod 'RevealingSplashView'
+  pod 'PKHUD', '~> 4.0'
   use_frameworks!
   # Pods for Soapbox
 
