@@ -45,7 +45,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         feedTableView.separatorColor = UIColor.clear
         
         HUD.dimsBackground = false
-        HUD.allowsInteraction = false                   
+        HUD.allowsInteraction = false
+        
         
         //Initialize loader
         loader.frame = CGRect(x: 0, y: -65.0, width: self.view.frame.width, height: self.view.frame.height)
@@ -217,10 +218,11 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 print("Pressed already tracked")
             }))
         } else {
-            actionController.addAction(Action(ActionData(title: trackMsg, image: UIImage(named: "Binoculars")!), style: .default, handler: { action in
+            actionController.addAction(Action(ActionData(title: trackMsg, image: UIImage(named: "Binoculars")!), style: .default, handler: { action in                                
                 HUD.show(.progress)
                 Time.delay(3.0) {
-                    HUD.flash(.success, delay: 1.0)
+//                    HUD.flash(.label("Something went wrong :("), delay: 2.0)
+                    HUD.flash(.success, delay: 2.0)
                 }
             }))
         }

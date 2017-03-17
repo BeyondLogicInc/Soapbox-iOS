@@ -12,7 +12,7 @@ import UIKit
 /// PKHUDSquareBaseView provides a square view, which you can subclass and add additional views to.
 open class PKHUDSquareBaseView: UIView {
 
-    static let defaultSquareBaseViewFrame = CGRect(origin: CGPoint.zero, size: CGSize(width: 156.0, height: 156.0))
+    static let defaultSquareBaseViewFrame = CGRect(origin: CGPoint.zero, size: CGSize(width: 120.0, height: 120.0))
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
