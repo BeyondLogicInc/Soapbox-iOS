@@ -207,7 +207,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return UITableViewAutomaticDimension
     }
     
-    func didPressButton(_ tag: Int) {
+    func didPressButton(_ tag: Int, _ cell: FeedTableViewCell) {
         print("I have pressed a button with a tag: \(tag)")
         let actionController = YoutubeActionController()
         
@@ -319,7 +319,15 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if arrayOfCellData[tag].userid as Int == Int(userinfoArr[0]) {
             actionController.addAction(Action(ActionData(title: "Delete this thread", image: UIImage(named: "Delete_Colored")!), style: .destructive, handler: { action in
-                print("Pressed delete this thread")
+                
+                let alert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "DELETE", style: .destructive, handler: { action in
+                    let indexPath = self.feedTableView.indexPath(for: cell)
+                    self.arrayOfCellData.remove(at: tag)
+                    self.feedTableView.deleteRows(at: [indexPath!], with: .automatic)
+                }))
+                alert.addAction(UIAlertAction(title: "CANCEL", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }))
         }
         

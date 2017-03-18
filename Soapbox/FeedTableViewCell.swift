@@ -32,10 +32,10 @@ class FeedTableViewCell: UITableViewCell {
         feedOwnerImage.layer.cornerRadius = 10.0
     }        
     @IBAction func toggleThreadOptions(_ sender: Any) {
-        cellDelegate?.didPressButton(self.tag)
+        cellDelegate?.didPressButton(self.tag, self)
     }
 }
 
 protocol FeedCellDelegate: class {
-    func didPressButton(_ tag: Int)
+    func didPressButton(_ tag: Int, _ cell: FeedTableViewCell)
 }
