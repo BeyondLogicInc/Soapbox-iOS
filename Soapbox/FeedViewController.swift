@@ -314,7 +314,33 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         actionController.addAction(Action(ActionData(title: "Hide this thread", image: UIImage(named: "Hide")!), style: .default, handler: { action in
-            print("Pressed hide this thred")
+            let alert = UIAlertController(title: "Confirm", message: "Are you sure you want to hide this thread?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "HIDE", style: .destructive, handler: { action in
+                
+                HUD.show(.progress)
+                
+                let request = self.api.threadOptions(tid: self.arrayOfCellData[tag].threadno, option: "hide_thread")
+                request.validate()
+                request.responseJSON { response in
+                    if response.error != nil {
+                        self.present(Alert.showErrorAlert(errorMsg: (response.error?.localizedDescription)!), animated: true, completion: nil)
+                    } else {
+                        if let jsonValue = response.result.value {
+                            var results = JSON(jsonValue)
+                            if results["response"].boolValue {
+                                HUD.flash(.success, delay: 2.0)
+                                let indexPath = self.feedTableView.indexPath(for: cell)
+                                self.arrayOfCellData.remove(at: tag)
+                                self.feedTableView.deleteRows(at: [indexPath!], with: .automatic)
+                            } else {
+                                HUD.flash(.label("Something went wrong :("), delay: 2.0)
+                            }
+                        }
+                    }
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "CANCEL", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }))
         
         if arrayOfCellData[tag].userid as Int == Int(userinfoArr[0]) {
@@ -322,12 +348,32 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 let alert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete?", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "DELETE", style: .destructive, handler: { action in
-                    let indexPath = self.feedTableView.indexPath(for: cell)
-                    self.arrayOfCellData.remove(at: tag)
-                    self.feedTableView.deleteRows(at: [indexPath!], with: .automatic)
+                    
+                    HUD.show(.progress)
+                    
+                    let request = self.api.threadOptions(tid: self.arrayOfCellData[tag].threadno, option: "delete_thread")
+                    request.validate()
+                    request.responseJSON { response in
+                        if response.error != nil {
+                            self.present(Alert.showErrorAlert(errorMsg: (response.error?.localizedDescription)!), animated: true, completion: nil)
+                        } else {
+                            if let jsonValue = response.result.value {
+                                var results = JSON(jsonValue)
+                                if results["response"].boolValue {
+                                    HUD.flash(.success, delay: 2.0)
+                                    let indexPath = self.feedTableView.indexPath(for: cell)
+                                    self.arrayOfCellData.remove(at: tag)
+                                    self.feedTableView.deleteRows(at: [indexPath!], with: .automatic)
+                                } else {
+                                    HUD.flash(.label("Something went wrong :("), delay: 2.0)
+                                }
+                            }
+                        }
+                    }
                 }))
                 alert.addAction(UIAlertAction(title: "CANCEL", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
+                
             }))
         }
         
