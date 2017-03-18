@@ -26,7 +26,7 @@ struct cellData {
     let userid: Int!
     let threadno: String!
     var tracked: Bool!
-    let isRead: Bool!
+    var isRead: Bool!
 }
 
 class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FeedCellDelegate {
@@ -212,7 +212,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let actionController = YoutubeActionController()
         
         var trackMsg = "Track this thread"
+        
         if arrayOfCellData[tag].tracked as Bool {
+            //Already tracking
             trackMsg = "Tracking this thread"
             actionController.addAction(Action(ActionData(title: trackMsg, image: UIImage(named: "Checkmark-50")!), style: .default, handler: { action in
                 HUD.show(.progress)
@@ -236,6 +238,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }))
         } else {
+            //Not tracked
             actionController.addAction(Action(ActionData(title: trackMsg, image: UIImage(named: "Binoculars")!), style: .default, handler: { action in
                 HUD.show(.progress)
 
@@ -262,13 +265,51 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         var readMsg: String = "Add to reading list"
         if arrayOfCellData[tag].isRead as Bool {
+            //Added to reading list
             readMsg = "Added to reading list"
             actionController.addAction(Action(ActionData(title: readMsg, image: UIImage(named: "Checkmark-50")!), style: .default, handler: { action in
-                print("Added to reading list")
+                HUD.show(.progress)
+                
+                let request = self.api.threadOptions(tid: self.arrayOfCellData[tag].threadno, option: "remove_from_list")
+                request.validate()
+                request.responseJSON { response in
+                    if response.error != nil {
+                        self.present(Alert.showErrorAlert(errorMsg: (response.error?.localizedDescription)!), animated: true, completion: nil)
+                    } else {
+                        if let jsonValue = response.result.value {
+                            var results = JSON(jsonValue)
+                            if results["response"].boolValue {
+                                HUD.flash(.success, delay: 2.0)
+                                self.arrayOfCellData[tag].isRead = false
+                            } else {
+                                HUD.flash(.label("Something went wrong :("), delay: 2.0)
+                            }
+                        }
+                    }
+                }
             }))
         } else {
+            //Not Added to reading list
             actionController.addAction(Action(ActionData(title: readMsg, image: UIImage(named: "Reading")!), style: .default, handler: { action in
-                print("add to reading list")
+                HUD.show(.progress)
+                
+                let request = self.api.threadOptions(tid: self.arrayOfCellData[tag].threadno, option: "add_to_list")
+                request.validate()
+                request.responseJSON { response in
+                    if response.error != nil {
+                        self.present(Alert.showErrorAlert(errorMsg: (response.error?.localizedDescription)!), animated: true, completion: nil)
+                    } else {
+                        if let jsonValue = response.result.value {
+                            var results = JSON(jsonValue)
+                            if results["response"].boolValue {
+                                HUD.flash(.success, delay: 2.0)
+                                self.arrayOfCellData[tag].isRead = true
+                            } else {
+                                HUD.flash(.label("Something went wrong :("), delay: 2.0)
+                            }
+                        }
+                    }
+                }
             }))
         }
         
