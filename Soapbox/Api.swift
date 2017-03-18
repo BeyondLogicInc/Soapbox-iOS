@@ -55,6 +55,12 @@ class Api {
         return request
     }
     
+    public func threadOptions(tid: Int, option: String) -> DataRequest {
+        let params: Parameters = ["tid": tid]
+        let request = Alamofire.request(BASE_URL + "Ajax_Controller/threadOptions/(option)", method: .post, parameters: params)
+        return request
+    }
+    
     public func getUserInfoFromKeychain() -> [String] {
         let userinfo = KeyClip.load("soapbox.userdata") as String?
         let userinfoArr = userinfo?.components(separatedBy: "|")
