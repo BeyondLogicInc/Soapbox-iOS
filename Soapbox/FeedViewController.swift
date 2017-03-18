@@ -290,6 +290,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             if results["response"].boolValue {
                                 HUD.flash(.success, delay: 2.0)
                                 self.arrayOfCellData[tag].isRead = false
+                                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                                appDelegate.refreshReadingList = true
                             } else {
                                 HUD.flash(.label("Something went wrong :("), delay: 2.0)
                             }
