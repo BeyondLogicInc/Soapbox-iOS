@@ -8,8 +8,19 @@
 
 import UIKit
 
-class ReadingListViewController: UIViewController {
+struct readingListData {
+    let threadTitle: String!
+    let avatarImage: UIImage!
+    let timeElapsed: String!
+}
 
+class ReadingListViewController: UIViewController {
+    
+    @IBOutlet weak var readingListTableView: UITableView!
+    
+    let api = Api()
+    var arrayOfReadingListData = [readingListData]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,15 +40,8 @@ class ReadingListViewController: UIViewController {
             print("No new items added")
         }
     }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func populateReadingList() {
+        
     }
-    */
-
 }
