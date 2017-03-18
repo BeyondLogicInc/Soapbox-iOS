@@ -34,6 +34,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var feedTableView: UITableView!
     
     let loader = UIActivityIndicatorView()
+    let refreshControl = UIRefreshControl()
     
     var arrayOfThreadImages: [UIImage] = []
     var arrayOfCellData = [cellData]()
@@ -43,10 +44,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         feedTableView.separatorColor = UIColor.clear
+        feedTableView.refreshControl = refreshControl
+        
+        refreshControl.addTarget(self, action: #selector(FeedViewController.pullToRefresh), for: .valueChanged)
         
         HUD.dimsBackground = false
         HUD.allowsInteraction = false
-        
         
         //Initialize loader
         loader.frame = CGRect(x: 0, y: -65.0, width: self.view.frame.width, height: self.view.frame.height)
@@ -109,6 +112,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
         }
+    }
+    
+    func pullToRefresh() {
+        arrayOfCellData.removeAll()
+        populateFeed()
+        refreshControl.endRefreshing()
     }
         
     @IBAction func fromCreateNewThreadView(segue: UIStoryboardSegue) {
