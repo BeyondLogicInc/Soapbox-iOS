@@ -22,6 +22,7 @@
 		165F1C6E1E72D9900038A7FF /* ViewProfileCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F1C6D1E72D9900038A7FF /* ViewProfileCustomCell.swift */; };
 		167789AF1E6E934E00D22A52 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167789AE1E6E934E00D22A52 /* SwiftyJSON.swift */; };
 		167789B11E6EFDA600D22A52 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167789B01E6EFDA600D22A52 /* Api.swift */; };
+		168467A31E7D0671009831D9 /* ReadingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168467A21E7D0671009831D9 /* ReadingListViewController.swift */; };
 		16AFD8E21E6BED4800F13E17 /* KeychainSwiftDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */; };
 		16AFD8E71E6D200300F13E17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFD8E61E6D200300F13E17 /* Extensions.swift */; };
 		16AFD9101E6D5FD800F13E17 /* Merriweather-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16AFD8FE1E6D5FD800F13E17 /* Merriweather-Black.ttf */; };
@@ -92,6 +93,7 @@
 		165F1C6D1E72D9900038A7FF /* ViewProfileCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProfileCustomCell.swift; sourceTree = "<group>"; };
 		167789AE1E6E934E00D22A52 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		167789B01E6EFDA600D22A52 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		168467A21E7D0671009831D9 /* ReadingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingListViewController.swift; sourceTree = "<group>"; };
 		16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSwiftDistrib.swift; sourceTree = "<group>"; };
 		16AFD8E51E6C066300F13E17 /* Soapbox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Soapbox.entitlements; sourceTree = "<group>"; };
 		16AFD8E61E6D200300F13E17 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				165F1C691E729F0A0038A7FF /* SplashScreenViewController.swift */,
 				16AFD9241E6D69ED00F13E17 /* FeedTableViewCell.swift */,
 				16AFD9221E6D633300F13E17 /* FeedViewController.swift */,
+				168467A21E7D0671009831D9 /* ReadingListViewController.swift */,
 				16AFD8E61E6D200300F13E17 /* Extensions.swift */,
 				161CE8D31E69DBA7009A6C63 /* Assets.xcassets */,
 				161CE8D51E69DBA7009A6C63 /* LaunchScreen.storyboard */,
@@ -594,6 +597,7 @@
 				161CE8CF1E69DBA6009A6C63 /* ViewController.swift in Sources */,
 				16F5615B1E7162E700902B64 /* KeyboardManager.swift in Sources */,
 				161CE8CD1E69DBA6009A6C63 /* AppDelegate.swift in Sources */,
+				168467A31E7D0671009831D9 /* ReadingListViewController.swift in Sources */,
 				16AFD9231E6D633300F13E17 /* FeedViewController.swift in Sources */,
 				165928061E78065800411949 /* SignUpStepsViewController.swift in Sources */,
 				162CB9761E791645002DD66F /* SignUpCategoryTableViewCell.swift in Sources */,

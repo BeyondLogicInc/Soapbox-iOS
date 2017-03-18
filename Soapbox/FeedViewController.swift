@@ -298,7 +298,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }))
         } else {
-            //Not Added to reading list
+            //Add to reading list
             actionController.addAction(Action(ActionData(title: readMsg, image: UIImage(named: "Reading")!), style: .default, handler: { action in
                 HUD.show(.progress)
                 
@@ -313,6 +313,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             if results["response"].boolValue {
                                 HUD.flash(.success, delay: 2.0)
                                 self.arrayOfCellData[tag].isRead = true
+                                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                                appDelegate.refreshReadingList = true
                             } else {
                                 HUD.flash(.label("Something went wrong :("), delay: 2.0)
                             }
