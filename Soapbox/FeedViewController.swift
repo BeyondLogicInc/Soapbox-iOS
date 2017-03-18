@@ -25,7 +25,7 @@ struct cellData {
     let avatarpath: String!
     let userid: Int!
     let threadno: String!
-    let tracked: Bool!
+    var tracked: Bool!
     let isRead: Bool!
 }
 
@@ -215,21 +215,53 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if arrayOfCellData[tag].tracked as Bool {
             trackMsg = "Tracking this thread"
             actionController.addAction(Action(ActionData(title: trackMsg, image: UIImage(named: "Checkmark-50")!), style: .default, handler: { action in
-                print("Pressed already tracked")
+                HUD.show(.progress)
+                
+                let request = self.api.threadOptions(tid: self.arrayOfCellData[tag].threadno, option: "untrack_thread")
+                request.validate()
+                request.responseJSON { response in
+                    if response.error != nil {
+                        self.present(Alert.showErrorAlert(errorMsg: (response.error?.localizedDescription)!), animated: true, completion: nil)
+                    } else {
+                        if let jsonValue = response.result.value {
+                            var results = JSON(jsonValue)
+                            if results["response"].boolValue {
+                                HUD.flash(.success, delay: 2.0)
+                                self.arrayOfCellData[tag].tracked = false
+                            } else {
+                                HUD.flash(.label("Something went wrong :("), delay: 2.0)
+                            }
+                        }
+                    }
+                }
             }))
         } else {
-            actionController.addAction(Action(ActionData(title: trackMsg, image: UIImage(named: "Binoculars")!), style: .default, handler: { action in                                
+            actionController.addAction(Action(ActionData(title: trackMsg, image: UIImage(named: "Binoculars")!), style: .default, handler: { action in
                 HUD.show(.progress)
-                Time.delay(3.0) {
-//                    HUD.flash(.label("Something went wrong :("), delay: 2.0)
-                    HUD.flash(.success, delay: 2.0)
+
+                let request = self.api.threadOptions(tid: self.arrayOfCellData[tag].threadno, option: "track_thread")
+                request.validate()
+                request.responseJSON { response in
+                    if response.error != nil {
+                        self.present(Alert.showErrorAlert(errorMsg: (response.error?.localizedDescription)!), animated: true, completion: nil)
+                    } else {
+                        if let jsonValue = response.result.value {
+                            var results = JSON(jsonValue)
+                            if results["response"].boolValue {
+                                HUD.flash(.success, delay: 2.0)
+                                self.arrayOfCellData[tag].tracked = true
+                            } else {
+                                HUD.flash(.label("Something went wrong :("), delay: 2.0)
+                            }
+                        }
+                    }
                 }
             }))
         }
         
         
         var readMsg: String = "Add to reading list"
-        if arrayOfCellData[tag].tracked as Bool {
+        if arrayOfCellData[tag].isRead as Bool {
             readMsg = "Added to reading list"
             actionController.addAction(Action(ActionData(title: readMsg, image: UIImage(named: "Checkmark-50")!), style: .default, handler: { action in
                 print("Added to reading list")

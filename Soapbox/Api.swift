@@ -55,9 +55,9 @@ class Api {
         return request
     }
     
-    public func threadOptions(tid: Int, option: String) -> DataRequest {
+    public func threadOptions(tid: String, option: String) -> DataRequest {
         let params: Parameters = ["tid": tid]
-        let request = Alamofire.request(BASE_URL + "Ajax_Controller/threadOptions/(option)", method: .post, parameters: params)
+        let request = Alamofire.request(BASE_URL + "Ajax_Controller/thread_options/\(option)", method: .post, parameters: params)
         return request
     }
     
