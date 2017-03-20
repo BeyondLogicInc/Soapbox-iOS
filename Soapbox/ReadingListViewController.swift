@@ -20,6 +20,7 @@ struct readingListData {
 class ReadingListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var readingListTableView: UITableView!
+    let noDataView = UIView()
     
     let loader = UIActivityIndicatorView()
     let api = Api()
@@ -27,7 +28,7 @@ class ReadingListViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        noDataView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         readingListTableView.tableFooterView = UIView()
         
         //Initialize loader
@@ -73,6 +74,7 @@ class ReadingListViewController: UIViewController, UITableViewDataSource, UITabl
                 if let jsonValue = response.result.value {
                     let results = JSON(jsonValue)["results"]
                     if results.count > 0 {
+                        self.noDataView.removeFromSuperview()
                         for item in results.arrayValue {
                             let url = URL(string: self.api.BASE_URL + item["avatarpath"].stringValue)
                             let data = try? Data(contentsOf: url!)
@@ -81,10 +83,24 @@ class ReadingListViewController: UIViewController, UITableViewDataSource, UITabl
                         self.loader.stopAnimating()
                         self.readingListTableView.reloadData()
                         return
+                    } else {
+                        self.loader.stopAnimating()
+                        self.loadNoDataView()
                     }
                 }
             }
         }
+    }
+    
+    func loadNoDataView() {
+        noDataView.backgroundColor = #colorLiteral(red: 0.9342361093, green: 0.9314675331, blue: 0.9436802864, alpha: 1)
+        let noDataLabel = UILabel()
+        noDataLabel.text = "No threads added to Reading list"
+        noDataLabel.frame = CGRect(x: 0, y: self.view.frame.height/2, width: self.view.frame.width, height: 20)
+        noDataLabel.font = UIFont(name: "OpenSans", size: 15.0)!
+        noDataLabel.textAlignment = NSTextAlignment.center
+        noDataView.addSubview(noDataLabel)
+        self.view.addSubview(noDataView)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
