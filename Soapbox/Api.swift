@@ -44,6 +44,11 @@ class Api {
         return request
     }
     
+    public func getFeaturedThreads() -> DataRequest {
+        let request = Alamofire.request(BASE_URL + "Thread/getFeaturedThreads")
+        return request
+    }
+    
     public func populateReadingList() -> DataRequest {
         let request = Alamofire.request(BASE_URL + "Ajax_Controller/getReadingList")
         return request
