@@ -59,6 +59,12 @@ class Api {
         return request
     }
     
+    public func updateCategories(categories: String) -> DataRequest {
+        let params: Parameters = ["categories": categories]
+        let request = Alamofire.request(BASE_URL + "Ajax_Controller/update_categories", method: .post, parameters: params)
+        return request
+    }
+    
     public func emailExists(email: String) -> DataRequest {
         let params: Parameters = ["email": email]
         let request = Alamofire.request(BASE_URL + "Ajax_Controller/email_exists", method: .post, parameters: params)
