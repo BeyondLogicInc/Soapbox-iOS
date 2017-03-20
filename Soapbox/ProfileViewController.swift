@@ -96,6 +96,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         if indexPath.section == 1 {
             if indexPath.row == 5 {
                 handleSignOut()
+            } else if indexPath.row == 2 {
+                self.performSegue(withIdentifier: "toCategoriesVC", sender: nil)
             }
         }
     }
