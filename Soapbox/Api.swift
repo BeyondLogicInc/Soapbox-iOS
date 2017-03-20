@@ -54,6 +54,11 @@ class Api {
         return request
     }
     
+    public func getCategoriesFollowing() -> DataRequest {
+        let request = Alamofire.request(BASE_URL + "Categories/getCategoriesFollowing")
+        return request
+    }
+    
     public func emailExists(email: String) -> DataRequest {
         let params: Parameters = ["email": email]
         let request = Alamofire.request(BASE_URL + "Ajax_Controller/email_exists", method: .post, parameters: params)

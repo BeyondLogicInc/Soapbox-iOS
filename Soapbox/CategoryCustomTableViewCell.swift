@@ -10,10 +10,15 @@ import UIKit
 
 class CategoryCustomTableViewCell: UITableViewCell {
 
+    weak var cellDelegate: CustomCategoryCellDelegate?
+    
     @IBOutlet weak var categoryThumbnail: UIImageView!
     
     @IBOutlet weak var categoryTitle: UILabel!
+    @IBOutlet weak var threadCountLabel: UILabel!
+    @IBOutlet weak var userCountLabel: UILabel!
     
+    @IBOutlet weak var categoryFollowButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,8 +29,14 @@ class CategoryCustomTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
+    
+    @IBAction func toggleCategoryFollow(_ sender: Any) {
+        cellDelegate?.didPressButton(self.tag, self)
+    }
+    
+}
 
+protocol CustomCategoryCellDelegate: class {
+    func didPressButton(_ tag: Int, _ cell: CategoryCustomTableViewCell)
 }
