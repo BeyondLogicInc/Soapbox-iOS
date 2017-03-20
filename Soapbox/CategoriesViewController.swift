@@ -127,5 +127,29 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
             selectedCategories.append(selectedItem!)
         }
         print(selectedCategories)
+        let csv: String = selectedCategories.description
+        
+        HUD.show(.progress)
+        let request = api.updateCategories(categories: csv)
+        request.validate()
+        request.responseJSON { response in
+            if response.error != nil {
+                self.present(Alert.showErrorAlert(errorMsg: (response.error?.localizedDescription)!), animated: true, completion: nil)
+            } else {
+                if let jsonValue = response.result.value {
+                    let result = JSON(jsonValue)["response"]
+                    if result.boolValue {
+                        HUD.hide()
+                        self.view.bringSubview(toFront: self.loader)
+                        self.loader.startAnimating()
+                        self.arrayOfCategoryData.removeAll()
+                        self.selectedCategories.removeAll()
+                        self.getCategories()
+                    } else {
+                        HUD.flash(.label("Something went wrong :("), delay: 0.5)
+                    }
+                }
+            }
+        }
     }
 }
