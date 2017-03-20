@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 struct readingListData {
     let threadno: String!
@@ -119,5 +120,39 @@ class ReadingListViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }    
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .default, title: "Remove") { (action, indexPath) in
+            
+            HUD.show(.progress)
+            let request = self.api.threadOptions(tid: self.arrayOfReadingListData[indexPath.row].threadno, option: "remove_from_list")
+            request.validate()
+            request.responseJSON { response in
+                if response.error != nil {
+                    self.present(Alert.showErrorAlert(errorMsg: (response.error?.localizedDescription)!), animated: true, completion: nil)
+                } else {
+                    if let jsonValue = response.result.value {
+                        var results = JSON(jsonValue)
+                        if results["response"].boolValue {
+                            HUD.flash(.success, delay: 1.0)
+                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                            appDelegate.refreshReadingList = true
+                            
+                            self.arrayOfReadingListData.remove(at: indexPath.row)
+                            tableView.deleteRows(at: [indexPath], with: .fade)
+                            if self.arrayOfReadingListData.count == 0 {
+                                self.loadNoDataView()
+                            }
+                        } else {
+                            HUD.flash(.label("Something went wrong :("), delay: 1.0)
+                        }
+                    }
+                }
+            }
+            
+        }
+        delete.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+        return [delete]
     }
 }
