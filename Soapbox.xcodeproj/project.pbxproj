@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1605E9C71E7FDE1F00632B7B /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1605E9C61E7FDE1F00632B7B /* CategoriesViewController.swift */; };
+		1605E9CB1E80040A00632B7B /* CategoryCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1605E9CA1E80040A00632B7B /* CategoryCustomTableViewCell.swift */; };
 		161CE8CD1E69DBA6009A6C63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161CE8CC1E69DBA6009A6C63 /* AppDelegate.swift */; };
 		161CE8CF1E69DBA6009A6C63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161CE8CE1E69DBA6009A6C63 /* ViewController.swift */; };
 		161CE8D21E69DBA7009A6C63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 161CE8D01E69DBA7009A6C63 /* Main.storyboard */; };
@@ -75,6 +76,7 @@
 /* Begin PBXFileReference section */
 		049B5B61A69EB0331E41EA9C /* Pods-Soapbox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Soapbox.release.xcconfig"; path = "Pods/Target Support Files/Pods-Soapbox/Pods-Soapbox.release.xcconfig"; sourceTree = "<group>"; };
 		1605E9C61E7FDE1F00632B7B /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		1605E9CA1E80040A00632B7B /* CategoryCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCustomTableViewCell.swift; sourceTree = "<group>"; };
 		161CE8C91E69DBA6009A6C63 /* Soapbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soapbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		161CE8CC1E69DBA6009A6C63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		161CE8CE1E69DBA6009A6C63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				167789B01E6EFDA600D22A52 /* Api.swift */,
 				16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */,
 				161CE8D01E69DBA7009A6C63 /* Main.storyboard */,
+				1605E9CA1E80040A00632B7B /* CategoryCustomTableViewCell.swift */,
 				168467A41E7D0EF9009831D9 /* ReadingListTableViewCell.swift */,
 				165928051E78065800411949 /* SignUpStepsViewController.swift */,
 				162CB9751E791645002DD66F /* SignUpCategoryTableViewCell.swift */,
@@ -607,6 +610,7 @@
 				1605E9C71E7FDE1F00632B7B /* CategoriesViewController.swift in Sources */,
 				168467A31E7D0671009831D9 /* ReadingListViewController.swift in Sources */,
 				16AFD9231E6D633300F13E17 /* FeedViewController.swift in Sources */,
+				1605E9CB1E80040A00632B7B /* CategoryCustomTableViewCell.swift in Sources */,
 				165928061E78065800411949 /* SignUpStepsViewController.swift in Sources */,
 				162CB9761E791645002DD66F /* SignUpCategoryTableViewCell.swift in Sources */,
 				16AFD8E21E6BED4800F13E17 /* KeychainSwiftDistrib.swift in Sources */,
