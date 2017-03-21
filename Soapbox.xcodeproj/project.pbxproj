@@ -49,6 +49,7 @@
 		16AFD9231E6D633300F13E17 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFD9221E6D633300F13E17 /* FeedViewController.swift */; };
 		16AFD9251E6D69ED00F13E17 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFD9241E6D69ED00F13E17 /* FeedTableViewCell.swift */; };
 		16B828A01E810B610015F685 /* FeaturedThreadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B8289F1E810B610015F685 /* FeaturedThreadsViewController.swift */; };
+		16B828A21E810FA20015F685 /* FeaturedThreadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B828A11E810FA20015F685 /* FeaturedThreadsTableViewCell.swift */; };
 		16F561591E715FF700902B64 /* CreateNewThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F561581E715FF700902B64 /* CreateNewThreadViewController.swift */; };
 		16F5615B1E7162E700902B64 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F5615A1E7162E700902B64 /* KeyboardManager.swift */; };
 		16FEF1BD1E6FDB4300816BA9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEF1BC1E6FDB4300816BA9 /* SignUpViewController.swift */; };
@@ -125,6 +126,7 @@
 		16AFD9221E6D633300F13E17 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		16AFD9241E6D69ED00F13E17 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		16B8289F1E810B610015F685 /* FeaturedThreadsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedThreadsViewController.swift; sourceTree = "<group>"; };
+		16B828A11E810FA20015F685 /* FeaturedThreadsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedThreadsTableViewCell.swift; sourceTree = "<group>"; };
 		16F561581E715FF700902B64 /* CreateNewThreadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewThreadViewController.swift; sourceTree = "<group>"; };
 		16F5615A1E7162E700902B64 /* KeyboardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		16FEF1BC1E6FDB4300816BA9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				167789B01E6EFDA600D22A52 /* Api.swift */,
 				16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */,
 				161CE8D01E69DBA7009A6C63 /* Main.storyboard */,
+				16B828A11E810FA20015F685 /* FeaturedThreadsTableViewCell.swift */,
 				16B8289F1E810B610015F685 /* FeaturedThreadsViewController.swift */,
 				1605E9CA1E80040A00632B7B /* CategoryCustomTableViewCell.swift */,
 				168467A41E7D0EF9009831D9 /* ReadingListTableViewCell.swift */,
@@ -612,6 +615,7 @@
 				161CE8CD1E69DBA6009A6C63 /* AppDelegate.swift in Sources */,
 				1605E9C71E7FDE1F00632B7B /* CategoriesViewController.swift in Sources */,
 				168467A31E7D0671009831D9 /* ReadingListViewController.swift in Sources */,
+				16B828A21E810FA20015F685 /* FeaturedThreadsTableViewCell.swift in Sources */,
 				16B828A01E810B610015F685 /* FeaturedThreadsViewController.swift in Sources */,
 				16AFD9231E6D633300F13E17 /* FeedViewController.swift in Sources */,
 				1605E9CB1E80040A00632B7B /* CategoryCustomTableViewCell.swift in Sources */,
