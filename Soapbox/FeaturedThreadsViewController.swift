@@ -14,6 +14,9 @@ struct featuredThreadsData {
     let uid: String!
     let username: String!
     let name: String!
+    let upvotes: String!
+    let replies: String!
+    let views: String!
 //    let avatarpath: String!
 }
 
@@ -61,7 +64,7 @@ class FeaturedThreadsViewController: UIViewController, UITableViewDataSource, UI
                     let results = JSON(jsonValue)["results"]
                     if results.count > 0 {
                         for item in results.arrayValue {
-                            self.arrayOfFeaturedThreads.append(featuredThreadsData(srno: item["srno"].stringValue, title: item["title"].stringValue, uid: item["uid"].stringValue, username: item["username"].stringValue, name: item["fname"].stringValue + " " + item["lname"].stringValue))
+                            self.arrayOfFeaturedThreads.append(featuredThreadsData(srno: item["srno"].stringValue, title: item["title"].stringValue, uid: item["uid"].stringValue, username: item["username"].stringValue, name: item["fname"].stringValue + " " + item["lname"].stringValue, upvotes: item["upvotes"].stringValue, replies: item["replies"].stringValue, views: item["views"].stringValue))
                         }
                         self.loader.stopAnimating()
                         self.featuredThreadsTableView.reloadData()
@@ -95,6 +98,9 @@ class FeaturedThreadsViewController: UIViewController, UITableViewDataSource, UI
         cell.indexNumber.text = JSON(indexPath.row + 1).stringValue
         cell.threadTitle.text = arrayOfFeaturedThreads[indexPath.row].title
         cell.threadOwner.text = arrayOfFeaturedThreads[indexPath.row].name
+        cell.upvotesCnt.text = arrayOfFeaturedThreads[indexPath.row].upvotes
+        cell.repliesCnt.text = arrayOfFeaturedThreads[indexPath.row].replies
+        cell.viewsCnt.text = arrayOfFeaturedThreads[indexPath.row].views
         
         return cell
     }

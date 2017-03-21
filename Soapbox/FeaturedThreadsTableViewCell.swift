@@ -14,6 +14,9 @@ class FeaturedThreadsTableViewCell: UITableViewCell {
     @IBOutlet weak var indexNumber: UILabel!
     @IBOutlet weak var threadTitle: UILabel!
     @IBOutlet weak var threadOwner: UILabel!
+    @IBOutlet weak var upvotesCnt: UILabel!
+    @IBOutlet weak var repliesCnt: UILabel!
+    @IBOutlet weak var viewsCnt: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
