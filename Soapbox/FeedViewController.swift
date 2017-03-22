@@ -46,6 +46,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         feedTableView.separatorColor = UIColor.clear
         feedTableView.refreshControl = refreshControl
         
+        self.navigationItem.hidesBackButton = true
+        
         refreshControl.addTarget(self, action: #selector(FeedViewController.pullToRefresh), for: .valueChanged)
         
         HUD.dimsBackground = false

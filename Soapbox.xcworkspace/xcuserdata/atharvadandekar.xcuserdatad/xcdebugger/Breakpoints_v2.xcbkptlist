@@ -136,11 +136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Soapbox/FeedViewController.swift"
-            timestampString = "511595142.463453"
+            timestampString = "511849302.133094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "didPressButton(_:_:)"
             landmarkType = "7">
          </BreakpointContent>

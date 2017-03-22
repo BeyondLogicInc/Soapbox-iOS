@@ -248,7 +248,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="539-U9-ur9">
                             <connections>
-                                <segue destination="zkx-L6-ff7" kind="show" id="MyO-e7-cdy"/>
+                                <segue destination="zkx-L6-ff7" kind="show" id="gDL-Aw-NxS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -384,7 +384,7 @@
         <!--Search-->
         <scene sceneID="xgl-m5-bTf">
             <objects>
-                <viewController title="Search" id="zkx-L6-ff7" sceneMemberID="viewController">
+                <viewController title="Search" id="zkx-L6-ff7" customClass="SearchViewController" customModule="Soapbox" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="87r-OO-f2q"/>
                         <viewControllerLayoutGuide type="bottom" id="VbI-Mo-YAT"/>
@@ -393,37 +393,47 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gUc-rJ-CSa" customClass="LinedTextField" customModule="Soapbox" customModuleProvider="target">
-                                <rect key="frame" x="16" y="8" width="343" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSl-ox-nhS">
-                                <rect key="frame" x="16" y="49" width="114" height="30"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSl-ox-nhS">
+                                <rect key="frame" x="16" y="8" width="114" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Threads"/>
+                                <connections>
+                                    <action selector="filterChangedWithSender:" destination="zkx-L6-ff7" eventType="touchUpInside" id="BC3-To-Ew2"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1N-l5-vev">
-                                <rect key="frame" x="130" y="49" width="114" height="30"/>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1N-l5-vev">
+                                <rect key="frame" x="130" y="8" width="114" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="People"/>
+                                <connections>
+                                    <action selector="filterChangedWithSender:" destination="zkx-L6-ff7" eventType="touchUpInside" id="SsY-rR-sWM"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7S-r8-oqJ">
-                                <rect key="frame" x="245" y="49" width="114" height="30"/>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7S-r8-oqJ">
+                                <rect key="frame" x="245" y="8" width="114" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Tags"/>
+                                <connections>
+                                    <action selector="filterChangedWithSender:" destination="zkx-L6-ff7" eventType="touchUpInside" id="eNN-KI-FoI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="z3T-Eb-Yx6">
+                        <nil key="title"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="peopleFilterButton" destination="v1N-l5-vev" id="P0P-Fe-fNh"/>
+                        <outlet property="tagsFilterButton" destination="M7S-r8-oqJ" id="eMz-M2-hY8"/>
+                        <outlet property="threadsFilterButton" destination="fSl-ox-nhS" id="LGN-fo-t5T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4YH-CB-eO9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1247.2" y="-2157.5712143928035"/>
+            <point key="canvasLocation" x="2186.4000000000001" y="-2157.5712143928035"/>
         </scene>
         <!--Reading List-->
         <scene sceneID="TXL-zU-k9F">
