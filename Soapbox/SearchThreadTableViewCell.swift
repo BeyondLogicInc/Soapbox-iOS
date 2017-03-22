@@ -22,8 +22,9 @@ class SearchThreadTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.layoutIfNeeded()
-        feedOwnerImage.layer.cornerRadius = 10.0
+        layoutIfNeeded()
+        feedOwnerImage.layer.cornerRadius = 5.0
+        feedOwnerImage.layer.masksToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

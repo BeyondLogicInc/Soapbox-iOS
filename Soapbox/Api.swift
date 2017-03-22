@@ -82,6 +82,12 @@ class Api {
         return request
     }
     
+    public func searchAll(key: String) -> DataRequest {
+        let params: Parameters = ["key": key]
+        let request = Alamofire.request(BASE_URL + "Ajax_Controller/search_all", method: .post, parameters: params)
+        return request
+    }
+    
     public func getUserInfoFromKeychain() -> [String] {
         let userinfo = KeyClip.load("soapbox.userdata") as String?
         let userinfoArr = userinfo?.components(separatedBy: "|")
