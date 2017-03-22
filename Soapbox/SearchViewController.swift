@@ -22,6 +22,17 @@ struct searchThreadResults {
     let cname: String!
 }
 
+struct searchPeopleResults {
+    let srno: String!
+    let name: String!
+    let username: String!
+    let avatarpath: String!
+}
+
+struct searchTagsResults {
+    let name: String!
+}
+
 class SearchViewController: UIViewController, UISearchBarDelegate, UITabBarDelegate, UITableViewDataSource {
  
     @IBOutlet weak var searchThreadsTableView: UITableView!
@@ -32,6 +43,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITabBarDeleg
     
     let searchBar = UISearchBar()
     let loader = UIActivityIndicatorView()
+    let noDataView = UIView()
     
     let btnBorderBottomColor: UIColor = UIColor(colorLiteralRed: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
     let btnBorderBottomColorActive: UIColor = UIColor(colorLiteralRed: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
@@ -39,6 +51,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITabBarDeleg
     let api = Api()
     var searchActive : Bool = false
     var arrayOfSearchedThreads = [searchThreadResults]()
+    var arrayOfSearchedPeople = [searchPeopleResults]()
+    var arrayOfSearchedTags = [searchTagsResults]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +91,17 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITabBarDeleg
         loader.color = UIColor.gray
         self.view.addSubview(loader)
         self.view.bringSubview(toFront: loader)
+    }
+    
+    func loadNoDataView(msg: String) {
+        noDataView.backgroundColor = #colorLiteral(red: 0.9342361093, green: 0.9314675331, blue: 0.9436802864, alpha: 1)
+        let noDataLabel = UILabel()
+        noDataLabel.text = msg
+        noDataLabel.frame = CGRect(x: 0, y: self.view.frame.height/2, width: self.view.frame.width, height: 20)
+        noDataLabel.font = UIFont(name: "OpenSans", size: 15.0)!
+        noDataLabel.textAlignment = NSTextAlignment.center
+        noDataView.addSubview(noDataLabel)
+        self.view.addSubview(noDataView)
     }
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
@@ -133,18 +158,39 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITabBarDeleg
                 } else {
                     if let jsonValue = response.result.value {
                         let results = JSON(jsonValue)["response"]
-                        if results["threads"].count > 0 {
-                            let searchedThreads = results["threads"]
-                            for item in searchedThreads.arrayValue {
-                                self.arrayOfSearchedThreads.append(searchThreadResults(threadno: item["srno"].stringValue, title: item["title"].stringValue, description: item["description"].stringValue, timestamp: item["timestamp"].stringValue, upvotes: item["upvotes"].stringValue, replies: item["replies"].stringValue, views: item["views"].stringValue, uid: item["uid"].stringValue, name: item["name"].stringValue, avatarpath: item["avatarpath"].stringValue, cname: item["cname"].stringValue))
-                            }
+                        
+                        if results["threads"].count <= 0 && results["people"].count <= 0 && results["tags"].count <= 0 {
                             self.loader.stopAnimating()
-                            self.searchThreadsTableView.reloadData()
+                            self.searchThreadsTableView.isHidden = true
+                            self.loadNoDataView(msg: "Couldn't find anything")
+                        } else {
+                            if results["threads"].count > 0 {
+                                let searchedThreads = results["threads"]
+                                for item in searchedThreads.arrayValue {
+                                    self.arrayOfSearchedThreads.append(searchThreadResults(threadno: item["srno"].stringValue, title: item["title"].stringValue, description: item["description"].stringValue, timestamp: item["timestamp"].stringValue, upvotes: item["upvotes"].stringValue, replies: item["replies"].stringValue, views: item["views"].stringValue, uid: item["uid"].stringValue, name: item["name"].stringValue, avatarpath: item["avatarpath"].stringValue, cname: item["cname"].stringValue))
+                                }
+                                self.loader.stopAnimating()
+                                self.searchThreadsTableView.reloadData()
+                                
+                            } else {
+                                self.searchThreadsTableView.isHidden = true
+                                self.loader.stopAnimating()
+                                self.loadNoDataView(msg: "Couldn't find threads")
+                            }
                             
-                        } else if results["people"].count > 0 {
+                            if results["people"].count > 0 {
+                                
+                            } else {
+                                self.loader.stopAnimating()
+                                self.loadNoDataView(msg: "Couldn't find people")
+                            }
                             
-                        } else if results["tags"].count > 0 {
-                            
+                            if results["tags"].count > 0 {
+                                
+                            } else {
+                                self.loader.stopAnimating()
+                                self.loadNoDataView(msg: "Couldn't find tags")
+                            }
                         }
                     }
                 }
@@ -162,19 +208,53 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITabBarDeleg
                 threadsFilterButton.setBottomBorder(color: btnBorderBottomColorActive)
                 peopleFilterButton.setBottomBorder(color: btnBorderBottomColor)
                 tagsFilterButton.setBottomBorder(color: btnBorderBottomColor)
-                searchThreadsTableView.isHidden = false
+                
+                if arrayOfSearchedThreads.count <= 0 && arrayOfSearchedPeople.count <= 0 && arrayOfSearchedTags.count <= 0 {
+                    searchThreadsTableView.isHidden = true
+                    loadNoDataView(msg: "Couldn't find anything")
+                } else {
+                    if arrayOfSearchedThreads.count > 0 {
+                        searchThreadsTableView.isHidden = false
+                    } else {
+                        searchThreadsTableView.isHidden = true
+                        loadNoDataView(msg: "Couldn't find threads")
+                    }
+                }
                 break
             case 2:
                 threadsFilterButton.setBottomBorder(color: btnBorderBottomColor)
                 peopleFilterButton.setBottomBorder(color: btnBorderBottomColorActive)
                 tagsFilterButton.setBottomBorder(color: btnBorderBottomColor)
-                searchThreadsTableView.isHidden = true
+                
+                if arrayOfSearchedThreads.count <= 0 && arrayOfSearchedPeople.count <= 0 && arrayOfSearchedTags.count <= 0 {
+                    searchThreadsTableView.isHidden = true
+                    loadNoDataView(msg: "Couldn't find anything")
+                } else {
+                    if arrayOfSearchedPeople.count > 0 {
+                        searchThreadsTableView.isHidden = false
+                    } else {
+                        searchThreadsTableView.isHidden = true
+                        loadNoDataView(msg: "Couldn't find people")
+                    }
+                }
                 break
             case 3:
                 threadsFilterButton.setBottomBorder(color: btnBorderBottomColor)
                 peopleFilterButton.setBottomBorder(color: btnBorderBottomColor)
                 tagsFilterButton.setBottomBorder(color: btnBorderBottomColorActive)
-                searchThreadsTableView.isHidden = true
+                
+                if arrayOfSearchedThreads.count <= 0 && arrayOfSearchedPeople.count <= 0 && arrayOfSearchedTags.count <= 0 {
+                    searchThreadsTableView.isHidden = true
+                    loadNoDataView(msg: "Couldn't find anything")
+                } else {
+                    if arrayOfSearchedTags.count > 0 {
+                        searchThreadsTableView.isHidden = false
+                    } else {
+                        searchThreadsTableView.isHidden = true
+                        loadNoDataView(msg: "Couldn't find threads")
+                    }
+                }
+                
                 break
             default:
                 print("Unknown language")
@@ -196,7 +276,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITabBarDeleg
         if tableView == searchThreadsTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchThreadCell", for: indexPath) as! SearchThreadTableViewCell
             
-            cell.feedOwnerImage.sd_setImage(with: URL(string: api.BASE_URL + arrayOfSearchedThreads[indexPath.row].avatarpath))
+            cell.feedOwnerImage.sd_setImage(with: URL(string: api.BASE_URL + arrayOfSearchedThreads[indexPath.row].avatarpath), placeholderImage: #imageLiteral(resourceName: "avatar_male"))
             cell.feedOwnerName.text = arrayOfSearchedThreads[indexPath.row].name
             cell.category.text = arrayOfSearchedThreads[indexPath.row].cname
             cell.timeElapsed.text = arrayOfSearchedThreads[indexPath.row].timestamp
