@@ -23,6 +23,7 @@
 		165F1C6C1E72D9320038A7FF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F1C6B1E72D9320038A7FF /* ProfileViewController.swift */; };
 		165F1C6E1E72D9900038A7FF /* ViewProfileCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F1C6D1E72D9900038A7FF /* ViewProfileCustomCell.swift */; };
 		1670C2351E8221A20028054E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C2341E8221A20028054E /* SearchViewController.swift */; };
+		1670C2371E82800F0028054E /* SearchThreadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C2361E82800F0028054E /* SearchThreadTableViewCell.swift */; };
 		167789AF1E6E934E00D22A52 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167789AE1E6E934E00D22A52 /* SwiftyJSON.swift */; };
 		167789B11E6EFDA600D22A52 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167789B01E6EFDA600D22A52 /* Api.swift */; };
 		168467A31E7D0671009831D9 /* ReadingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168467A21E7D0671009831D9 /* ReadingListViewController.swift */; };
@@ -100,6 +101,7 @@
 		165F1C6B1E72D9320038A7FF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		165F1C6D1E72D9900038A7FF /* ViewProfileCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProfileCustomCell.swift; sourceTree = "<group>"; };
 		1670C2341E8221A20028054E /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		1670C2361E82800F0028054E /* SearchThreadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchThreadTableViewCell.swift; sourceTree = "<group>"; };
 		167789AE1E6E934E00D22A52 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		167789B01E6EFDA600D22A52 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		168467A21E7D0671009831D9 /* ReadingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingListViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				165F1C691E729F0A0038A7FF /* SplashScreenViewController.swift */,
 				16AFD9241E6D69ED00F13E17 /* FeedTableViewCell.swift */,
 				16AFD9221E6D633300F13E17 /* FeedViewController.swift */,
+				1670C2361E82800F0028054E /* SearchThreadTableViewCell.swift */,
 				168467A21E7D0671009831D9 /* ReadingListViewController.swift */,
 				1605E9C61E7FDE1F00632B7B /* CategoriesViewController.swift */,
 				16AFD8E61E6D200300F13E17 /* Extensions.swift */,
@@ -623,6 +626,7 @@
 				1670C2351E8221A20028054E /* SearchViewController.swift in Sources */,
 				16AFD9231E6D633300F13E17 /* FeedViewController.swift in Sources */,
 				1605E9CB1E80040A00632B7B /* CategoryCustomTableViewCell.swift in Sources */,
+				1670C2371E82800F0028054E /* SearchThreadTableViewCell.swift in Sources */,
 				165928061E78065800411949 /* SignUpStepsViewController.swift in Sources */,
 				162CB9761E791645002DD66F /* SignUpCategoryTableViewCell.swift in Sources */,
 				16AFD8E21E6BED4800F13E17 /* KeychainSwiftDistrib.swift in Sources */,
