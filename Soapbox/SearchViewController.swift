@@ -136,8 +136,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITabBarDeleg
         searchBar.showsScopeBar = true
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchActive = false;
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {        
         searchBar.showsScopeBar = false
     }
     
