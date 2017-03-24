@@ -38,6 +38,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     let loader = UIActivityIndicatorView()
     let refreshControl = UIRefreshControl()
+    let noDataView = UIView()
     
     var arrayOfThreadImages: [UIImage] = []
     var arrayOfCellData = [cellData]()
@@ -90,6 +91,21 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         _ = navigationController?.popViewController(animated: true)
     }
     
+    func loadNoDataView() {
+        noDataView.backgroundColor = #colorLiteral(red: 0.9342361093, green: 0.9314675331, blue: 0.9436802864, alpha: 1)
+        let noDataLabel = UILabel()
+        if tagName == "" {
+            noDataLabel.text = "Couldn't find anything"
+        } else {
+            noDataLabel.text = "Couldn't find anything related to #\(tagName)"
+        }
+        noDataLabel.frame = CGRect(x: 0, y: self.view.frame.height/2, width: self.view.frame.width, height: 20)
+        noDataLabel.font = UIFont(name: "OpenSans", size: 15.0)!
+        noDataLabel.textAlignment = NSTextAlignment.center
+        noDataView.addSubview(noDataLabel)
+        self.view.addSubview(noDataView)
+    }
+    
     func populateFeed(tag: String) {
         let request = api.populateThreads(tag: tag)
         request.validate()
@@ -132,6 +148,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         self.loader.stopAnimating()
                         self.feedTableView.reloadData()
                         return
+                    } else {
+                        self.loader.stopAnimating()
+                        self.loadNoDataView()
                     }
                 }
             }
