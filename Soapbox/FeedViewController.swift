@@ -33,6 +33,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     @IBOutlet weak var feedTableView: UITableView!
     
+    @IBOutlet weak var leftBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
+    
     let loader = UIActivityIndicatorView()
     let refreshControl = UIRefreshControl()
     
@@ -40,6 +43,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var arrayOfCellData = [cellData]()
     var userinfoArr = [String]()
     let api = Api()
+    
+    var tagName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,11 +70,28 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         userinfoArr = api.getUserInfoFromKeychain()
         
-        populateFeed()
+        if tagName == "" {
+            populateFeed(tag: "")
+            self.navigationItem.title = "SOAPBOX"
+            rightBarButtonItem.isEnabled = true
+        } else {
+            populateFeed(tag: tagName)
+            self.navigationItem.title = "#\(tagName)"
+            rightBarButtonItem.isEnabled = false
+            let btn = UIBarButtonItem()
+            btn.title = "Back"
+            btn.target = self
+            btn.action = #selector(backBtnTapped)
+            self.navigationItem.leftBarButtonItem = btn
+        }
     }
     
-    func populateFeed() {
-        let request = api.populateThreads()
+    func backBtnTapped() {
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    func populateFeed(tag: String) {
+        let request = api.populateThreads(tag: tag)
         request.validate()
         request.responseJSON { response in
             if response.error != nil {
@@ -118,7 +140,11 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func pullToRefresh() {
         arrayOfCellData.removeAll()
-        populateFeed()
+        if tagName == "" {
+            populateFeed(tag: "")
+        } else {
+            populateFeed(tag: tagName)
+        }
         refreshControl.endRefreshing()
     }
         

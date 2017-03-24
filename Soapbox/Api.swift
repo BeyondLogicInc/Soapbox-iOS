@@ -39,9 +39,15 @@ class Api {
         return request
     }
     
-    public func populateThreads() -> DataRequest {
-        let request = Alamofire.request(BASE_URL + "Thread/getThreads")
-        return request
+    public func populateThreads(tag: String) -> DataRequest {
+        if tag == "" {
+            let request = Alamofire.request(BASE_URL + "Thread/getThreads")
+            return request
+        } else {
+            let params: Parameters = ["tag": tag]
+            let request = Alamofire.request(BASE_URL + "Tag/fetchThreads", method: .post, parameters: params)
+            return request
+        }
     }
     
     public func getFeaturedThreads() -> DataRequest {

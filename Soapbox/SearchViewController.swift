@@ -350,6 +350,15 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITabBarDeleg
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toFeedVCFromSearchTags" {            
+            let row = self.searchTagsTableView.indexPathForSelectedRow?.row
+            let feedVC = segue.destination as? FeedViewController
+            let tagName = arrayOfSearchedTags[row!].name
+            feedVC?.tagName = tagName!
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count: Int?
         
