@@ -84,10 +84,21 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITabBarDeleg
         threadsFilterButton.setBottomBorder(color: btnBorderBottomColorActive)
         peopleFilterButton.setBottomBorder(color: btnBorderBottomColor)
         tagsFilterButton.setBottomBorder(color: btnBorderBottomColor)
+        
+        let btn = UIBarButtonItem()
+        btn.image = #imageLiteral(resourceName: "Back Filled-35")        
+        btn.target = self
+        btn.action = #selector(backBtnTapped)
+        self.navigationItem.leftBarButtonItem = btn
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func backBtnTapped() {
+        searchBar.resignFirstResponder()
+        _ = navigationController?.popViewController(animated: true)
     }
     
     func initSearchBar() {
