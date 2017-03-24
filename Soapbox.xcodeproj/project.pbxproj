@@ -19,6 +19,7 @@
 		162CB9761E791645002DD66F /* SignUpCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162CB9751E791645002DD66F /* SignUpCategoryTableViewCell.swift */; };
 		1637D12A1E6A878200DE4A35 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637D1291E6A878200DE4A35 /* LoginViewController.swift */; };
 		1637F29D1E855C6800947D47 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637F29C1E855C6800947D47 /* StatsViewController.swift */; };
+		1637F29F1E8573DD00947D47 /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637F29E1E8573DD00947D47 /* StatsTableViewCell.swift */; };
 		165928061E78065800411949 /* SignUpStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165928051E78065800411949 /* SignUpStepsViewController.swift */; };
 		165F1C6A1E729F0A0038A7FF /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F1C691E729F0A0038A7FF /* SplashScreenViewController.swift */; };
 		165F1C6C1E72D9320038A7FF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F1C6B1E72D9320038A7FF /* ProfileViewController.swift */; };
@@ -99,6 +100,7 @@
 		162CB9751E791645002DD66F /* SignUpCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		1637D1291E6A878200DE4A35 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1637F29C1E855C6800947D47 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		1637F29E1E8573DD00947D47 /* StatsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
 		165928051E78065800411949 /* SignUpStepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpStepsViewController.swift; sourceTree = "<group>"; };
 		165F1C691E729F0A0038A7FF /* SplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		165F1C6B1E72D9320038A7FF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				162CB9751E791645002DD66F /* SignUpCategoryTableViewCell.swift */,
 				165F1C6D1E72D9900038A7FF /* ViewProfileCustomCell.swift */,
 				165F1C6B1E72D9320038A7FF /* ProfileViewController.swift */,
+				1637F29E1E8573DD00947D47 /* StatsTableViewCell.swift */,
 				165F1C691E729F0A0038A7FF /* SplashScreenViewController.swift */,
 				16AFD9241E6D69ED00F13E17 /* FeedTableViewCell.swift */,
 				16AFD9221E6D633300F13E17 /* FeedViewController.swift */,
@@ -616,6 +619,7 @@
 				167789B11E6EFDA600D22A52 /* Api.swift in Sources */,
 				16AFD8E71E6D200300F13E17 /* Extensions.swift in Sources */,
 				165F1C6A1E729F0A0038A7FF /* SplashScreenViewController.swift in Sources */,
+				1637F29F1E8573DD00947D47 /* StatsTableViewCell.swift in Sources */,
 				165F1C6C1E72D9320038A7FF /* ProfileViewController.swift in Sources */,
 				1637D12A1E6A878200DE4A35 /* LoginViewController.swift in Sources */,
 				16AFD9251E6D69ED00F13E17 /* FeedTableViewCell.swift in Sources */,

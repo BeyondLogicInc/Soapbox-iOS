@@ -55,6 +55,11 @@ class Api {
         return request
     }
     
+    public func getStats() -> DataRequest {
+        let request = Alamofire.request(BASE_URL + "Profile/getStats")
+        return request
+    }
+    
     public func populateReadingList() -> DataRequest {
         let request = Alamofire.request(BASE_URL + "Ajax_Controller/getReadingList")
         return request
