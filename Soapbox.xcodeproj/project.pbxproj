@@ -18,6 +18,7 @@
 		161CE8ED1E69DBA7009A6C63 /* SoapboxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161CE8EC1E69DBA7009A6C63 /* SoapboxUITests.swift */; };
 		162CB9761E791645002DD66F /* SignUpCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162CB9751E791645002DD66F /* SignUpCategoryTableViewCell.swift */; };
 		1637D12A1E6A878200DE4A35 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637D1291E6A878200DE4A35 /* LoginViewController.swift */; };
+		1637F29D1E855C6800947D47 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637F29C1E855C6800947D47 /* StatsViewController.swift */; };
 		165928061E78065800411949 /* SignUpStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165928051E78065800411949 /* SignUpStepsViewController.swift */; };
 		165F1C6A1E729F0A0038A7FF /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F1C691E729F0A0038A7FF /* SplashScreenViewController.swift */; };
 		165F1C6C1E72D9320038A7FF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F1C6B1E72D9320038A7FF /* ProfileViewController.swift */; };
@@ -97,6 +98,7 @@
 		161CE8EE1E69DBA7009A6C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		162CB9751E791645002DD66F /* SignUpCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		1637D1291E6A878200DE4A35 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1637F29C1E855C6800947D47 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		165928051E78065800411949 /* SignUpStepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpStepsViewController.swift; sourceTree = "<group>"; };
 		165F1C691E729F0A0038A7FF /* SplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		165F1C6B1E72D9320038A7FF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				167789B01E6EFDA600D22A52 /* Api.swift */,
 				16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */,
 				161CE8D01E69DBA7009A6C63 /* Main.storyboard */,
+				1637F29C1E855C6800947D47 /* StatsViewController.swift */,
 				1670C2381E82C9290028054E /* SearchPeopleTableViewCell.swift */,
 				1670C2341E8221A20028054E /* SearchViewController.swift */,
 				16B828A11E810FA20015F685 /* FeaturedThreadsTableViewCell.swift */,
@@ -624,6 +627,7 @@
 				168467A51E7D0EF9009831D9 /* ReadingListTableViewCell.swift in Sources */,
 				161CE8CD1E69DBA6009A6C63 /* AppDelegate.swift in Sources */,
 				1605E9C71E7FDE1F00632B7B /* CategoriesViewController.swift in Sources */,
+				1637F29D1E855C6800947D47 /* StatsViewController.swift in Sources */,
 				168467A31E7D0671009831D9 /* ReadingListViewController.swift in Sources */,
 				16B828A21E810FA20015F685 /* FeaturedThreadsTableViewCell.swift in Sources */,
 				16B828A01E810B610015F685 /* FeaturedThreadsViewController.swift in Sources */,
