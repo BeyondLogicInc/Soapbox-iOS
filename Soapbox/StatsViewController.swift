@@ -13,6 +13,8 @@ struct topThreadsData {
     let title: String!
     let timestamp: String!
     let upvotes: String!
+    let views: String!
+    let ratio: String!
     let name: String!
 }
 
@@ -92,7 +94,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     
                     if topThreads.count > 0 {
                         for item in topThreads.arrayValue {
-                            self.arrayOfTopThreads.append(topThreadsData(threadno: item["srno"].stringValue, title: item["title"].stringValue, timestamp: item["timestamp"].stringValue, upvotes: item["upvotes"].stringValue, name: item["name"].stringValue))
+                            self.arrayOfTopThreads.append(topThreadsData(threadno: item["srno"].stringValue, title: item["title"].stringValue, timestamp: item["timestamp"].stringValue, upvotes: item["upvotes"].stringValue, views: item["views"].stringValue, ratio: item["ratio"].stringValue, name: item["name"].stringValue))
                         }
                     }
                     
@@ -140,7 +142,6 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             cell.upvoteCount.text = arrayOfTopThreads[indexPath.row].upvotes
             cell.title.text = arrayOfTopThreads[indexPath.row].title
-            cell.name.text = arrayOfTopThreads[indexPath.row].name
             
             return cell
         } else if indexPath.section == 1 {
@@ -148,7 +149,6 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             cell.upvoteCount.text = arrayOfCorrectReplies[indexPath.row].upvotes
             cell.title.text = arrayOfCorrectReplies[indexPath.row].description
-            cell.name.text = arrayOfCorrectReplies[indexPath.row].name
             
             return cell
         
@@ -156,8 +156,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let cell = tableView.dequeueReusableCell(withIdentifier: "statsCell", for: indexPath) as! StatsTableViewCell
             
             cell.upvoteCount.text = arrayOfTopReplies[indexPath.row].upvotes
-            cell.title.text = arrayOfTopReplies[indexPath.row].description
-            cell.name.text = arrayOfTopThreads[indexPath.row].name
+            cell.title.text = arrayOfTopReplies[indexPath.row].description            
             
             return cell
         }
@@ -193,5 +192,5 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-    }
+    }        
 }
