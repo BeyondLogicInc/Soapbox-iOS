@@ -25,6 +25,15 @@ struct topRepliesData {
     let name: String!
 }
 
+struct correctRepliesData {
+    let replyno: String!
+    let threadno: String!
+    let description: String!
+    let timestamp: String!
+    let upvotes: String!
+    let name: String!
+}
+
 class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
@@ -41,6 +50,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var arrayOfTopThreads = [topThreadsData]()
     var arrayOfTopReplies = [topRepliesData]()
+    var arrayOfCorrectReplies = [correctRepliesData]()
     
     let sections = ["Top Threads", "Correct Replies", "Top Replies"]
     
@@ -78,6 +88,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     
                     let topThreads = results["top_threads"]
                     let topReplies = results["top_replies"]
+                    let correctReplies = results["correct_replies"]
                     
                     if topThreads.count > 0 {
                         for item in topThreads.arrayValue {
@@ -90,6 +101,13 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                             self.arrayOfTopReplies.append(topRepliesData(replyno: item["srno"].stringValue, threadno: item["tid"].stringValue,description: item["description"].stringValue, timestamp: item["timestamp"].stringValue, upvotes: item["upvotes"].stringValue, name: item["name"].stringValue))
                         }
                     }
+                    
+                    if correctReplies.count > 0 {
+                        for item in correctReplies.arrayValue {
+                            self.arrayOfCorrectReplies.append(correctRepliesData(replyno: item["srno"].stringValue, threadno: item["tid"].stringValue,description: item["description"].stringValue, timestamp: item["timestamp"].stringValue, upvotes: item["upvotes"].stringValue, name: item["name"].stringValue))
+                        }
+                    }
+                    
                     self.loader.stopAnimating()
                     self.statsTableView.reloadData()
                     return
@@ -105,6 +123,8 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return arrayOfTopThreads.count
+        } else if section == 1 {
+            return arrayOfCorrectReplies.count
         } else {
             return arrayOfTopReplies.count
         }
@@ -123,6 +143,15 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.name.text = arrayOfTopThreads[indexPath.row].name
             
             return cell
+        } else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "statsCell", for: indexPath) as! StatsTableViewCell
+            
+            cell.upvoteCount.text = arrayOfCorrectReplies[indexPath.row].upvotes
+            cell.title.text = arrayOfCorrectReplies[indexPath.row].description
+            cell.name.text = arrayOfCorrectReplies[indexPath.row].name
+            
+            return cell
+        
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "statsCell", for: indexPath) as! StatsTableViewCell
             
@@ -146,9 +175,12 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         lbl.font = UIFont(name: "OpenSans", size: 14)
         if section == 0 {
             lbl.text = "Top Threads"
+        } else if section == 1{
+            lbl.text = "Correct Replies"
         } else {
             lbl.text = "Top Replies"
         }
+        
         headerView.addSubview(lbl)
         headerView.isOpaque = true
         headerView.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9647058824, alpha: 1)
