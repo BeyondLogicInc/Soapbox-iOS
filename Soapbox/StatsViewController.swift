@@ -138,10 +138,12 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "statsCell", for: indexPath) as! StatsTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "statsTopThreadCell", for: indexPath) as! StatsTopThreadTableViewCell
             
-            cell.upvoteCount.text = arrayOfTopThreads[indexPath.row].upvotes
             cell.title.text = arrayOfTopThreads[indexPath.row].title
+            cell.upvoteCount.text = arrayOfTopThreads[indexPath.row].upvotes
+            cell.viewsCount.text = arrayOfTopThreads[indexPath.row].views
+            cell.ratio.text = arrayOfTopThreads[indexPath.row].ratio
             
             return cell
         } else if indexPath.section == 1 {
