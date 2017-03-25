@@ -58,7 +58,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         
         statsHeaderView.addBorder(side: .bottom, thickness: 1.0, color: #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9450980392, alpha: 1))
-        
+        statsTableView.tableFooterView = UIView()
         //Initialize loader
         loader.frame = CGRect(x: 0, y: -65.0, width: self.view.frame.width, height: self.view.frame.height)
         loader.isHidden = false
