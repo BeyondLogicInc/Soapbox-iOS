@@ -18,6 +18,7 @@ struct topThreadsData {
 
 struct topRepliesData {
     let replyno: String!
+    let threadno: String!
     let description: String!
     let timestamp: String!
     let upvotes: String!
@@ -41,7 +42,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var arrayOfTopThreads = [topThreadsData]()
     var arrayOfTopReplies = [topRepliesData]()
     
-    let sections = ["Top Threads", "Top Replies"]
+    let sections = ["Top Threads", "Correct Replies", "Top Replies"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +87,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     
                     if topReplies.count > 0 {
                         for item in topReplies.arrayValue {
-                            self.arrayOfTopReplies.append(topRepliesData(replyno: item["srno"].stringValue, description: item["description"].stringValue, timestamp: item["timestamp"].stringValue, upvotes: item["upvotes"].stringValue, name: item["name"].stringValue))
+                            self.arrayOfTopReplies.append(topRepliesData(replyno: item["srno"].stringValue, threadno: item["tid"].stringValue,description: item["description"].stringValue, timestamp: item["timestamp"].stringValue, upvotes: item["upvotes"].stringValue, name: item["name"].stringValue))
                         }
                     }
                     self.loader.stopAnimating()
