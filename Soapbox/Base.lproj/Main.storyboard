@@ -1115,7 +1115,7 @@
         <!--Notifications-->
         <scene sceneID="Elj-IX-Cg2">
             <objects>
-                <viewController id="QTy-eP-LJw" sceneMemberID="viewController">
+                <viewController id="QTy-eP-LJw" customClass="NotificationsViewController" customModule="Soapbox" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="44S-gK-nmh"/>
                         <viewControllerLayoutGuide type="bottom" id="iE7-J2-Eyw"/>
@@ -1123,11 +1123,63 @@
                     <view key="view" contentMode="scaleToFill" id="n6k-w6-jqW">
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="81" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VdH-6h-FzC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notificationCell" rowHeight="81" id="zhc-Ws-wzt" customClass="NotificationTableViewCell" customModule="Soapbox" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="81"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zhc-Ws-wzt" id="4FT-Sx-Lvi">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_atharva" translatesAutoresizingMaskIntoConstraints="NO" id="kmk-Yb-2d5">
+                                                    <rect key="frame" x="16" y="13" width="55" height="55"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="55" id="O4M-xn-R6z"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRC-rP-khs">
+                                                    <rect key="frame" x="84" y="6" width="280" height="68"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                                    <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="cRC-rP-khs" secondAttribute="trailing" constant="11" id="661-n9-2t5"/>
+                                                <constraint firstItem="cRC-rP-khs" firstAttribute="top" secondItem="4FT-Sx-Lvi" secondAttribute="top" constant="6" id="Bd2-gM-yHt"/>
+                                                <constraint firstItem="cRC-rP-khs" firstAttribute="leading" secondItem="4FT-Sx-Lvi" secondAttribute="leadingMargin" constant="76" id="Gan-kw-3yz"/>
+                                                <constraint firstItem="cRC-rP-khs" firstAttribute="leading" secondItem="kmk-Yb-2d5" secondAttribute="trailing" constant="13" id="Nbn-vd-XrS"/>
+                                                <constraint firstItem="kmk-Yb-2d5" firstAttribute="top" secondItem="cRC-rP-khs" secondAttribute="top" constant="7" id="SDh-vv-30L"/>
+                                                <constraint firstItem="cRC-rP-khs" firstAttribute="baseline" secondItem="kmk-Yb-2d5" secondAttribute="baseline" constant="1" id="sgB-wo-eyU"/>
+                                                <constraint firstItem="kmk-Yb-2d5" firstAttribute="centerY" secondItem="4FT-Sx-Lvi" secondAttribute="centerY" id="yTU-I6-PNJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="avatarImage" destination="kmk-Yb-2d5" id="EL0-P0-BLo"/>
+                                            <outlet property="notificationContent" destination="cRC-rP-khs" id="AF4-q0-iVE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="QTy-eP-LJw" id="LKI-Ae-6bU"/>
+                                    <outlet property="delegate" destination="QTy-eP-LJw" id="dTT-Ax-EcY"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Notifications" id="A4B-Vg-a5X"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="notificationsTableView" destination="VdH-6h-FzC" id="aKd-uR-HHO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vsB-GU-F27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

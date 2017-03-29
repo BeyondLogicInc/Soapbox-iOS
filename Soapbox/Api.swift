@@ -99,6 +99,11 @@ class Api {
         return request
     }
     
+    public func getNotifications() -> DataRequest {
+        let request = Alamofire.request(BASE_URL + "Ajax_Controller/getNotifications")
+        return request
+    }
+    
     public func getUserInfoFromKeychain() -> [String] {
         let userinfo = KeyClip.load("soapbox.userdata") as String?
         let userinfoArr = userinfo?.components(separatedBy: "|")

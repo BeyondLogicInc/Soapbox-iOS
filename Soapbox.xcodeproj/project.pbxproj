@@ -10,6 +10,8 @@
 		1605E9C71E7FDE1F00632B7B /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1605E9C61E7FDE1F00632B7B /* CategoriesViewController.swift */; };
 		1605E9CB1E80040A00632B7B /* CategoryCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1605E9CA1E80040A00632B7B /* CategoryCustomTableViewCell.swift */; };
 		1610107F1E8B7EB8008EE1A8 /* FeedCellWithoutImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1610107E1E8B7EB8008EE1A8 /* FeedCellWithoutImageTableViewCell.swift */; };
+		161010811E8C210A008EE1A8 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161010801E8C210A008EE1A8 /* NotificationsViewController.swift */; };
+		161010831E8C2157008EE1A8 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161010821E8C2157008EE1A8 /* NotificationTableViewCell.swift */; };
 		161CE8CD1E69DBA6009A6C63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161CE8CC1E69DBA6009A6C63 /* AppDelegate.swift */; };
 		161CE8CF1E69DBA6009A6C63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161CE8CE1E69DBA6009A6C63 /* ViewController.swift */; };
 		161CE8D21E69DBA7009A6C63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 161CE8D01E69DBA7009A6C63 /* Main.storyboard */; };
@@ -87,6 +89,8 @@
 		1605E9C61E7FDE1F00632B7B /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		1605E9CA1E80040A00632B7B /* CategoryCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCustomTableViewCell.swift; sourceTree = "<group>"; };
 		1610107E1E8B7EB8008EE1A8 /* FeedCellWithoutImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCellWithoutImageTableViewCell.swift; sourceTree = "<group>"; };
+		161010801E8C210A008EE1A8 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		161010821E8C2157008EE1A8 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		161CE8C91E69DBA6009A6C63 /* Soapbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soapbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		161CE8CC1E69DBA6009A6C63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		161CE8CE1E69DBA6009A6C63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 				167789B01E6EFDA600D22A52 /* Api.swift */,
 				16AFD8E11E6BED4800F13E17 /* KeychainSwiftDistrib.swift */,
 				161CE8D01E69DBA7009A6C63 /* Main.storyboard */,
+				161010821E8C2157008EE1A8 /* NotificationTableViewCell.swift */,
+				161010801E8C210A008EE1A8 /* NotificationsViewController.swift */,
 				1610107E1E8B7EB8008EE1A8 /* FeedCellWithoutImageTableViewCell.swift */,
 				16432DBA1E86DB29007ED963 /* StatsTopThreadTableViewCell.swift */,
 				1637F29C1E855C6800947D47 /* StatsViewController.swift */,
@@ -623,6 +629,8 @@
 				165F1C6E1E72D9900038A7FF /* ViewProfileCustomCell.swift in Sources */,
 				16F561591E715FF700902B64 /* CreateNewThreadViewController.swift in Sources */,
 				1610107F1E8B7EB8008EE1A8 /* FeedCellWithoutImageTableViewCell.swift in Sources */,
+				161010811E8C210A008EE1A8 /* NotificationsViewController.swift in Sources */,
+				161010831E8C2157008EE1A8 /* NotificationTableViewCell.swift in Sources */,
 				167789B11E6EFDA600D22A52 /* Api.swift in Sources */,
 				16AFD8E71E6D200300F13E17 /* Extensions.swift in Sources */,
 				165F1C6A1E729F0A0038A7FF /* SplashScreenViewController.swift in Sources */,
