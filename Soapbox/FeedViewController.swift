@@ -29,7 +29,7 @@ struct cellData {
     var isRead: Bool!
 }
 
-class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FeedCellDelegate {
+class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FeedCellDelegate, FeedCellWithoutImageDelegate {
         
     @IBOutlet weak var feedTableView: UITableView!
     
@@ -231,37 +231,66 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! FeedTableViewCell
         
-        cell.cellDelegate = self
-        cell.tag = indexPath.row
-        
-        cell.threadOwnerName.text = arrayOfCellData[indexPath.row].name
-        cell.threadCategory.text = arrayOfCellData[indexPath.row].category
-        cell.threadTimeLapsed.text = arrayOfCellData[indexPath.row].time
-        
-        cell.feedOwnerImage.sd_setImage(with: URL(string: api.BASE_URL + arrayOfCellData[indexPath.row].avatarpath), placeholderImage: #imageLiteral(resourceName: "avatar_male"))        
-        DispatchQueue.main.async {
-            cell.threadImage.image = self.arrayOfThreadImages[indexPath.row]
+        if arrayOfCellData[indexPath.row].threadImage == "" {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "feedCellWithoutImage", for: indexPath) as! FeedCellWithoutImageTableViewCell
+            cell.cellWithoutImageDelegate = self
+            cell.tag = indexPath.row
+            cell.threadOwnerName.text = arrayOfCellData[indexPath.row].name
+            cell.threadCategory.text = arrayOfCellData[indexPath.row].category
+            cell.threadTimeLapsed.text = arrayOfCellData[indexPath.row].time
+            cell.feedOwnerImage.sd_setImage(with: URL(string: api.BASE_URL + arrayOfCellData[indexPath.row].avatarpath), placeholderImage: #imageLiteral(resourceName: "avatar_male"))
+            cell.threadTitle.text = arrayOfCellData[indexPath.row].title
+            cell.threadDescription.text = (arrayOfCellData[indexPath.row].summary).html2String
+            cell.threadDescription.lineBreakMode = .byTruncatingTail
+            cell.threadUpvotes.text = arrayOfCellData[indexPath.row].upvoteCnt + " Upvotes"
+            cell.threadReplies.text = arrayOfCellData[indexPath.row].repliesCnt + " Replies"
+            cell.threadViews.text = arrayOfCellData[indexPath.row].viewsCnt + " Views"
+            cell.threadOptionsBtn.isHidden = false
+            cell.contentView.backgroundColor = UIColor.init(colorLiteralRed: 234/255, green: 233/255, blue: 237/255, alpha: 1.0)
+            
+            return cell
+            
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! FeedTableViewCell
+            cell.cellDelegate = self
+            cell.tag = indexPath.row
+            cell.threadOwnerName.text = arrayOfCellData[indexPath.row].name
+            cell.threadCategory.text = arrayOfCellData[indexPath.row].category
+            cell.threadTimeLapsed.text = arrayOfCellData[indexPath.row].time
+            cell.feedOwnerImage.sd_setImage(with: URL(string: api.BASE_URL + arrayOfCellData[indexPath.row].avatarpath), placeholderImage: #imageLiteral(resourceName: "avatar_male"))
+            DispatchQueue.main.async {
+                cell.threadImage.image = self.arrayOfThreadImages[indexPath.row]
+            }
+            cell.threadTitle.text = arrayOfCellData[indexPath.row].title
+            cell.threadDescription.text = (arrayOfCellData[indexPath.row].summary).html2String
+            cell.threadDescription.lineBreakMode = .byTruncatingTail
+            cell.threadUpvotes.text = arrayOfCellData[indexPath.row].upvoteCnt + " Upvotes"
+            cell.threadReplies.text = arrayOfCellData[indexPath.row].repliesCnt + " Replies"
+            cell.threadViews.text = arrayOfCellData[indexPath.row].viewsCnt + " Views"
+            cell.threadOptionsBtn.isHidden = false
+            cell.contentView.backgroundColor = UIColor.init(colorLiteralRed: 234/255, green: 233/255, blue: 237/255, alpha: 1.0)
+            
+            return cell
         }
-        cell.threadTitle.text = arrayOfCellData[indexPath.row].title
-        cell.threadDescription.text = (arrayOfCellData[indexPath.row].summary).html2String
-        cell.threadDescription.lineBreakMode = .byTruncatingTail
-        cell.threadUpvotes.text = arrayOfCellData[indexPath.row].upvoteCnt + " Upvotes"
-        cell.threadReplies.text = arrayOfCellData[indexPath.row].repliesCnt + " Replies"
-        cell.threadViews.text = arrayOfCellData[indexPath.row].viewsCnt + " Views"
-        cell.threadOptionsBtn.isHidden = false
-        cell.contentView.backgroundColor = UIColor.init(colorLiteralRed: 234/255, green: 233/255, blue: 237/255, alpha: 1.0)
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        if arrayOfCellData[indexPath.row].threadImage == "" {
+            return 176
+        } else {
+            return UITableViewAutomaticDimension
+        }
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        if arrayOfCellData[indexPath.row].threadImage == "" {
+            return 176
+        } else {
+            return UITableViewAutomaticDimension
+        }
     }
     
     func didPressButton(_ tag: Int, _ cell: FeedTableViewCell) {
@@ -285,10 +314,10 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         if let jsonValue = response.result.value {
                             var results = JSON(jsonValue)
                             if results["response"].boolValue {
-                                HUD.flash(.success, delay: 2.0)
+                                HUD.flash(.success, delay: 1.0)
                                 self.arrayOfCellData[tag].tracked = false
                             } else {
-                                HUD.flash(.label("Something went wrong :("), delay: 2.0)
+                                HUD.flash(.label("Something went wrong :("), delay: 1.0)
                             }
                         }
                     }
@@ -308,10 +337,10 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         if let jsonValue = response.result.value {
                             var results = JSON(jsonValue)
                             if results["response"].boolValue {
-                                HUD.flash(.success, delay: 2.0)
+                                HUD.flash(.success, delay: 1.0)
                                 self.arrayOfCellData[tag].tracked = true
                             } else {
-                                HUD.flash(.label("Something went wrong :("), delay: 2.0)
+                                HUD.flash(.label("Something went wrong :("), delay: 1.0)
                             }
                         }
                     }
@@ -336,12 +365,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         if let jsonValue = response.result.value {
                             var results = JSON(jsonValue)
                             if results["response"].boolValue {
-                                HUD.flash(.success, delay: 2.0)
+                                HUD.flash(.success, delay: 1.0)
                                 self.arrayOfCellData[tag].isRead = false
                                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                                 appDelegate.refreshReadingList = true
                             } else {
-                                HUD.flash(.label("Something went wrong :("), delay: 2.0)
+                                HUD.flash(.label("Something went wrong :("), delay: 1.0)
                             }
                         }
                     }
@@ -361,12 +390,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         if let jsonValue = response.result.value {
                             var results = JSON(jsonValue)
                             if results["response"].boolValue {
-                                HUD.flash(.success, delay: 2.0)
+                                HUD.flash(.success, delay: 1.0)
                                 self.arrayOfCellData[tag].isRead = true
                                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                                 appDelegate.refreshReadingList = true
                             } else {
-                                HUD.flash(.label("Something went wrong :("), delay: 2.0)
+                                HUD.flash(.label("Something went wrong :("), delay: 1.0)
                             }
                         }
                     }
@@ -389,12 +418,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         if let jsonValue = response.result.value {
                             var results = JSON(jsonValue)
                             if results["response"].boolValue {
-                                HUD.flash(.success, delay: 2.0)
+                                HUD.flash(.success, delay: 1.0)
                                 let indexPath = self.feedTableView.indexPath(for: cell)
                                 self.arrayOfCellData.remove(at: tag)
                                 self.feedTableView.deleteRows(at: [indexPath!], with: .automatic)
                             } else {
-                                HUD.flash(.label("Something went wrong :("), delay: 2.0)
+                                HUD.flash(.label("Something went wrong :("), delay: 1.0)
                             }
                         }
                     }
@@ -421,12 +450,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             if let jsonValue = response.result.value {
                                 var results = JSON(jsonValue)
                                 if results["response"].boolValue {
-                                    HUD.flash(.success, delay: 2.0)
+                                    HUD.flash(.success, delay: 1.0)
                                     let indexPath = self.feedTableView.indexPath(for: cell)
                                     self.arrayOfCellData.remove(at: tag)
                                     self.feedTableView.deleteRows(at: [indexPath!], with: .automatic)
                                 } else {
-                                    HUD.flash(.label("Something went wrong :("), delay: 2.0)
+                                    HUD.flash(.label("Something went wrong :("), delay: 1.0)
                                 }
                             }
                         }
@@ -445,4 +474,184 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.present(actionController, animated: true, completion: nil)
     }
     
+    func didPressButtonWithoutImage(_ tag: Int, _ cell: FeedCellWithoutImageTableViewCell) {
+        print("I have pressed a button with a tag: \(tag)")
+        let actionController = YoutubeActionController()
+        
+        var trackMsg = "Track this thread"
+        
+        if arrayOfCellData[tag].tracked as Bool {
+            //Already tracking
+            trackMsg = "Tracking this thread"
+            actionController.addAction(Action(ActionData(title: trackMsg, image: UIImage(named: "Checkmark-50")!), style: .default, handler: { action in
+                HUD.show(.progress)
+                
+                let request = self.api.threadOptions(tid: self.arrayOfCellData[tag].threadno, option: "untrack_thread")
+                request.validate()
+                request.responseJSON { response in
+                    if response.error != nil {
+                        self.present(Alert.showErrorAlert(errorMsg: (response.error?.localizedDescription)!), animated: true, completion: nil)
+                    } else {
+                        if let jsonValue = response.result.value {
+                            var results = JSON(jsonValue)
+                            if results["response"].boolValue {
+                                HUD.flash(.success, delay: 1.0)
+                                self.arrayOfCellData[tag].tracked = false
+                            } else {
+                                HUD.flash(.label("Something went wrong :("), delay: 1.0)
+                            }
+                        }
+                    }
+                }
+            }))
+        } else {
+            //Not tracked
+            actionController.addAction(Action(ActionData(title: trackMsg, image: UIImage(named: "Binoculars")!), style: .default, handler: { action in
+                HUD.show(.progress)
+                
+                let request = self.api.threadOptions(tid: self.arrayOfCellData[tag].threadno, option: "track_thread")
+                request.validate()
+                request.responseJSON { response in
+                    if response.error != nil {
+                        self.present(Alert.showErrorAlert(errorMsg: (response.error?.localizedDescription)!), animated: true, completion: nil)
+                    } else {
+                        if let jsonValue = response.result.value {
+                            var results = JSON(jsonValue)
+                            if results["response"].boolValue {
+                                HUD.flash(.success, delay: 1.0)
+                                self.arrayOfCellData[tag].tracked = true
+                            } else {
+                                HUD.flash(.label("Something went wrong :("), delay: 1.0)
+                            }
+                        }
+                    }
+                }
+            }))
+        }
+        
+        
+        var readMsg: String = "Add to reading list"
+        if arrayOfCellData[tag].isRead as Bool {
+            //Added to reading list
+            readMsg = "Added to reading list"
+            actionController.addAction(Action(ActionData(title: readMsg, image: UIImage(named: "Checkmark-50")!), style: .default, handler: { action in
+                HUD.show(.progress)
+                
+                let request = self.api.threadOptions(tid: self.arrayOfCellData[tag].threadno, option: "remove_from_list")
+                request.validate()
+                request.responseJSON { response in
+                    if response.error != nil {
+                        self.present(Alert.showErrorAlert(errorMsg: (response.error?.localizedDescription)!), animated: true, completion: nil)
+                    } else {
+                        if let jsonValue = response.result.value {
+                            var results = JSON(jsonValue)
+                            if results["response"].boolValue {
+                                HUD.flash(.success, delay: 1.0)
+                                self.arrayOfCellData[tag].isRead = false
+                                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                                appDelegate.refreshReadingList = true
+                            } else {
+                                HUD.flash(.label("Something went wrong :("), delay: 1.0)
+                            }
+                        }
+                    }
+                }
+            }))
+        } else {
+            //Add to reading list
+            actionController.addAction(Action(ActionData(title: readMsg, image: UIImage(named: "Reading")!), style: .default, handler: { action in
+                HUD.show(.progress)
+                
+                let request = self.api.threadOptions(tid: self.arrayOfCellData[tag].threadno, option: "add_to_list")
+                request.validate()
+                request.responseJSON { response in
+                    if response.error != nil {
+                        self.present(Alert.showErrorAlert(errorMsg: (response.error?.localizedDescription)!), animated: true, completion: nil)
+                    } else {
+                        if let jsonValue = response.result.value {
+                            var results = JSON(jsonValue)
+                            if results["response"].boolValue {
+                                HUD.flash(.success, delay: 1.0)
+                                self.arrayOfCellData[tag].isRead = true
+                                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                                appDelegate.refreshReadingList = true
+                            } else {
+                                HUD.flash(.label("Something went wrong :("), delay: 1.0)
+                            }
+                        }
+                    }
+                }
+            }))
+        }
+        
+        actionController.addAction(Action(ActionData(title: "Hide this thread", image: UIImage(named: "Hide")!), style: .default, handler: { action in
+            let alert = UIAlertController(title: "Confirm", message: "Are you sure you want to hide this thread?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "HIDE", style: .destructive, handler: { action in
+                
+                HUD.show(.progress)
+                
+                let request = self.api.threadOptions(tid: self.arrayOfCellData[tag].threadno, option: "hide_thread")
+                request.validate()
+                request.responseJSON { response in
+                    if response.error != nil {
+                        self.present(Alert.showErrorAlert(errorMsg: (response.error?.localizedDescription)!), animated: true, completion: nil)
+                    } else {
+                        if let jsonValue = response.result.value {
+                            var results = JSON(jsonValue)
+                            if results["response"].boolValue {
+                                HUD.flash(.success, delay: 1.0)
+                                let indexPath = self.feedTableView.indexPath(for: cell)
+                                self.arrayOfCellData.remove(at: tag)
+                                self.feedTableView.deleteRows(at: [indexPath!], with: .automatic)
+                            } else {
+                                HUD.flash(.label("Something went wrong :("), delay: 1.0)
+                            }
+                        }
+                    }
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "CANCEL", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }))
+        
+        if arrayOfCellData[tag].userid as Int == Int(userinfoArr[0]) {
+            actionController.addAction(Action(ActionData(title: "Delete this thread", image: UIImage(named: "Delete_Colored")!), style: .destructive, handler: { action in
+                
+                let alert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "DELETE", style: .destructive, handler: { action in
+                    
+                    HUD.show(.progress)
+                    
+                    let request = self.api.threadOptions(tid: self.arrayOfCellData[tag].threadno, option: "delete_thread")
+                    request.validate()
+                    request.responseJSON { response in
+                        if response.error != nil {
+                            self.present(Alert.showErrorAlert(errorMsg: (response.error?.localizedDescription)!), animated: true, completion: nil)
+                        } else {
+                            if let jsonValue = response.result.value {
+                                var results = JSON(jsonValue)
+                                if results["response"].boolValue {
+                                    HUD.flash(.success, delay: 1.0)
+                                    let indexPath = self.feedTableView.indexPath(for: cell)
+                                    self.arrayOfCellData.remove(at: tag)
+                                    self.feedTableView.deleteRows(at: [indexPath!], with: .automatic)
+                                } else {
+                                    HUD.flash(.label("Something went wrong :("), delay: 1.0)
+                                }
+                            }
+                        }
+                    }
+                }))
+                alert.addAction(UIAlertAction(title: "CANCEL", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+            }))
+        }
+        
+        actionController.addAction(Action(ActionData(title: "Cancel", image: UIImage(named: "Cancel")!), style: .cancel, handler: { action in
+            print("Pressed cancel")
+        }))
+        
+        self.present(actionController, animated: true, completion: nil)
+    }
 }
