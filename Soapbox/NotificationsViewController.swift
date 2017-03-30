@@ -9,6 +9,11 @@
 import UIKit
 
 struct notificationsData {
+    let threadno: String!
+    let ref: String!
+    let type: String!
+    let read: String!
+    let timestamp: String!
     let avatarImage: UIImage!
     let notificationContent: String!
 }
@@ -72,7 +77,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
                         for item in results.arrayValue {
                             let url = URL(string: self.api.BASE_URL + item["avatarpath"].stringValue)
                             let data = try? Data(contentsOf: url!)
-                            self.arrayOfNotificationsData.append(notificationsData(avatarImage: UIImage(data: data!), notificationContent: item["content"].stringValue))
+                            self.arrayOfNotificationsData.append(notificationsData(threadno: item["tid"].stringValue, ref: item["ref"].stringValue, type: item["type"].stringValue, read: item["read"].stringValue, timestamp: item["timestamp"].stringValue, avatarImage: UIImage(data: data!), notificationContent: item["content"].stringValue))
                         }
                         self.loader.stopAnimating()
                         self.notificationsTableView.reloadData()
