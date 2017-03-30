@@ -152,11 +152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Soapbox/NotificationsViewController.swift"
-            timestampString = "512549934.360778"
+            timestampString = "512559968.811691"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "NotificationsViewController"
             landmarkType = "3">
          </BreakpointContent>

@@ -56,7 +56,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     func loadNoDataView() {
         noDataView.backgroundColor = #colorLiteral(red: 0.9342361093, green: 0.9314675331, blue: 0.9436802864, alpha: 1)
         let noDataLabel = UILabel()
-        noDataLabel.text = "No threads added to Reading list"
+        noDataLabel.text = "No notifications to display"
         noDataLabel.frame = CGRect(x: 0, y: self.view.frame.height/2, width: self.view.frame.width, height: 20)
         noDataLabel.font = UIFont(name: "OpenSans", size: 15.0)!
         noDataLabel.textAlignment = NSTextAlignment.center
@@ -108,6 +108,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         let attributedContent = (arrayOfNotificationsData[indexPath.row].notificationContent).html2AttributedString
         cell.notificationContent.lineBreakMode = .byTruncatingTail
         cell.notificationContent.attributedText = attributedContent
+        cell.timestamp.text = arrayOfNotificationsData[indexPath.row].timestamp
         return cell
     }
     

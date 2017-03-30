@@ -13,6 +13,7 @@ class NotificationTableViewCell: UITableViewCell {
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var notificationContent: UILabel!
     
+    @IBOutlet weak var timestamp: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layoutIfNeeded()
