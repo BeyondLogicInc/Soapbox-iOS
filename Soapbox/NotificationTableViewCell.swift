@@ -16,7 +16,7 @@ class NotificationTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layoutIfNeeded()
-        avatarImage.layer.cornerRadius = 27.5
+        avatarImage.layer.cornerRadius = 5.0
         avatarImage.layer.masksToBounds = true
         }
     

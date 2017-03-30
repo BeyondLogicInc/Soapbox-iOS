@@ -18,11 +18,15 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var notificationsTableView: UITableView!
     let api = Api()
     let loader = UIActivityIndicatorView()
+    let refreshControl = UIRefreshControl()
     let noDataView = UIView()
     var arrayOfNotificationsData = [notificationsData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        notificationsTableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(NotificationsViewController.pullToRefresh), for: .valueChanged)
         
         noDataView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         notificationsTableView.tableFooterView = UIView()
@@ -81,6 +85,12 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
+    func pullToRefresh() {
+        arrayOfNotificationsData.removeAll()
+        getNotifications()
+        refreshControl.endRefreshing()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOfNotificationsData.count
     }
@@ -89,8 +99,10 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
         
         cell.avatarImage.image = arrayOfNotificationsData[indexPath.row].avatarImage
-        cell.notificationContent.text = arrayOfNotificationsData[indexPath.row].notificationContent
-        
+//        cell.notificationContent.text = arrayOfNotificationsData[indexPath.row].notificationContent
+        let attributedContent = (arrayOfNotificationsData[indexPath.row].notificationContent).html2AttributedString
+        cell.notificationContent.lineBreakMode = .byTruncatingTail
+        cell.notificationContent.attributedText = attributedContent
         return cell
     }
     
