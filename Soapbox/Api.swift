@@ -39,15 +39,20 @@ class Api {
         return request
     }
     
-    public func populateThreads(tag: String) -> DataRequest {
-        if tag == "" {
+    public func populateThreads(tag: String, categoryId: Int) -> DataRequest {
+        if tag == "" && categoryId == 0 {
             let request = Alamofire.request(BASE_URL + "Thread/getThreads")
             return request
-        } else {
-            let params: Parameters = ["tag": tag]
-            let request = Alamofire.request(BASE_URL + "Tag/fetchThreads", method: .post, parameters: params)
-            return request
+        } else if tag != "" {
+                let params: Parameters = ["tag": tag]
+                let request = Alamofire.request(BASE_URL + "Tag/fetchThreads", method: .post, parameters: params)
+                return request
+        } else if categoryId != 0 {
+                let params: Parameters = ["cid": categoryId]
+                let request = Alamofire.request(BASE_URL + "Ajax_Controller/getThreadsByCategory", method: .post, parameters: params)
+                return request
         }
+        else { preconditionFailure() }
     }
     
     public func getFeaturedThreads() -> DataRequest {

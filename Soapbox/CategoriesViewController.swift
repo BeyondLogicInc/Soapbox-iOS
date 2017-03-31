@@ -77,6 +77,15 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toFeedVCFromCategories" {
+            let row = self.categoryTableView.indexPathForSelectedRow?.row
+            let feedVC = segue.destination as? FeedViewController
+            feedVC?.categoryName = arrayOfCategoryData[row!].name
+            feedVC?.categoryId = arrayOfCategoryData[row!].srno
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOfCategoryData.count
     }
@@ -113,6 +122,10 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.userCountLabel.text = userCountTxt
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
  
     func didPressButton(_ tag: Int, _ cell: CategoryCustomTableViewCell) {        

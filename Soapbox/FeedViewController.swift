@@ -46,6 +46,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let api = Api()
     
     var tagName: String = ""
+    var categoryId: Int = 0
+    var categoryName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,13 +73,18 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         userinfoArr = api.getUserInfoFromKeychain()
         
-        if tagName == "" {
-            populateFeed(tag: "")
+        if tagName == "" && categoryId == 0 {
+            populateFeed(tag: "", categoryId: 0)
             self.navigationItem.title = "SOAPBOX"
             rightBarButtonItem.isEnabled = true
         } else {
-            populateFeed(tag: tagName)
-            self.navigationItem.title = "#\(tagName)"
+            if tagName != "" {
+                populateFeed(tag: tagName, categoryId: 0)
+                self.navigationItem.title = "#\(tagName)"
+            } else if categoryId != 0 {
+                populateFeed(tag: "", categoryId: categoryId)
+                self.navigationItem.title = "\(categoryName)"
+            }
             rightBarButtonItem.isEnabled = false
             let btn = UIBarButtonItem()
             btn.title = "Back"
@@ -95,10 +102,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         noDataView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         noDataView.backgroundColor = #colorLiteral(red: 0.9342361093, green: 0.9314675331, blue: 0.9436802864, alpha: 1)
         let noDataLabel = UILabel()
-        if tagName == "" {
+        if tagName == "" && categoryId == 0 {
             noDataLabel.text = "Couldn't find anything"
-        } else {
+        } else if tagName != "" {
             noDataLabel.text = "Couldn't find anything related to #\(tagName)"
+        } else if categoryId != 0 {
+            noDataLabel.text = "Couldn't find anything related to \(categoryName)"
         }
         noDataLabel.frame = CGRect(x: 0, y: self.view.frame.height/2, width: self.view.frame.width, height: 20)
         noDataLabel.font = UIFont(name: "OpenSans", size: 15.0)!
@@ -107,8 +116,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.view.addSubview(noDataView)
     }
     
-    func populateFeed(tag: String) {
-        let request = api.populateThreads(tag: tag)
+    func populateFeed(tag: String, categoryId: Int) {
+        let request = api.populateThreads(tag: tag, categoryId: categoryId)
         request.validate()
         request.responseJSON { response in
             if response.error != nil {
@@ -160,10 +169,14 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func pullToRefresh() {
         arrayOfCellData.removeAll()
-        if tagName == "" {
-            populateFeed(tag: "")
+        if tagName == "" && categoryId == 0 {
+            populateFeed(tag: "", categoryId: 0)
         } else {
-            populateFeed(tag: tagName)
+            if tagName != "" {
+                populateFeed(tag: tagName, categoryId: 0)
+            } else if categoryId != 0 {
+                populateFeed(tag: "", categoryId: categoryId)
+            }
         }
         refreshControl.endRefreshing()
     }
