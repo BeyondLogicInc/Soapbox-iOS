@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "reading_confirmation_filled-25.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Reading_Confirmation_50.png",
       "scale" : "2x"
     },
     {
