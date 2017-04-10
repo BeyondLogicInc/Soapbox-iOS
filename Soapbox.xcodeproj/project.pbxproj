@@ -59,6 +59,7 @@
 		16AFD9251E6D69ED00F13E17 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFD9241E6D69ED00F13E17 /* FeedTableViewCell.swift */; };
 		16B828A01E810B610015F685 /* FeaturedThreadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B8289F1E810B610015F685 /* FeaturedThreadsViewController.swift */; };
 		16B828A21E810FA20015F685 /* FeaturedThreadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B828A11E810FA20015F685 /* FeaturedThreadsTableViewCell.swift */; };
+		16D8CF021E9BAA9C005236E5 /* SoapboxTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D8CF011E9BAA9C005236E5 /* SoapboxTabBarController.swift */; };
 		16F561591E715FF700902B64 /* CreateNewThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F561581E715FF700902B64 /* CreateNewThreadViewController.swift */; };
 		16F5615B1E7162E700902B64 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F5615A1E7162E700902B64 /* KeyboardManager.swift */; };
 		16FEF1BD1E6FDB4300816BA9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEF1BC1E6FDB4300816BA9 /* SignUpViewController.swift */; };
@@ -145,6 +146,7 @@
 		16AFD9241E6D69ED00F13E17 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		16B8289F1E810B610015F685 /* FeaturedThreadsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedThreadsViewController.swift; sourceTree = "<group>"; };
 		16B828A11E810FA20015F685 /* FeaturedThreadsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedThreadsTableViewCell.swift; sourceTree = "<group>"; };
+		16D8CF011E9BAA9C005236E5 /* SoapboxTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoapboxTabBarController.swift; sourceTree = "<group>"; };
 		16F561581E715FF700902B64 /* CreateNewThreadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewThreadViewController.swift; sourceTree = "<group>"; };
 		16F5615A1E7162E700902B64 /* KeyboardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		16FEF1BC1E6FDB4300816BA9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				161CE8D01E69DBA7009A6C63 /* Main.storyboard */,
 				161010821E8C2157008EE1A8 /* NotificationTableViewCell.swift */,
 				161010801E8C210A008EE1A8 /* NotificationsViewController.swift */,
+				16D8CF011E9BAA9C005236E5 /* SoapboxTabBarController.swift */,
 				1610107E1E8B7EB8008EE1A8 /* FeedCellWithoutImageTableViewCell.swift */,
 				16432DBA1E86DB29007ED963 /* StatsTopThreadTableViewCell.swift */,
 				1637F29C1E855C6800947D47 /* StatsViewController.swift */,
@@ -649,6 +652,7 @@
 				1605E9C71E7FDE1F00632B7B /* CategoriesViewController.swift in Sources */,
 				1637F29D1E855C6800947D47 /* StatsViewController.swift in Sources */,
 				168467A31E7D0671009831D9 /* ReadingListViewController.swift in Sources */,
+				16D8CF021E9BAA9C005236E5 /* SoapboxTabBarController.swift in Sources */,
 				16B828A21E810FA20015F685 /* FeaturedThreadsTableViewCell.swift in Sources */,
 				16B828A01E810B610015F685 /* FeaturedThreadsViewController.swift in Sources */,
 				1670C2351E8221A20028054E /* SearchViewController.swift in Sources */,
