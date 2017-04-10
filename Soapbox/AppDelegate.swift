@@ -12,22 +12,18 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
     var refreshReadingList: Bool = false
-
+    var unreadNotificationCount: String = ""
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-//        UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-//        UINavigationBar.appearance().tintColor = UIColor.white        
         UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "OpenSans", size: 11.0)!], for: UIControlState.normal)
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "OpenSans", size: 18.0)!]
         UITabBar.appearance().tintColor = #colorLiteral(red: 0.2666666667, green: 0.2666666667, blue: 0.2666666667, alpha: 1)
                 
         UIButton.appearance().layer.cornerRadius = 4.0
         UIButton.appearance().layer.masksToBounds = true
-//        UIApplication.shared.statusBarStyle = .lightContent
-        
-        // Override point for customization after application launch.
+                
         return true
     }
 
