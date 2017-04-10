@@ -7,12 +7,12 @@
 //
 
 import UIKit
-
+import PKHUD
 struct notificationsData {
     let threadno: String!
     let ref: String!
     let type: String!
-    let read: String!
+    var read: String!
     let timestamp: String!
     let avatarImage: UIImage!
     let notificationContent: String!
@@ -21,11 +21,14 @@ struct notificationsData {
 class NotificationsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var notificationsTableView: UITableView!
+    @IBOutlet weak var markAllNotificationsButton: UIBarButtonItem!
+    
     let api = Api()
     let loader = UIActivityIndicatorView()
     let refreshControl = UIRefreshControl()
     let noDataView = UIView()
     var arrayOfNotificationsData = [notificationsData]()
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +48,9 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         self.view.addSubview(loader)
         self.view.bringSubview(toFront: loader)
         self.loader.startAnimating()
-
+        
         getNotifications()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,6 +99,28 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         getNotifications()
         refreshControl.endRefreshing()
     }
+    
+    @IBAction func markAllNotificationsRead(_ sender: Any) {
+        HUD.show(.progress)
+        let request = api.markAllNotificationsRead()
+        request.validate()
+        request.responseJSON { response in
+            if response.error != nil {
+                self.present(Alert.showErrorAlert(errorMsg: (response.error?.localizedDescription)!), animated: true, completion: nil)
+            } else {
+                if response.result.value != nil {
+                    if let index = self.arrayOfNotificationsData.index(where: { $0.read == "0" }) {
+                        self.arrayOfNotificationsData[index].read = "1"
+                    }
+                    HUD.flash(.success, delay: 0.7)
+                    self.appDelegate.unreadNotificationCount = "0"
+                    self.tabBarController?.tabBar.items?[3].badgeValue = nil
+                    self.notificationsTableView.reloadData()
+                }
+            }
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOfNotificationsData.count
