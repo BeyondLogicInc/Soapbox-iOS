@@ -80,7 +80,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
                             self.arrayOfNotificationsData.append(notificationsData(threadno: item["tid"].stringValue, ref: item["ref"].stringValue, type: item["type"].stringValue, read: item["read"].stringValue, timestamp: item["timestamp"].stringValue, avatarImage: UIImage(data: data!), notificationContent: item["content"].stringValue))
                         }
                         self.loader.stopAnimating()
-                        self.notificationsTableView.reloadData()                        
+                        self.notificationsTableView.reloadData()
                     } else {
                         self.loader.stopAnimating()
                         self.loadNoDataView()
@@ -104,11 +104,17 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
         
         cell.avatarImage.image = arrayOfNotificationsData[indexPath.row].avatarImage
-//        cell.notificationContent.text = arrayOfNotificationsData[indexPath.row].notificationContent
         let attributedContent = (arrayOfNotificationsData[indexPath.row].notificationContent).html2AttributedString
         cell.notificationContent.lineBreakMode = .byTruncatingTail
         cell.notificationContent.attributedText = attributedContent
         cell.timestamp.text = arrayOfNotificationsData[indexPath.row].timestamp
+        
+        if JSON(arrayOfNotificationsData[indexPath.row].read).intValue == 0 {
+            cell.backgroundColor = #colorLiteral(red: 0.9176470588, green: 0.9137254902, blue: 0.9294117647, alpha: 1)
+        } else {
+            cell.backgroundColor = UIColor.white
+        }
+        
         return cell
     }
     
