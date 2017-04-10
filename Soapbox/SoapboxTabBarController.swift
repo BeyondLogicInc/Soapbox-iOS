@@ -7,29 +7,39 @@
 //
 
 import UIKit
+import Alamofire
 
 class SoapboxTabBarController: UITabBarController {
 
+    let api = Api()
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        getUnreadNotificationCount()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func getUnreadNotificationCount() {
+        let request = api.getUnreadNotificationCount()
+        request.validate()
+        request.responseJSON { response in
+            if response.error != nil {
+                
+            } else {
+                if let jsonValue = response.result.value {
+                    self.appDelegate.unreadNotificationCount = JSON(jsonValue)["count"].stringValue
+                    if JSON(self.appDelegate.unreadNotificationCount).intValue > 0 {
+                        self.tabBar.items?[3].badgeValue = self.appDelegate.unreadNotificationCount
+                    } else {
+                        self.tabBar.items?[3].badgeValue = nil
+                    }
+                }
+            }
+        }
     }
-    */
-
+    
 }
