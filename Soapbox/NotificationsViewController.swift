@@ -26,7 +26,6 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     let refreshControl = UIRefreshControl()
     let noDataView = UIView()
     var arrayOfNotificationsData = [notificationsData]()
-    var unreadNotificationsCount: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +73,6 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
             } else {
                 if let jsonValue = response.result.value {
                     let results = JSON(jsonValue)["results"]
-                    self.unreadNotificationsCount = JSON(jsonValue)["unreadcnt"].stringValue
                     if results.count > 0 {
                         for item in results.arrayValue {
                             let url = URL(string: self.api.BASE_URL + item["avatarpath"].stringValue)
@@ -82,10 +80,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
                             self.arrayOfNotificationsData.append(notificationsData(threadno: item["tid"].stringValue, ref: item["ref"].stringValue, type: item["type"].stringValue, read: item["read"].stringValue, timestamp: item["timestamp"].stringValue, avatarImage: UIImage(data: data!), notificationContent: item["content"].stringValue))
                         }
                         self.loader.stopAnimating()
-                        self.notificationsTableView.reloadData()
-                        if JSON(self.unreadNotificationsCount).intValue > 0 {
-                            self.tabBarController?.tabBar.items?[3].badgeValue = self.unreadNotificationsCount
-                        }
+                        self.notificationsTableView.reloadData()                        
                     } else {
                         self.loader.stopAnimating()
                         self.loadNoDataView()
