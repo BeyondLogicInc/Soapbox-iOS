@@ -94,7 +94,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    func pullToRefresh() {
+    @objc func pullToRefresh() {
         arrayOfNotificationsData.removeAll()
         getNotifications()
         refreshControl.endRefreshing()

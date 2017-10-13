@@ -49,7 +49,7 @@ class SoapboxButton: UIButton  {
         self.layer.backgroundColor = UIColor.clear.cgColor
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0.0, y: self.frame.height - 1, width: self.frame.width, height: 1.0)
-        bottomLine.backgroundColor = UIColor(colorLiteralRed: 204/255, green: 204/255, blue: 204/255, alpha: 1.0).cgColor
+        bottomLine.backgroundColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0).cgColor
         self.layer.addSublayer(bottomLine)
                 
     }

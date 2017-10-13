@@ -76,6 +76,11 @@ public struct ActionControllerSettings {
          * The cancel view's background color. Its default value is `UIColor.blackColor().colorWithAlphaComponent(0.8)`.
          */
         public var backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        /**
+          * A Boolean value that determines whether the collection view can be partially covered by the 
+          * cancel view when it is pulled down. Its default value is `true`
+          */
+        public var hideCollectionViewBehindCancelView = true
     }
 
     /** Struct that contains properties to configure the collection view's style */
@@ -179,6 +184,14 @@ public struct ActionControllerSettings {
          * default value is `UIStatusBarStyle.LightContent`.
          */
         public var style = UIStatusBarStyle.lightContent
+        /**
+         * A boolean value that determines whether the action controller takes over control of status bar appearance from the presenting 
+         * view controller. Its default value is `true`.
+         *
+         * For more information refer to `UIViewController.modalPresentationCapturesStatusBarAppearance`, 
+         * https://developer.apple.com/reference/uikit/uiviewcontroller/1621453-modalpresentationcapturesstatusb
+         */
+        public var modalPresentationCapturesStatusBarAppearance = true
     }
     
     /** Stores the behavior's properties values */

@@ -172,7 +172,7 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         }
     }
     
-    func avatarImageTapped(_ sender: UITapGestureRecognizer) {
+    @objc func avatarImageTapped(_ sender: UITapGestureRecognizer) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -187,7 +187,7 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
             avatarImageView.contentMode = .scaleAspectFill
             avatarImageView.image = pickedImage
             
-            let imageURL = info[UIImagePickerControllerReferenceURL] as! NSURL
+            let imageURL = info[UIImagePickerControllerPHAsset] as! NSURL
             avatarImageName = imageURL.lastPathComponent!
             print(avatarImageName)
         }
@@ -240,7 +240,7 @@ class SignUpStepsViewController: UIViewController, UITextFieldDelegate, UIImageP
         return true
     }
     
-    func emailTextFieldDidChange(_ textField: UITextField) {
+    @objc func emailTextFieldDidChange(_ textField: UITextField) {
         if textField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "" {
             textField.rightView?.isHidden = false
             if isValidEmail(email: textField.text!) {

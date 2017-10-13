@@ -32,7 +32,6 @@ body, h1, p {
 div {
     display: block;
     position: static;
-    min-height: 28px;
 }
 
 #editor {
@@ -47,7 +46,7 @@ div {
 .placeholder[placeholder]:after {
     content: attr(placeholder);
     position: absolute;
-    top: -2px;
+    top: 0px;
     color: #cccccc;
 }
 
@@ -56,8 +55,7 @@ div {
     height: 100%;
     overflow: auto;
     display: block;
-    font-family: 'Merriweather';
-    color:#333333;
-    line-height:1.5;
+    font-family: 'HelveticaNeue';
+    color:#666666;
     font-size: 12pt;
 }

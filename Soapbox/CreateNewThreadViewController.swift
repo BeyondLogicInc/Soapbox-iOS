@@ -16,7 +16,7 @@ class CreateNewThreadViewController: UIViewController, RichEditorDelegate, RichE
     @IBOutlet weak var titleTextField: UITextField!
     lazy var toolbar: RichEditorToolbar = {
         let toolbar = RichEditorToolbar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 44))
-        toolbar.options = [RichEditorOptions.bold, RichEditorOptions.italic, RichEditorOptions.underline, RichEditorOptions.header(3), RichEditorOptions.header(4), RichEditorOptions.header(5), RichEditorOptions.orderedList, RichEditorOptions.unorderedList, RichEditorOptions.link, RichEditorOptions.undo, RichEditorOptions.clear]
+        toolbar.options = RichEditorDefaultOption.all
         return toolbar
     }()
     
@@ -31,7 +31,7 @@ class CreateNewThreadViewController: UIViewController, RichEditorDelegate, RichE
         editorView.placeholder = "Start writing"
         
         DispatchQueue.main.async{
-            self.editorView.frame = CGRect(x: 16, y: 50, width: self.view.frame.width - 30, height: self.view.frame.height)
+            self.editorView.frame = CGRect(x: 16, y: 92, width: self.view.frame.width - 30, height: self.view.frame.height)
         }
         
         editorView.delegate = self
@@ -41,7 +41,7 @@ class CreateNewThreadViewController: UIViewController, RichEditorDelegate, RichE
         toolbar.editor = editorView
         
         let item = RichEditorOptionItem(image: nil, title: "Clear") { toolbar in
-            toolbar?.editor?.html = ""
+            toolbar.editor?.html = ""
         }
         
         var options = toolbar.options
@@ -68,7 +68,7 @@ class CreateNewThreadViewController: UIViewController, RichEditorDelegate, RichE
         return true
     }
     
-    func dismissKeyboardRichEditorView() {
+    @objc func dismissKeyboardRichEditorView() {
         editorView.endEditing(true)
     }
     

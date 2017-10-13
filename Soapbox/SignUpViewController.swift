@@ -76,7 +76,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
         
     
-    func usernameTextFieldDidChange(_ textField: UITextField) {
+    @objc func usernameTextFieldDidChange(_ textField: UITextField) {
         if textField.text != "" {
             if (textField.text?.lengthOfBytes(using: String.Encoding.utf8))! >= 5 {
                 textField.rightView?.isHidden = false

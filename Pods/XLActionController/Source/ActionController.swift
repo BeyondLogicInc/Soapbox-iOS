@@ -220,6 +220,8 @@ open class ActionController<ActionViewType: UICollectionViewCell, ActionDataType
     open override func viewDidLoad() {
         super.viewDidLoad()
 
+        modalPresentationCapturesStatusBarAppearance = settings.statusBar.modalPresentationCapturesStatusBarAppearance
+
         // background view
         view.addSubview(backgroundView)
 
@@ -259,8 +261,12 @@ open class ActionController<ActionViewType: UICollectionViewCell, ActionDataType
             let lastSectionIndex = _sections.count - 1
             let layoutAtts = collectionViewLayout.layoutAttributesForItem(at: IndexPath(item: section.actions.count - 1, section: hasHeader() ? lastSectionIndex + 1 : lastSectionIndex))
             contentHeight = layoutAtts!.frame.origin.y + layoutAtts!.frame.size.height
+
+            if settings.cancelView.showCancel && !settings.cancelView.hideCollectionViewBehindCancelView {
+                contentHeight += settings.cancelView.height
+            }
         }
-        
+
         setUpContentInsetForHeight(view.frame.height)
         
         // set up collection view initial position taking into account top content inset
@@ -514,12 +520,8 @@ open class ActionController<ActionViewType: UICollectionViewCell, ActionDataType
             },
             completion: { [weak self] _ in
                 self?.onDidDismissView()
+                completion?(true)
             })
-
-        let delayTime = DispatchTime.now() + Double(Int64(animationDuration * 0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-        DispatchQueue.main.asyncAfter(deadline: delayTime) {
-            completion?(true)
-        }
     }
     
     open func onWillPresentView() {
@@ -558,15 +560,15 @@ open class ActionController<ActionViewType: UICollectionViewCell, ActionDataType
     
     // MARK: - Event handlers
     
-    func cancelButtonDidTouch(_ sender: UIButton) {
+    @objc func cancelButtonDidTouch(_ sender: UIButton) {
         self.dismiss()
     }
     
-    func tapGestureDidRecognize(_ gesture: UITapGestureRecognizer) {
+    @objc func tapGestureDidRecognize(_ gesture: UITapGestureRecognizer) {
         self.dismiss()
     }
     
-    func swipeGestureDidRecognize(_ gesture: UISwipeGestureRecognizer) {
+    @objc func swipeGestureDidRecognize(_ gesture: UISwipeGestureRecognizer) {
         self.dismiss()
     }
     
@@ -702,15 +704,19 @@ open class DynamicsActionController<ActionViewType: UICollectionViewCell, Action
     }
 
     // MARK: - Overrides
-    
+
     open override func dismiss() {
+        dismiss(nil)
+    }
+
+    open override func dismiss(_ completion: (() -> ())?) {
         animator.addBehavior(gravityBehavior)
-        
+
         UIView.animate(withDuration: settings.animation.dismiss.duration, animations: { [weak self] in
             self?.backgroundView.alpha = 0.0
-        }) 
-        
-        presentingViewController?.dismiss(animated: true, completion: nil)
+        })
+
+        presentingViewController?.dismiss(animated: true, completion: completion)
     }
 
     open override func dismissView(_ presentedView: UIView, presentingView: UIView, animationDuration: Double, completion: ((_ completed: Bool) -> Void)?) {

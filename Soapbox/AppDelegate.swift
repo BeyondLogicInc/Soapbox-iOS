@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "OpenSans", size: 11.0)!], for: UIControlState.normal)
-        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "OpenSans", size: 18.0)!]
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "OpenSans", size: 11.0)!], for: UIControlState.normal)
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "OpenSans", size: 18.0)!]
         UITabBar.appearance().tintColor = #colorLiteral(red: 0.2666666667, green: 0.2666666667, blue: 0.2666666667, alpha: 1)
                 
         UIButton.appearance().layer.cornerRadius = 4.0

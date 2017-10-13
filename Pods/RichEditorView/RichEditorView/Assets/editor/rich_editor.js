@@ -18,7 +18,7 @@
 var RE = {};
 
 window.onload = function() {
-    RE.callback("ready");    
+    RE.callback("ready");
 };
 
 RE.editor = document.getElementById('editor');
@@ -219,6 +219,14 @@ RE.setJustifyRight = function() {
     document.execCommand('justifyRight', false, null);
 };
 
+RE.getLineHeight = function() {
+    return RE.editor.style.lineHeight;
+};
+
+RE.setLineHeight = function(height) {
+    RE.editor.style.lineHeight = height;
+};
+
 RE.insertImage = function(url, alt) {
     var img = document.createElement('img');
     img.setAttribute("src", url);
@@ -310,7 +318,7 @@ RE.focus = function() {
 };
 
 RE.focusAtPoint = function(x, y) {
-    var range = document.caretRangeFromPoint(x, y);
+    var range = document.caretRangeFromPoint(x, y) || document.createRange();
     var selection = window.getSelection();
     selection.removeAllRanges();
     selection.addRange(range);

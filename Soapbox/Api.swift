@@ -12,8 +12,7 @@ import KeyClip
 
 class Api {
     
-    var BASE_URL: String = "http://192.168.0.103/Soapboxv2/"
-//    var BASE_URL: String = "https://api-soapbox.herokuapp.com/"
+    var BASE_URL: String = "http://ec2-54-175-128-205.compute-1.amazonaws.com/soapbox-api/"
     let AVATAR_NAME: String = "avatarpath.jpg"
     
     public func validateLogin(username: String, password: String) -> DataRequest {

@@ -6,7 +6,7 @@ target 'Soapbox' do
   pod 'Alamofire', '~> 4.3'
   pod 'SDWebImage', '~>3.8'
   pod 'KeyClip'
-  pod 'RichEditorView', :git => 'https://github.com/cjwirth/RichEditorView', :branch => 'swift-3'
+  pod 'RichEditorView', :git => 'https://github.com/cjwirth/RichEditorView', :branch => 'swift-4'
   pod 'XLActionController'
   pod 'XLActionController/Youtube'
   pod 'RevealingSplashView'

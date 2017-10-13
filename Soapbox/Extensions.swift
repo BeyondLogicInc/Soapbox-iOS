@@ -33,7 +33,7 @@ extension UIViewController {
         )
         view.addGestureRecognizer(tap)
     }
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
 }
@@ -44,7 +44,7 @@ extension UITextField {
         self.layer.backgroundColor = UIColor.clear.cgColor
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0.0, y: self.frame.height - 1, width: self.frame.width, height: 1.0)
-        bottomLine.backgroundColor = UIColor(colorLiteralRed: 204/255, green: 204/255, blue: 204/255, alpha: 1.0).cgColor
+        bottomLine.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0).cgColor
         self.layer.addSublayer(bottomLine)
     }
 }
@@ -52,17 +52,34 @@ extension UITextField {
 extension String {
     
     var html2AttributedString: NSAttributedString? {
-        guard let data = data(using: .utf8) else { return nil }
         do {
-            return try NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
-        } catch let error as NSError {
-            print(error.localizedDescription)
-            return  nil
+            return try NSAttributedString(data: Data(utf8),
+                                          options: [.documentType: NSAttributedString.DocumentType.html,
+                                                    .characterEncoding: String.Encoding.utf8.rawValue],
+                                          documentAttributes: nil)
+        } catch {
+            print("error: ", error)
+            return nil
         }
     }
     var html2String: String {
         return html2AttributedString?.string ?? ""
     }
+    
+//    var html2AttributedString: NSAttributedString? {
+//        guard data(using: .utf8) != nil else { return nil }
+//        do {
+//            var attributes = [NSAttributedStringKey: Any]()
+//            attributes = [NSAttributedString.DocumentAttributeKey.documentType: NSAttributedString.DocumentType.html, NSAttributedString.DocumentAttributeKey.characterEncoding: String.Encoding.utf8.rawValue]
+//            return try attributes
+//        } catch let error as NSError {
+//            print(error.localizedDescription)
+//            return  nil
+//        }
+//    }
+//    var html2String: String {
+//        return html2AttributedString?.string ?? ""
+//    }
 }
 
 public extension UIView {

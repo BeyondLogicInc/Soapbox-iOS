@@ -29,7 +29,7 @@ class KeyboardManager: NSObject {
     init(view: UIView) {
         self.view = view
         toolbar = RichEditorToolbar(frame: CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 44))
-        toolbar.options = RichEditorOptions.all()
+//        toolbar.options = RichEditorOption.all()        
     }
     
     /**
@@ -51,7 +51,7 @@ class KeyboardManager: NSObject {
     /**
      Called when a keyboard notification is recieved. Takes are of handling the showing or hiding of the toolbar
      */
-    func keyboardWillShowOrHide(_ notification: Notification) {
+    @objc func keyboardWillShowOrHide(_ notification: Notification) {
         
         let info = (notification as NSNotification).userInfo ?? [:]
         let duration = TimeInterval((info[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.floatValue ?? 0.25)

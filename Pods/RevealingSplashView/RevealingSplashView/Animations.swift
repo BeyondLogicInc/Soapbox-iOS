@@ -12,8 +12,8 @@ import Foundation
 public typealias SplashAnimatableCompletion = () -> Void
 public typealias SplashAnimatableExecution = () -> Void
 
-// MARK: - Protool extension to define the basic functionality for the SplashAnimatable
-public extension SplashAnimatable where Self: UIView {
+// MARK: - Class extension to define the basic functionality for the RevealingSplashView class
+public extension RevealingSplashView {
     
     /**
      Starts the animation depending on the type
@@ -114,7 +114,7 @@ public extension SplashAnimatable where Self: UIView {
             UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.5, initialSpringVelocity: 3, options: UIViewAnimationOptions(), animations: {
                 
                 //Sets a simple rotate
-                let rotateTranform = CGAffineTransform(rotationAngle: CGFloat(M_PI * 0.99))
+                let rotateTranform = CGAffineTransform(rotationAngle: CGFloat(Double.pi * 0.99))
                 //Mix the rotation with the zoom out animation
                 imageView.transform = rotateTranform.concatenating(self.getZoomOutTranform())
                 //Removes the animation

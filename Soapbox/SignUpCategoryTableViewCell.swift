@@ -28,7 +28,7 @@ class SignUpCategoryTableViewCell: UITableViewCell {
         
     }
     
-    func tapEdit(sender: UITapGestureRecognizer) {
+    @objc func tapEdit(sender: UITapGestureRecognizer) {
         delegate?.categoryCellDelegate(self.tag, self)
     }
     

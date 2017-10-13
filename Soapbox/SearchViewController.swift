@@ -49,8 +49,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITabBarDeleg
     let noDataView = UIView()
     let noDataLabel = UILabel()
     
-    let btnBorderBottomColor: UIColor = UIColor(colorLiteralRed: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
-    let btnBorderBottomColorActive: UIColor = UIColor(colorLiteralRed: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
+    let btnBorderBottomColor: UIColor = UIColor(red: 204.0/255, green: 204/255, blue: 204/255, alpha: 1.0)
+    let btnBorderBottomColorActive: UIColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
     
     let api = Api()
     var searchActive : Bool = false
@@ -96,7 +96,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITabBarDeleg
         super.didReceiveMemoryWarning()
     }
     
-    func backBtnTapped() {
+    @objc func backBtnTapped() {
         searchBar.resignFirstResponder()
         _ = navigationController?.popViewController(animated: true)
     }
@@ -398,7 +398,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITabBarDeleg
             cell.replies.text = arrayOfSearchedThreads[indexPath.row].replies + " Replies"
             cell.views.text = arrayOfSearchedThreads[indexPath.row].views + " Views"
             
-            cell.contentView.backgroundColor = UIColor.init(colorLiteralRed: 234/255, green: 233/255, blue: 237/255, alpha: 1.0)
+            cell.contentView.backgroundColor = UIColor.init(red: 234/255, green: 233/255, blue: 237/255, alpha: 1.0)
             
             return cell
         } else if tableView == searchPeopleTableView {

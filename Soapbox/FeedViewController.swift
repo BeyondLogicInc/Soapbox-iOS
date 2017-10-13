@@ -94,7 +94,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    func backBtnTapped() {
+    @objc func backBtnTapped() {
         _ = navigationController?.popViewController(animated: true)
     }
     
@@ -167,7 +167,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    func pullToRefresh() {
+    @objc func pullToRefresh() {
         arrayOfCellData.removeAll()
         if tagName == "" && categoryId == 0 {
             populateFeed(tag: "", categoryId: 0)
@@ -234,7 +234,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         mutableParagraphStyle.lineSpacing = CGFloat(lineSpacing)
         
         if let stringLength = label.text?.characters.count {
-            attributedString.addAttribute(NSParagraphStyleAttributeName, value: mutableParagraphStyle, range: NSMakeRange(0, stringLength))
+            attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: mutableParagraphStyle, range: NSMakeRange(0, stringLength))
         }
         label.attributedText = attributedString
     }
@@ -261,7 +261,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.threadReplies.text = arrayOfCellData[indexPath.row].repliesCnt + " Replies"
             cell.threadViews.text = arrayOfCellData[indexPath.row].viewsCnt + " Views"
             cell.threadOptionsBtn.isHidden = false
-            cell.contentView.backgroundColor = UIColor.init(colorLiteralRed: 234/255, green: 233/255, blue: 237/255, alpha: 1.0)
+            cell.contentView.backgroundColor = UIColor.init(red: 234/255, green: 233/255, blue: 237/255, alpha: 1.0)
             
             return cell
             
@@ -284,7 +284,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.threadReplies.text = arrayOfCellData[indexPath.row].repliesCnt + " Replies"
             cell.threadViews.text = arrayOfCellData[indexPath.row].viewsCnt + " Views"
             cell.threadOptionsBtn.isHidden = false
-            cell.contentView.backgroundColor = UIColor.init(colorLiteralRed: 234/255, green: 233/255, blue: 237/255, alpha: 1.0)
+            cell.contentView.backgroundColor = UIColor.init(red: 234/255, green: 233/255, blue: 237/255, alpha: 1.0)
             
             return cell
         }
